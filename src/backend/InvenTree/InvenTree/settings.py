@@ -683,7 +683,7 @@ Ref: https://docs.djangoproject.com/en/3.2/ref/settings/#std:setting-OPTIONS
 # connecting to the database server (such as a replica failover) don't sit and
 # wait for possibly an hour or more, just tell the client something went wrong
 # and let the client retry when they want to.
-db_options = db_config.get('OPTIONS', db_config.get('options', None))
+db_options = db_config.get('OPTIONS', db_config.get('options'))
 
 if db_options is None:
     db_options = {}
