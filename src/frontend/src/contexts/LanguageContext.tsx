@@ -11,7 +11,8 @@ import { useServerApiState } from '../states/ServerApiState';
 import { useStoredTableState } from '../states/StoredTableState';
 import { fetchGlobalStates } from '../states/states';
 
-export const defaultLocale = 'en';
+// export const defaultLocale = 'en';
+export const defaultLocale = 'zh_Hans';
 
 /*
  * Function which returns a record of supported languages.
