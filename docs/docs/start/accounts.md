@@ -1,49 +1,49 @@
 ---
-title: Account Management
+标题：账户管理（Account Management）
 ---
 
-## User Accounts
+## 用户账户
 
-By default, InvenTree does not ship with any user accounts. Configuring user accounts is the first step to login to the InvenTree server.
+默认情况下，InvenTree 不包含任何用户账户。配置用户账户是登录 InvenTree 服务器的第一步。
 
-### Administrator Account
+### 管理员账户
 
-You can configure InvenTree to create an administrator account on the first run. This account will have full *superuser* access to the InvenTree server.
+你可以配置 InvenTree 在首次运行时创建一个管理员账户。该账户将拥有对 InvenTree 服务器的完整 *超级用户* 访问权限。
 
-This account is created when you first run the InvenTree server instance. The username / password for this account can be configured in the configuration file, or environment variables.
+此账户在你首次运行 InvenTree 服务器实例时创建。此账户的用户名/密码可以在配置文件或环境变量中进行配置。
 
-!!! info "More Information"
-    For more information on configuring the administrator account, refer to the [configuration documentation](./config.md#administrator-account).
+!!! info "更多信息"
+    有关配置管理员账户的更多信息，请参阅 [配置文档](./config.md#administrator-account)。
 
-### Create Superuser
+### 创建超级用户
 
-Another way to create an administrator account is to use the `superuser` command (via [invoke](./invoke.md)). This will create a new superuser account with the specified username and password.
+创建管理员账户的另一种方法是使用 `superuser` 命令（通过 [invoke](./invoke.md)）。这将创建一个具有指定用户名和密码的新超级用户账户。
 
 ```bash
 invoke superuser
 ```
 
-Or, if you are running InvenTree in a Docker container:
+或者，如果你在 Docker 容器中运行 InvenTree：
 
 ```bash
 docker exec -rm -it inventree-server invoke superuser
 ```
 
-### User Management
+### 用户管理
 
-Once you have created an administrator account, you can create and manage additional user accounts from the InvenTree web interface.
+创建管理员账户后，你可以从 InvenTree Web 界面创建和管理其他用户账户。
 
-## Password Management
+## 密码管理
 
-### Reset Password via Command Line
+### 通过命令行重置密码
 
-If a password has been lost, and other backup options (such as email recovery) are unavailable, the system administrator can reset the password for a user account from the command line.
+如果密码丢失，并且其他备份选项（如电子邮件恢复）不可用，系统管理员可以从命令行重置用户账户的密码。
 
-Log into the machine running the InvenTree server, and run the following command (from the top-level source directory):
+登录到运行 InvenTree 服务器的机器，并运行以下命令（从顶级源代码目录）：
 
 ```bash
 cd src/backend/InvenTree
 python ./manage.py changepassword <username>
 ```
 
-The system will prompt you to enter a new password for the specified user account.
+系统将提示你为指定的用户账户输入新密码。
