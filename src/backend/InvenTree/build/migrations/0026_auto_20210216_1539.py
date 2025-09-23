@@ -17,11 +17,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='build',
             name='issued_by',
-            field=models.ForeignKey(blank=True, help_text='User who issued this build order', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_issued', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(blank=True, help_text='发布此建造指令的用户', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_issued', to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='build',
             name='responsible',
-            field=models.ForeignKey(blank=True, help_text='User responsible for this build order', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_responsible', to='users.Owner'),
+            field=models.ForeignKey(blank=True, help_text='本次构建的负责人', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_responsible', to='users.Owner'),
         ),
     ]
