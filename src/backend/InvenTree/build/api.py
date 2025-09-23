@@ -123,7 +123,7 @@ class BuildFilter(rest_filters.FilterSet):
         method='filter_ancestor',
     )
 
-    @extend_schema_field(serializers.IntegerField(help_text=_('Ancestor Build')))
+    @extend_schema_field(serializers.IntegerField(help_text=_('祖先构筑')))
     def filter_ancestor(self, queryset, name, parent):
         """Filter by 'parent' build order."""
         builds = parent.get_descendants(include_self=False)
@@ -288,7 +288,7 @@ class BuildFilter(rest_filters.FilterSet):
         label=_('Exclude Tree'),
     )
 
-    @extend_schema_field(serializers.IntegerField(help_text=_('Exclude Tree')))
+    @extend_schema_field(serializers.IntegerField(help_text=_('排除树')))
     def filter_exclude_tree(self, queryset, name, value):
         """Filter by excluding a tree of Build objects."""
         queryset = queryset.exclude(
@@ -848,7 +848,7 @@ class BuildItemFilter(rest_filters.FilterSet):
         method='filter_location',
     )
 
-    @extend_schema_field(serializers.IntegerField(help_text=_('Location')))
+    @extend_schema_field(serializers.IntegerField(help_text=_('地点')))
     def filter_location(self, queryset, name, location):
         """Filter the queryset based on the specified location."""
         locations = location.get_descendants(include_self=True)
@@ -857,9 +857,7 @@ class BuildItemFilter(rest_filters.FilterSet):
     output = NumberOrNullFilter(
         field_name='install_into',
         label=_('Output'),
-        help_text=_(
-            "Filter by output stock item ID. Use 'null' to find uninstalled build items."
-        ),
+        help_text=_('按输出库存项目 ID 筛选。 使用“null”查找未安装的构建项目。'),
     )
 
 
