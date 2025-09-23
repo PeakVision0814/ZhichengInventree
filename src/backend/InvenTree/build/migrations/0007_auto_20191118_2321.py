@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='builditem',
             name='quantity',
-            field=models.DecimalField(decimal_places=5, default=1, help_text='Stock quantity to allocate to build', max_digits=15, validators=[django.core.validators.MinValueValidator(1)]),
+            field=models.DecimalField(decimal_places=5, default=1, help_text='分配给构建的库存数量', max_digits=15, validators=[django.core.validators.MinValueValidator(1)]),
         ),
     ]
