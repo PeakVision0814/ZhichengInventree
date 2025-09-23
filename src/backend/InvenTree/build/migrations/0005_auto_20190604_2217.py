@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='part',
-            field=models.ForeignKey(help_text='Select part to build', limit_choices_to={'active': True, 'assembly': True, 'is_template': False}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part'),
+            field=models.ForeignKey(help_text='选择要构建的部件', limit_choices_to={'active': True, 'assembly': True, 'is_template': False}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part'),
         ),
     ]
