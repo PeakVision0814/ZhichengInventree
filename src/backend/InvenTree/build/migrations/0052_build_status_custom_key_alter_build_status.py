@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             field=generic.states.fields.ExtraInvenTreeCustomStatusModelField(
                 blank=True,
                 default=None,
-                help_text="Additional status information for this item",
+                help_text="此项目的附加状态信息",
                 null=True,
                 verbose_name="Custom status key",
                 validators=[
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
             field=generic.states.fields.InvenTreeCustomStatusModelField(
                 choices=InvenTree.status_codes.BuildStatus.items(),
                 default=10,
-                help_text="Build status code",
+                help_text="构建状态码",
                 validators=[
                     django.core.validators.MinValueValidator(0),
                     generic.states.validators.CustomStatusCodeValidator(

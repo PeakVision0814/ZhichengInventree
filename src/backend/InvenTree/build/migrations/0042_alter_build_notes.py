@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='notes',
-            field=InvenTree.fields.InvenTreeNotesField(blank=True, help_text='Markdown notes (optional)', max_length=50000, null=True, verbose_name='Notes'),
+            field=InvenTree.fields.InvenTreeNotesField(blank=True, help_text='Markdown笔记（可选）', max_length=50000, null=True, verbose_name='Notes'),
         ),
     ]

@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name="external",
             field=models.BooleanField(
                 default=False,
-                help_text="This build order is fulfilled externally",
+                help_text="此构建订单由外部履行",
                 verbose_name="External Build",
             ),
         ),

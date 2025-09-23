@@ -17,9 +17,9 @@ class Migration(migrations.Migration):
             name='BuildLine',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantity', models.DecimalField(decimal_places=5, default=1, help_text='Required quantity for build order', max_digits=15, validators=[django.core.validators.MinValueValidator(0)], verbose_name='Quantity')),
+                ('quantity', models.DecimalField(decimal_places=5, default=1, help_text='订单所需数量', max_digits=15, validators=[django.core.validators.MinValueValidator(0)], verbose_name='Quantity')),
                 ('bom_item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='build_lines', to='part.bomitem')),
-                ('build', models.ForeignKey(help_text='Build object', on_delete=django.db.models.deletion.CASCADE, related_name='build_lines', to='build.build')),
+                ('build', models.ForeignKey(help_text='构建对象', on_delete=django.db.models.deletion.CASCADE, related_name='build_lines', to='build.build')),
             ],
             options={
                 'unique_together': {('build', 'bom_item')},

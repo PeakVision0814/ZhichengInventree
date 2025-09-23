@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='build',
             name='metadata',
-            field=models.JSONField(blank=True, help_text='JSON metadata field, for use by external plugins', null=True, verbose_name='Plugin Metadata'),
+            field=models.JSONField(blank=True, help_text='JSON元数据字段，供外部插件使用', null=True, verbose_name='Plugin Metadata'),
         ),
         migrations.AddField(
             model_name='builditem',
             name='metadata',
-            field=models.JSONField(blank=True, help_text='JSON metadata field, for use by external plugins', null=True, verbose_name='Plugin Metadata'),
+            field=models.JSONField(blank=True, help_text='JSON元数据字段，供外部插件使用', null=True, verbose_name='Plugin Metadata'),
         ),
     ]

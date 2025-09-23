@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='build',
             name='start_date',
-            field=models.DateField(blank=True, help_text='Scheduled start date for this build order', null=True, verbose_name='Build start date'),
+            field=models.DateField(blank=True, help_text='此构建订单的计划开始日期', null=True, verbose_name='Build start date'),
         ),
     ]

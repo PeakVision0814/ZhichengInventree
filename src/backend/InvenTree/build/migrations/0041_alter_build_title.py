@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='title',
-            field=models.CharField(blank=True, help_text='Brief description of the build (optional)', max_length=100, verbose_name='Description'),
+            field=models.CharField(blank=True, help_text='构建简短描述（可选）', max_length=100, verbose_name='Description'),
         ),
     ]
