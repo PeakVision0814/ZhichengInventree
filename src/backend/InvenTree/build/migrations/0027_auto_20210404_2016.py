@@ -35,42 +35,42 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='issued_by',
-            field=models.ForeignKey(blank=True, help_text='User who issued this build order', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_issued', to=settings.AUTH_USER_MODEL, verbose_name='Issued by'),
+            field=models.ForeignKey(blank=True, help_text='发布此建造指令的用户', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_issued', to=settings.AUTH_USER_MODEL, verbose_name='Issued by'),
         ),
         migrations.AlterField(
             model_name='build',
             name='responsible',
-            field=models.ForeignKey(blank=True, help_text='User responsible for this build order', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_responsible', to='users.Owner', verbose_name='Responsible'),
+            field=models.ForeignKey(blank=True, help_text='本次构建的负责人', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_responsible', to='users.Owner', verbose_name='Responsible'),
         ),
         migrations.AlterField(
             model_name='builditem',
             name='build',
-            field=models.ForeignKey(help_text='Build to allocate parts', on_delete=django.db.models.deletion.CASCADE, related_name='allocated_stock', to='build.Build', verbose_name='Build'),
+            field=models.ForeignKey(help_text='分配零件以进行构建', on_delete=django.db.models.deletion.CASCADE, related_name='allocated_stock', to='build.Build', verbose_name='Build'),
         ),
         migrations.AlterField(
             model_name='builditem',
             name='install_into',
-            field=models.ForeignKey(blank=True, help_text='Destination stock item', limit_choices_to={'is_building': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='items_to_install', to='stock.StockItem', verbose_name='Install into'),
+            field=models.ForeignKey(blank=True, help_text='目标库存商品', limit_choices_to={'is_building': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='items_to_install', to='stock.StockItem', verbose_name='Install into'),
         ),
         migrations.AlterField(
             model_name='builditem',
             name='quantity',
-            field=models.DecimalField(decimal_places=5, default=1, help_text='Stock quantity to allocate to build', max_digits=15, validators=[django.core.validators.MinValueValidator(0)], verbose_name='Quantity'),
+            field=models.DecimalField(decimal_places=5, default=1, help_text='分配给生产的库存数量', max_digits=15, validators=[django.core.validators.MinValueValidator(0)], verbose_name='Quantity'),
         ),
         migrations.AlterField(
             model_name='builditem',
             name='stock_item',
-            field=models.ForeignKey(help_text='Source stock item', limit_choices_to={'belongs_to': None, 'sales_order': None}, on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem', verbose_name='Stock Item'),
+            field=models.ForeignKey(help_text='源库存商品', limit_choices_to={'belongs_to': None, 'sales_order': None}, on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem', verbose_name='Stock Item'),
         ),
         migrations.AlterField(
             model_name='buildorderattachment',
             name='attachment',
-            field=models.FileField(help_text='Select file to attach', upload_to='attachments', verbose_name='Attachment'),
+            field=models.FileField(help_text='选择要附加的文件', upload_to='attachments', verbose_name='Attachment'),
         ),
         migrations.AlterField(
             model_name='buildorderattachment',
             name='comment',
-            field=models.CharField(blank=True, help_text='File comment', max_length=100, verbose_name='Comment'),
+            field=models.CharField(blank=True, help_text='文件注释', max_length=100, verbose_name='Comment'),
         ),
         migrations.AlterField(
             model_name='buildorderattachment',
@@ -80,6 +80,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='buildorderattachment',
             name='user',
-            field=models.ForeignKey(blank=True, help_text='User', null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='User'),
+            field=models.ForeignKey(blank=True, help_text='用户', null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='User'),
         ),
     ]
