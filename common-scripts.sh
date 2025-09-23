@@ -1,6 +1,9 @@
 # 进入开发者容器
 docker exec -it inventree_devcontainer-inventree-1 bash
 
+# 进入目录
+cd /home/inventree
+
 # 进入环境
 source /home/inventree/dev/venv/bin/activate
 
