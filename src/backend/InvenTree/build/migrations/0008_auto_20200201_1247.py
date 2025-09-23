@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='notes',
-            field=models.TextField(blank=True, help_text='Extra build notes'),
+            field=models.TextField(blank=True, help_text='额外构建说明'),
         ),
     ]
