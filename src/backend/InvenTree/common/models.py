@@ -98,7 +98,7 @@ class MetaMixin(models.Model):
 
     updated = models.DateTimeField(
         verbose_name=_('Updated'),
-        help_text=_('Timestamp of last update'),
+        help_text=_('上次更新的时间戳'),
         auto_now=True,
         null=True,
     )
@@ -123,7 +123,7 @@ class UpdatedUserMixin(models.Model):
 
     updated = models.DateTimeField(
         verbose_name=_('Updated'),
-        help_text=_('Timestamp of last update'),
+        help_text=_('上次更新的时间戳'),
         default=None,
         blank=True,
         null=True,
@@ -136,7 +136,7 @@ class UpdatedUserMixin(models.Model):
         blank=True,
         related_name='%(class)s_updated',
         verbose_name=_('Update By'),
-        help_text=_('User who last updated this object'),
+        help_text=_('最后更新此对象的用户'),
     )
 
 
@@ -161,14 +161,14 @@ class ProjectCode(InvenTree.models.InvenTreeMetadataModel):
         max_length=50,
         unique=True,
         verbose_name=_('Project Code'),
-        help_text=_('Unique project code'),
+        help_text=_('唯一的项目代码'),
     )
 
     description = models.CharField(
         max_length=200,
         blank=True,
         verbose_name=_('Description'),
-        help_text=_('Project description'),
+        help_text=_('项目描述'),
     )
 
     responsible = models.ForeignKey(
@@ -177,7 +177,7 @@ class ProjectCode(InvenTree.models.InvenTreeMetadataModel):
         blank=True,
         null=True,
         verbose_name=_('Responsible'),
-        help_text=_('User or group responsible for this project'),
+        help_text=_('负责此项目的用户或组'),
         related_name='project_codes',
     )
 
@@ -773,11 +773,11 @@ class BaseInvenTreeSetting(models.Model):
             )
 
     key = models.CharField(
-        max_length=50, blank=False, unique=False, help_text=_('Settings key')
+        max_length=50, blank=False, unique=False, help_text=_('设置键')
     )
 
     value = models.CharField(
-        max_length=2000, blank=True, unique=False, help_text=_('Settings value')
+        max_length=2000, blank=True, unique=False, help_text=_('设置值')
     )
 
     @property
@@ -1274,7 +1274,7 @@ class InvenTreeSetting(BaseInvenTreeSetting):
     typ = 'inventree'
 
     key = models.CharField(
-        max_length=50, blank=False, unique=True, help_text=_('Settings key')
+        max_length=50, blank=False, unique=True, help_text=_('设置键')
     )
 
     def to_native_value(self):
@@ -1312,7 +1312,7 @@ class InvenTreeUserSetting(BaseInvenTreeSetting):
     extra_unique_fields = ['user']
 
     key = models.CharField(
-        max_length=50, blank=False, unique=False, help_text=_('Settings key')
+        max_length=50, blank=False, unique=False, help_text=_('设置键')
     )
 
     user = models.ForeignKey(
@@ -1321,7 +1321,7 @@ class InvenTreeUserSetting(BaseInvenTreeSetting):
         blank=True,
         null=True,
         verbose_name=_('User'),
-        help_text=_('User'),
+        help_text=_('用户'),
     )
 
     def to_native_value(self):
@@ -1343,7 +1343,7 @@ class PriceBreak(MetaMixin):
         default=1,
         validators=[MinValueValidator(1)],
         verbose_name=_('Quantity'),
-        help_text=_('Price break quantity'),
+        help_text=_('价格阶梯数量'),
     )
 
     price = InvenTree.fields.InvenTreeModelMoneyField(
@@ -1351,7 +1351,7 @@ class PriceBreak(MetaMixin):
         decimal_places=6,
         null=True,
         verbose_name=_('Price'),
-        help_text=_('Unit price at specified quantity'),
+        help_text=_('指定数量的单价'),
     )
 
     def convert_to(self, currency_code):
@@ -1393,7 +1393,7 @@ class WebhookEndpoint(models.Model):
         secret: Shared secret for HMAC verification,
     """
 
-    # Token
+    # 令牌
     TOKEN_NAME = 'Token'
     VERIFICATION_METHOD = VerificationMethod.NONE
 
@@ -1403,7 +1403,7 @@ class WebhookEndpoint(models.Model):
     endpoint_id = models.CharField(
         max_length=255,
         verbose_name=_('Endpoint'),
-        help_text=_('Endpoint at which this webhook is received'),
+        help_text=_('接收此Webhook的端点'),
         default=uuid.uuid4,
         editable=False,
     )
@@ -1413,11 +1413,11 @@ class WebhookEndpoint(models.Model):
         blank=True,
         null=True,
         verbose_name=_('Name'),
-        help_text=_('Name for this webhook'),
+        help_text=_('此Webhook的名称'),
     )
 
     active = models.BooleanField(
-        default=True, verbose_name=_('Active'), help_text=_('Is this webhook active')
+        default=True, verbose_name=_('Active'), help_text=_('此Webhook是否处于激活状态')
     )
 
     user = models.ForeignKey(
@@ -1426,7 +1426,7 @@ class WebhookEndpoint(models.Model):
         blank=True,
         null=True,
         verbose_name=_('User'),
-        help_text=_('User'),
+        help_text=_('用户'),
     )
 
     token = models.CharField(
@@ -1434,7 +1434,7 @@ class WebhookEndpoint(models.Model):
         blank=True,
         null=True,
         verbose_name=_('Token'),
-        help_text=_('Token for access'),
+        help_text=_('访问令牌'),
         default=uuid.uuid4,
     )
 
@@ -1443,7 +1443,7 @@ class WebhookEndpoint(models.Model):
         blank=True,
         null=True,
         verbose_name=_('Secret'),
-        help_text=_('Shared secret for HMAC'),
+        help_text=_('HMAC共享密钥'),
     )
 
     # To be overridden
@@ -2373,8 +2373,8 @@ class BarcodeScanResult(InvenTree.models.InvenTreeModel):
 
     data = models.CharField(
         max_length=BARCODE_SCAN_MAX_LEN,
-        verbose_name=_('Data'),
-        help_text=_('Barcode data'),
+        verbose_name=_('数据'),
+        help_text=_('条形码数据'),
         blank=False,
         null=False,
     )
@@ -2384,44 +2384,42 @@ class BarcodeScanResult(InvenTree.models.InvenTreeModel):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name=_('User'),
-        help_text=_('User who scanned the barcode'),
+        verbose_name=_('用户'),
+        help_text=_('扫描条形码的用户'),
     )
 
     timestamp = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_('Timestamp'),
-        help_text=_('Date and time of the barcode scan'),
+        verbose_name=_('时间戳'),
+        help_text=_('条形码扫描的日期和时间'),
     )
 
     endpoint = models.CharField(
         max_length=250,
-        verbose_name=_('Path'),
-        help_text=_('URL endpoint which processed the barcode'),
+        verbose_name=_('路径'),
+        help_text=_('处理条形码的 URL 端点'),
         blank=True,
         null=True,
     )
 
     context = models.JSONField(
         max_length=1000,
-        verbose_name=_('Context'),
-        help_text=_('Context data for the barcode scan'),
+        verbose_name=_('上下文'),
+        help_text=_('条形码扫描的上下文数据'),
         blank=True,
         null=True,
     )
 
     response = models.JSONField(
         max_length=1000,
-        verbose_name=_('Response'),
-        help_text=_('Response data from the barcode scan'),
+        verbose_name=_('回应'),
+        help_text=_('条形码扫描的响应数据'),
         blank=True,
         null=True,
     )
 
     result = models.BooleanField(
-        verbose_name=_('Result'),
-        help_text=_('Was the barcode scan successful?'),
-        default=False,
+        verbose_name=_('结果'), help_text=_('条形码扫描是否成功?'), default=False
     )
 
 
@@ -2523,7 +2521,7 @@ HEADER_PRIORITY = 'X-Priority'
 HEADER_MSG_ID = 'Message-ID'
 
 del_error_msg = _(
-    'INVE-E8: Email log deletion is protected. Set INVENTREE_PROTECT_EMAIL_LOG to False to allow deletion.'
+    'INVE-E8: 电子邮件日志删除已受到保护。将 INVENTREE_PROTECT_EMAIL_LOG 设置为 False 以允许删除。'
 )
 
 
@@ -2611,7 +2609,7 @@ class EmailMessage(models.Model):
 
     global_id = models.UUIDField(
         verbose_name=_('Global ID'),
-        help_text=_('Unique identifier for this message'),
+        help_text=_('此消息的唯一标识符'),
         primary_key=True,
         default=uuid.uuid4,
         editable=False,
