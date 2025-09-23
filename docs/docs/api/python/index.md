@@ -1,38 +1,38 @@
 ---
-title: Python Interface
+标题：Python 接口（Python Interface）
 ---
 
-## Python Module
+## Python 模块
 
-A [Python module](https://github.com/inventree/inventree-python) is provided for rapid development of third party scripts or applications using the REST API. The python module handles authentication and API transactions, providing an extremely clean interface for interacting with and manipulating database data.
+提供了一个 [Python 模块](https://github.com/inventree/inventree-python)，用于使用 REST API 快速开发第三方脚本或应用程序。 该 python 模块处理身份验证和 API 事务，为与数据库数据交互和操作提供了一个非常清晰的界面。
 
-### Features
+### 特点
 
-- Automatic authentication management using token-based authentication
-- Pythonic data access
-- Native file uploads
-- Powerful functions for accessing related model data
+- 使用基于令牌的身份验证自动进行身份验证管理
+- Pythonic 数据访问
+- 本地文件上传
+- 用于访问相关模型数据的强大功能
 
-### Installation
+### 安装
 
-The inventree python interface can be easily installed via the [PIP package manager](https://pypi.org/project/inventree/):
+inventree python 接口可以通过 [PIP 包管理器](https://pypi.org/project/inventree/) 轻松安装：
 
 ```
 pip3 install inventree
 ```
 
-!!! tip "Upgrading"
-    To upgrade to the latest version, run `pip install --upgrade inventree`
+!!! tip "升级"
+    要升级到最新版本，请运行 `pip install --upgrade inventree`
 
-Alternatively, it can downloaded and installed from source, from [GitHub](https://github.com/inventree/inventree-python).
+或者，可以从 [GitHub](https://github.com/inventree/inventree-python) 下载并从源代码安装。
 
-### Authentication
+### 身份验证
 
-Authentication against an InvenTree server is simple:
+针对 InvenTree 服务器进行身份验证很简单：
 
-#### Basic Auth
+#### 基本身份验证
 
-Connect using your username/password as follows:
+使用您的用户名/密码连接，如下所示：
 
 ```python
 from inventree.api import InvenTreeAPI
@@ -44,36 +44,36 @@ MY_PASSWORD = 'not_my_real_password'
 api = InvenTreeAPI(SERVER_ADDRESS, username=MY_USERNAME, password=MY_PASSWORD)
 ```
 
-#### Token Auth
+#### 令牌身份验证
 
-Alternatively, if you already have an access token:
+或者，如果您已经拥有访问令牌：
 
 ```python
 api = InvenTreeAPI(SERVER_ADDRESS, token=MY_TOKEN)
 ```
 
-#### Environment Variables
+#### 环境变量
 
-Authentication variables can also be set using environment variables:
+身份验证变量也可以使用环境变量设置：
 
 - `INVENTREE_API_HOST`
 - `INVENTREE_API_USERNAME`
 - `INVENTREE_API_PASSWORD`
 - `INVENTREE_API_TOKEN`
 
-And simply connect as follows:
+然后简单地连接，如下所示：
 
 ```python
 api = InvenTreeAPI()
 ```
 
-### Retrieving Data
+### 检索数据
 
-Once a connection is established to the InvenTree server, querying individual items is simple.
+一旦与 InvenTree 服务器建立连接，查询单个项目就会变得很简单。
 
-#### Single Item
+#### 单个项目
 
-If the primary-key of an object is already known, retrieving it from the database is performed as follows:
+如果已知对象的主键，则从数据库中检索它的方法如下：
 
 ```python
 from inventree.part import PartCategory
@@ -81,9 +81,9 @@ from inventree.part import PartCategory
 category = PartCategory(api, 10)
 ```
 
-#### Multiple Items
+#### 多个项目
 
-Database items can be queried by using the `list` method for the given class. Note that arbitrary filter parameters can be applied (as specified by the [InvenTree API](../index.md)) to filter the returned results.
+可以通过使用给定类的 `list` 方法来查询数据库项目。 请注意，可以应用任意过滤器参数（如[InvenTree API](../index.md) 中所指定）来过滤返回的结果。
 
 ```python
 from inventree.part import Part
@@ -93,11 +93,11 @@ parts = Part.list(api, category=10, assembly=True)
 items = StockItem.list(api, location=4, part=24)
 ```
 
-The `items` variable above provides a list of `StockItem` objects.
+上面的 `items` 变量提供了一个 `StockItem` 对象列表。
 
-#### Filtering by parent
+#### 按父项筛选
 
-In tree based models the child items could be filtered by using the parent keyword:
+在基于树的模型中，可以使用 parent 关键字来筛选子项目：
 
 ```python
 from inventree.part import PartCategory
@@ -105,7 +105,7 @@ from inventree.part import PartCategory
 child_categories = PartCategory.list(api, parent=10)
 ```
 
-The top level items can can be queried by passing empty string as a parent filter:
+可以通过传递空字符串作为父过滤器来查询顶级项目：
 
 ```python
 from inventree.part import PartCategory
@@ -113,9 +113,9 @@ from inventree.part import PartCategory
 parent_categories = PartCategory.list(api, parent='')
 ```
 
-### Item Attributes
+### 项目属性
 
-The available model attributes are determined by introspecting [API metadata](../metadata.md). To view the fields (attributes) available for a given database model type within the python interface, use the `fieldNames` and `fieldInfo` methods, as below:
+可用的模型属性由内省 [API 元数据](../metadata.md) 确定。 要查看 python 界面中给定数据库模型类型的可用字段（属性），请使用 `fieldNames` 和 `fieldInfo` 方法，如下所示：
 
 ```python
 from inventree.api import InvenTreeAPI
@@ -141,27 +141,26 @@ default_expiry -> {'type': 'integer', 'required': True, 'read_only': False, 'lab
 variant_stock -> {'type': 'float', 'required': True, 'read_only': True, 'label': 'Variant stock'}
 ```
 
+### 项目方法
 
-### Item Methods
-
-Once an object has been retrieved from the database, its related objects can be returned with the provided helper methods:
+一旦从数据库中检索到一个对象，它的相关对象可以通过提供的辅助方法返回：
 
 ```python
 part = Part(api, 25)
 stock_items = part.getStockItems()
 ```
 
-Some classes also have helper functions for performing certain actions, such as uploading file attachments or test results:
+某些类还具有用于执行某些操作的辅助函数，例如上传文件附件或测试结果：
 
 ```python
 stock_item = StockItem(api, 1001)
 stock_item.uploadTestResult("Firmware", True, value="0x12345678", attachment="device_firmware.bin")
 ```
 
-#### Discovering Methods
+#### 发现方法
 
-You can determine the available methods by either [reading the source code](https://github.com/inventree/inventree-python) or using the `dir()` function in an interactive terminal.
+您可以通过[阅读源代码](https://github.com/inventree/inventree-python)或在交互式终端中使用 `dir()` 函数来确定可用的方法。
 
-### Further Reading
+### 进一步阅读
 
-The [InvenTree Python Interface](https://github.com/inventree/inventree-python) is open source, and well documented. The best way to learn is to read through the source code and try for yourself!
+[InvenTree Python 接口](https://github.com/inventree/inventree-python) 是开源的，并且有完善的文档。 学习的最佳方法是阅读源代码并亲自尝试！
