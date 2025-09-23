@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='responsible',
-            field=models.ForeignKey(blank=True, help_text='User or group responsible for this build order', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_responsible', to='users.owner', verbose_name='Responsible'),
+            field=models.ForeignKey(blank=True, help_text='此构建顺序的负责人或组别', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds_responsible', to='users.owner', verbose_name='Responsible'),
         ),
     ]

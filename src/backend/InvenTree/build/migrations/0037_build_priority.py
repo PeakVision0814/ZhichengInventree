@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='build',
             name='priority',
-            field=models.PositiveIntegerField(default=0, help_text='Priority of this build order', validators=[django.core.validators.MinValueValidator(0)], verbose_name='Build Priority'),
+            field=models.PositiveIntegerField(default=0, help_text='本构建顺序的优先级', validators=[django.core.validators.MinValueValidator(0)], verbose_name='Build Priority'),
         ),
     ]
