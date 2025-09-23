@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='builditem',
             name='stock_item',
-            field=models.ForeignKey(help_text='Source stock item', limit_choices_to={'belongs_to': None, 'sales_order': None}, on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem'),
+            field=models.ForeignKey(help_text='源库存物品', limit_choices_to={'belongs_to': None, 'sales_order': None}, on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem'),
         ),
     ]
