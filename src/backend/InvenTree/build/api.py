@@ -111,7 +111,7 @@ class BuildFilter(rest_filters.FilterSet):
         label=_('Category'),
     )
 
-    @extend_schema_field(serializers.IntegerField(help_text=_('Category')))
+    @extend_schema_field(serializers.IntegerField(help_text=_('类别')))
     def filter_category(self, queryset, name, category):
         """Filter by part category (including sub-categories)."""
         categories = category.get_descendants(include_self=True)
