@@ -270,7 +270,7 @@ class BuildOutputQuantitySerializer(BuildOutputSerializer):
         min_value=Decimal(0),
         required=True,
         label=_('Quantity'),
-        help_text=_('Enter quantity for build output'),
+        help_text=_('请输入构建输出的数量'),
     )
 
     def validate(self, data):
@@ -316,7 +316,7 @@ class BuildOutputCreateSerializer(serializers.Serializer):
         min_value=Decimal(0),
         required=True,
         label=_('Quantity'),
-        help_text=_('Enter quantity for build output'),
+        help_text=_('输入构建输出的数量'),
     )
 
     def get_build(self):
@@ -330,16 +330,14 @@ class BuildOutputCreateSerializer(serializers.Serializer):
     def validate_quantity(self, quantity):
         """Validate the provided quantity field."""
         if quantity <= 0:
-            raise ValidationError(_('Quantity must be greater than zero'))
+            raise ValidationError(_('数量必须大于零'))
 
         part = self.get_part()
 
         if int(quantity) != quantity:
             # Quantity must be an integer value if the part being built is trackable
             if part.trackable:
-                raise ValidationError(
-                    _('Integer quantity required for trackable parts')
-                )
+                raise ValidationError(_('可追踪零件所需的整数数量'))
 
             if part.has_trackable_parts:
                 raise ValidationError(
@@ -355,20 +353,20 @@ class BuildOutputCreateSerializer(serializers.Serializer):
         allow_blank=True,
         default=generate_batch_code,
         label=_('Batch Code'),
-        help_text=_('Batch code for this build output'),
+        help_text=_('此构建输出的批处理代码'),
     )
 
     serial_numbers = serializers.CharField(
         allow_blank=True,
         required=False,
         label=_('Serial Numbers'),
-        help_text=_('Enter serial numbers for build outputs'),
+        help_text=_('输入构建输出的序列号'),
     )
 
     location = serializers.PrimaryKeyRelatedField(
         queryset=StockLocation.objects.all(),
         label=_('Location'),
-        help_text=_('Stock location for build output'),
+        help_text=_('构建输出的库存位置'),
         required=False,
         allow_null=True,
     )
@@ -384,9 +382,7 @@ class BuildOutputCreateSerializer(serializers.Serializer):
         default=False,
         allow_null=True,
         label=_('Auto Allocate Serial Numbers'),
-        help_text=_(
-            'Automatically allocate required items with matching serial numbers'
-        ),
+        help_text=_('自动分配具有匹配序列号的所需物品'),
     )
 
     def validate(self, data):
@@ -493,19 +489,19 @@ class BuildOutputScrapSerializer(serializers.Serializer):
         allow_null=False,
         required=True,
         label=_('Location'),
-        help_text=_('Stock location for scrapped outputs'),
+        help_text=_('报废产出的库存地点'),
     )
 
     discard_allocations = serializers.BooleanField(
         required=False,
         default=False,
         label=_('Discard Allocations'),
-        help_text=_('Discard any stock allocations for scrapped outputs'),
+        help_text=_('放弃报废输出的任何库存分配'),
     )
 
     notes = serializers.CharField(
         label=_('Notes'),
-        help_text=_('Reason for scrapping build output(s)'),
+        help_text=_('放弃生成输出的原因'),
         required=True,
         allow_blank=False,
     )
@@ -563,7 +559,7 @@ class BuildOutputCompleteSerializer(serializers.Serializer):
         required=True,
         many=False,
         label=_('Location'),
-        help_text=_('Location for completed build outputs'),
+        help_text=_('已完成的构建输出的位置'),
     )
 
     status_custom_key = StockStatusCustomSerializer(default=StockStatus.OK.value)
@@ -572,7 +568,7 @@ class BuildOutputCompleteSerializer(serializers.Serializer):
         default=False,
         required=False,
         label=_('Accept Incomplete Allocation'),
-        help_text=_('Complete outputs if stock has not been fully allocated'),
+        help_text=_('如果库存尚未完全分配, 则完成输出'),
     )
 
     notes = serializers.CharField(label=_('Notes'), required=False, allow_blank=True)
@@ -594,21 +590,15 @@ class BuildOutputCompleteSerializer(serializers.Serializer):
                     serial = stock_item.serial
 
                     if serial:
-                        errors.append(
-                            _(
-                                f'Build output {serial} has not passed all required tests'
-                            )
-                        )
+                        errors.append(_(f'构建输出 {serial} 未通过所有必需的测试'))
                     else:
-                        errors.append(
-                            _('Build output has not passed all required tests')
-                        )
+                        errors.append(_('构建输出未通过所有必需的测试'))
 
             if errors:
                 raise ValidationError(errors)
 
         if len(outputs) == 0:
-            raise ValidationError(_('A list of build outputs must be provided'))
+            raise ValidationError(_('必须提供构建输出列表'))
 
         return data
 
@@ -761,9 +751,7 @@ class BuildCompleteSerializer(serializers.Serializer):
     accept_overallocated = serializers.ChoiceField(
         label=_('Overallocated Stock'),
         choices=list(OverallocationChoice.OPTIONS.items()),
-        help_text=_(
-            'How do you want to handle extra stock items assigned to the build order'
-        ),
+        help_text=_('你想要如何处理分配给生产订单的额外库存物料'),
         required=False,
         default=OverallocationChoice.REJECT,
     )
@@ -773,15 +761,13 @@ class BuildCompleteSerializer(serializers.Serializer):
         build = self.context['build']
 
         if build.is_overallocated() and value == OverallocationChoice.REJECT:
-            raise ValidationError(_('Some stock items have been overallocated'))
+            raise ValidationError(_('一些库存物品已被超额分配'))
 
         return value
 
     accept_unallocated = serializers.BooleanField(
         label=_('Accept Unallocated'),
-        help_text=_(
-            'Accept that stock items have not been fully allocated to this build order'
-        ),
+        help_text=_('接受库存商品尚未完全分配到此构建订单'),
         required=False,
         default=False,
     )
@@ -791,15 +777,13 @@ class BuildCompleteSerializer(serializers.Serializer):
         build = self.context['build']
 
         if not build.are_untracked_parts_allocated and not value:
-            raise ValidationError(_('Required stock has not been fully allocated'))
+            raise ValidationError(_('所需库存尚未完全分配'))
 
         return value
 
     accept_incomplete = serializers.BooleanField(
         label=_('Accept Incomplete'),
-        help_text=_(
-            'Accept that the required number of build outputs have not been completed'
-        ),
+        help_text=_('接受所需数量的构建输出未完成'),
         required=False,
         default=False,
     )
@@ -809,7 +793,7 @@ class BuildCompleteSerializer(serializers.Serializer):
         build = self.context['build']
 
         if build.remaining > 0 and not value:
-            raise ValidationError(_('Required build quantity has not been completed'))
+            raise ValidationError(_('所需构建数量尚未完成'))
 
         return value
 
@@ -821,13 +805,13 @@ class BuildCompleteSerializer(serializers.Serializer):
             get_global_setting('BUILDORDER_REQUIRE_CLOSED_CHILDS')
             and build.has_open_child_builds
         ):
-            raise ValidationError(_('Build order has open child build orders'))
+            raise ValidationError(_('构建顺序有未完成的子构建顺序'))
 
         if build.status != BuildStatus.PRODUCTION.value:
-            raise ValidationError(_('Build order must be in production state'))
+            raise ValidationError(_('生成顺序必须处于生产状态'))
 
         if build.incomplete_count > 0:
-            raise ValidationError(_('Build order has incomplete outputs'))
+            raise ValidationError(_('构建顺序有不完整的输出'))
 
         return data
 
@@ -1091,9 +1075,7 @@ class BuildAutoAllocationSerializer(serializers.Serializer):
         allow_null=True,
         required=False,
         label=_('Source Location'),
-        help_text=_(
-            'Stock location where parts are to be sourced (leave blank to take from any location)'
-        ),
+        help_text=_('零件的采购库存地点(留空表示从任何地点采购)'),
     )
 
     exclude_location = serializers.PrimaryKeyRelatedField(
@@ -1102,25 +1084,23 @@ class BuildAutoAllocationSerializer(serializers.Serializer):
         allow_null=True,
         required=False,
         label=_('Exclude Location'),
-        help_text=_('Exclude stock items from this selected location'),
+        help_text=_('从所选位置排除库存商品'),
     )
 
     interchangeable = serializers.BooleanField(
         default=False,
         label=_('Interchangeable Stock'),
-        help_text=_('Stock items in multiple locations can be used interchangeably'),
+        help_text=_('多个地点的库存商品可以互换使用'),
     )
 
     substitutes = serializers.BooleanField(
-        default=True,
-        label=_('Substitute Stock'),
-        help_text=_('Allow allocation of substitute parts'),
+        default=True, label=_('Substitute Stock'), help_text=_('允许分配替代零件')
     )
 
     optional_items = serializers.BooleanField(
         default=False,
         label=_('Optional Items'),
-        help_text=_('Allocate optional BOM items to build order'),
+        help_text=_('将可选 BOM 物料分配到生产订单'),
     )
 
     def save(self):
@@ -1141,7 +1121,7 @@ class BuildAutoAllocationSerializer(serializers.Serializer):
             optional_items=data['optional_items'],
             group='build',
         ):
-            raise ValidationError(_('Failed to start auto-allocation task'))
+            raise ValidationError(_('启动自动分配任务失败'))
 
 
 class BuildItemSerializer(DataImportExportSerializerMixin, InvenTreeModelSerializer):
@@ -1177,20 +1157,20 @@ class BuildItemSerializer(DataImportExportSerializerMixin, InvenTreeModelSeriali
             'stock_item',
             'quantity',
             'location',
-            # Detail fields, can be included or excluded
+            # 详细字段, 可以包含或排除
             'build_detail',
             'location_detail',
             'part_detail',
             'stock_item_detail',
             'supplier_part_detail',
-            # The following fields are only used for data export
+            # 以下字段仅用于数据导出
             'bom_reference',
             'bom_part_id',
             'bom_part_name',
         ]
 
     def __init__(self, *args, **kwargs):
-        """Determine which extra details fields should be included."""
+        """Build output with quantity field."""
         part_detail = kwargs.pop('part_detail', True)
         location_detail = kwargs.pop('location_detail', True)
         stock_detail = kwargs.pop('stock_detail', True)
@@ -1213,7 +1193,7 @@ class BuildItemSerializer(DataImportExportSerializerMixin, InvenTreeModelSeriali
         if not build_detail:
             self.fields.pop('build_detail', None)
 
-    # Export-only fields
+    # 仅导出字段
     bom_reference = serializers.CharField(
         source='build_line.bom_item.reference', label=_('BOM Reference'), read_only=True
     )
@@ -1792,7 +1772,7 @@ class BuildConsumeSerializer(serializers.Serializer):
 
     notes = serializers.CharField(
         label=_('Notes'),
-        help_text=_('Optional notes for the stock consumption'),
+        help_text=_('库存消耗的可选说明'),
         required=False,
         allow_blank=True,
     )
