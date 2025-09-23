@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='build',
             name='target_date',
-            field=models.DateField(blank=True, help_text='Target date for build completion. Build will be overdue after this date.', null=True, verbose_name='Target completion date'),
+            field=models.DateField(blank=True, help_text='构建完成的目标日期。在此日期之后，构建将被视为逾期。', null=True, verbose_name='Target completion date'),
         ),
     ]
