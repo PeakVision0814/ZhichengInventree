@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='builditem',
             name='stock_item',
-            field=models.ForeignKey(help_text='Stock Item to allocate to build', on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem'),
+            field=models.ForeignKey(help_text='要分配给构建的库存物料', on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem'),
         ),
         migrations.AddField(
             model_name='build',
@@ -30,12 +30,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='build',
             name='part',
-            field=models.ForeignKey(help_text='Select part to build', limit_choices_to={'active': True, 'buildable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part'),
+            field=models.ForeignKey(help_text='选择要构建的部件', limit_choices_to={'active': True, 'buildable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part'),
         ),
         migrations.AddField(
             model_name='build',
             name='take_from',
-            field=models.ForeignKey(blank=True, help_text='Select location to take stock from for this build (leave blank to take from any stock location)', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='sourcing_builds', to='stock.StockLocation'),
+            field=models.ForeignKey(blank=True, help_text='选择要从此构建中提取库存的位置（留空以从任何库存位置提取）', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='sourcing_builds', to='stock.StockLocation'),
         ),
         migrations.AlterUniqueTogether(
             name='builditem',
