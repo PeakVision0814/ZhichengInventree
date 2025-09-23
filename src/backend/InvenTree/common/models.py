@@ -2416,6 +2416,7 @@ class BarcodeScanResult(InvenTree.models.InvenTreeModel):
         help_text=_('条形码扫描的响应数据'),
         blank=True,
         null=True,
+        # 11/2024 - Consider changing to TextField if JSON data is too large
     )
 
     result = models.BooleanField(
