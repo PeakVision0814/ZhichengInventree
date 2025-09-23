@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='parent',
-            field=mptt.fields.TreeForeignKey(blank=True, help_text='BuildOrder to which this build is allocated', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='children', to='build.Build', verbose_name='Parent Build'),
+            field=mptt.fields.TreeForeignKey(blank=True, help_text='本构建分配的构建顺序', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='children', to='build.Build', verbose_name='Parent Build'),
         ),
     ]
