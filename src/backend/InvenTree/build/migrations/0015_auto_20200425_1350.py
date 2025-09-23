@@ -16,11 +16,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='parent',
-            field=mptt.fields.TreeForeignKey(blank=True, help_text='Parent build to which this build is allocated', null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='children', to='build.Build', verbose_name='Parent Build'),
+            field=mptt.fields.TreeForeignKey(blank=True, help_text='此构建所分配的父构建', null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='children', to='build.Build', verbose_name='Parent Build'),
         ),
         migrations.AlterField(
             model_name='builditem',
             name='quantity',
-            field=models.DecimalField(decimal_places=5, default=1, help_text='Stock quantity to allocate to build', max_digits=15, validators=[django.core.validators.MinValueValidator(0)]),
+            field=models.DecimalField(decimal_places=5, default=1, help_text='分配给生产的库存数量', max_digits=15, validators=[django.core.validators.MinValueValidator(0)]),
         ),
     ]
