@@ -98,7 +98,7 @@ export function SecurityContent() {
         {user.isSuperuser() && (
           <Accordion.Item value='session'>
             <Accordion.Control>
-              <StylishText size='lg'>{t`Session Information`}</StylishText>
+              <StylishText size='lg'>{t`会话信息`}</StylishText>
             </Accordion.Control>
             <Accordion.Panel>
               <AuthContextSection />

@@ -217,8 +217,8 @@ function observeProfile() {
   if (user) {
     if (user.profile?.language && language != user.profile.language) {
       showNotification({
-        title: t`Language changed`,
-        message: t`Your active language has been changed to the one set in your profile`,
+        title: t`语言已更改`,
+        message: t`您的活动语言已更改为您个人资料中设置的语言`,
         color: 'blue',
         icon: 'language'
       });
