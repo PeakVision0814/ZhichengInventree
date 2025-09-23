@@ -60,16 +60,16 @@ class InvenTreeEmailNotifications(NotificationMixin, SettingsMixin, InvenTreePlu
     """Plugin mixin class for supporting email notification methods."""
 
     NAME = 'InvenTreeEmailNotifications'
-    TITLE = _('InvenTree Email Notifications')
+    TITLE = _('InvenTree邮件通知')
     SLUG = 'inventree-email-notification'
     AUTHOR = _('InvenTree contributors')
-    DESCRIPTION = _('Integrated email notification methods')
+    DESCRIPTION = _('集成电子邮件通知方法')
     VERSION = '1.0.0'
 
     USER_SETTINGS = {
         'NOTIFY_BY_EMAIL': {
-            'name': _('Allow email notifications'),
-            'description': _('Allow email notifications to be sent to this user'),
+            'name': _('允许电子邮件通知'),
+            'description': _('允许向此用户发送电子邮件通知'),
             'default': True,
             'validator': bool,
         }
