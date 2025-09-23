@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='URL',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='Link to external URL'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部 URL 的链接'),
         ),
     ]
