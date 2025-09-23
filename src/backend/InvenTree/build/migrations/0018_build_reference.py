@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='build',
             name='reference',
-            field=models.CharField(help_text='Build Order Reference', blank=True, max_length=64, unique=False, verbose_name='Reference'),
+            field=models.CharField(help_text='建造顺序参考', blank=True, max_length=64, unique=False, verbose_name='Reference'),
         ),
 
         # Auto-populate the new reference field for any existing build order objects
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
             model_name='build',
             name='reference',
             field=models.CharField(
-                help_text='Build Order Reference',
+                help_text='建造顺序参考',
                 max_length=64,
                 blank=False,
                 unique=True,
