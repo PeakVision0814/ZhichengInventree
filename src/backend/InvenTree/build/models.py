@@ -241,7 +241,7 @@ class Build(
         unique=True,
         max_length=64,
         blank=False,
-        help_text=_('Build Order Reference'),
+        help_text=_('建造顺序参考'),
         verbose_name=_('Reference'),
         default=generate_next_build_reference,
         validators=[validate_build_order_reference],
@@ -251,7 +251,7 @@ class Build(
         verbose_name=_('Description'),
         blank=True,
         max_length=100,
-        help_text=_('Brief description of the build (optional)'),
+        help_text=_('构建的简要描述(可选)'),
     )
 
     parent = TreeForeignKey(
@@ -261,7 +261,7 @@ class Build(
         null=True,
         related_name='children',
         verbose_name=_('Parent Build'),
-        help_text=_('BuildOrder to which this build is allocated'),
+        help_text=_('此构建分配到的建造顺序'),
     )
 
     part = models.ForeignKey(
@@ -270,7 +270,7 @@ class Build(
         on_delete=models.CASCADE,
         related_name='builds',
         limit_choices_to={'assembly': True},
-        help_text=_('Select part to build'),
+        help_text=_('选择要构建的部件'),
     )
 
     sales_order = models.ForeignKey(
@@ -280,7 +280,7 @@ class Build(
         related_name='builds',
         null=True,
         blank=True,
-        help_text=_('SalesOrder to which this build is allocated'),
+        help_text=_('此构建分配到的销售订单'),
     )
 
     take_from = models.ForeignKey(
@@ -290,15 +290,13 @@ class Build(
         related_name='sourcing_builds',
         null=True,
         blank=True,
-        help_text=_(
-            'Select location to take stock from for this build (leave blank to take from any stock location)'
-        ),
+        help_text=_('选择本次构建的库存地点(留空则从任何库存地点提取)'),
     )
 
     external = models.BooleanField(
         default=False,
         verbose_name=_('External Build'),
-        help_text=_('This build order is fulfilled externally'),
+        help_text=_('此建造指令由外部执行'),
     )
 
     destination = models.ForeignKey(
@@ -308,20 +306,20 @@ class Build(
         related_name='incoming_builds',
         null=True,
         blank=True,
-        help_text=_('Select location where the completed items will be stored'),
+        help_text=_('选择存放已完成物品的位置'),
     )
 
     quantity = models.PositiveIntegerField(
         verbose_name=_('Build Quantity'),
         default=1,
         validators=[MinValueValidator(1)],
-        help_text=_('Number of stock items to build'),
+        help_text=_('要构建的库存物品数量'),
     )
 
     completed = models.PositiveIntegerField(
         verbose_name=_('Completed items'),
         default=0,
-        help_text=_('Number of stock items which have been completed'),
+        help_text=_('已完成的库存商品数量'),
     )
 
     status = generic.states.fields.InvenTreeCustomStatusModelField(
@@ -330,7 +328,7 @@ class Build(
         choices=BuildStatus.items(),
         status_class=BuildStatus,
         validators=[MinValueValidator(0)],
-        help_text=_('Build status code'),
+        help_text=_('构建状态代码'),
     )
 
     @property
@@ -343,7 +341,7 @@ class Build(
         max_length=100,
         blank=True,
         null=True,
-        help_text=_('Batch code for this build output'),
+        help_text=_('此构建输出的批处理代码'),
     )
 
     creation_date = models.DateField(
@@ -354,16 +352,14 @@ class Build(
         null=True,
         blank=True,
         verbose_name=_('Build start date'),
-        help_text=_('Scheduled start date for this build order'),
+        help_text=_('此构建输出的批处理代码'),
     )
 
     target_date = models.DateField(
         null=True,
         blank=True,
         verbose_name=_('Target completion date'),
-        help_text=_(
-            'Target date for build completion. Build will be overdue after this date.'
-        ),
+        help_text=_('构建完成的目标日期。构建在此日期之后将过期。'),
     )
 
     completion_date = models.DateField(
@@ -385,7 +381,7 @@ class Build(
         blank=True,
         null=True,
         verbose_name=_('Issued by'),
-        help_text=_('User who issued this build order'),
+        help_text=_('发布此构建指令的用户'),
         related_name='builds_issued',
     )
 
@@ -395,14 +391,14 @@ class Build(
         blank=True,
         null=True,
         verbose_name=_('Responsible'),
-        help_text=_('User or group responsible for this build order'),
+        help_text=_('负责此构建顺序的用户或组'),
         related_name='builds_responsible',
     )
 
     link = InvenTree.fields.InvenTreeURLField(
         verbose_name=_('External Link'),
         blank=True,
-        help_text=_('Link to external URL'),
+        help_text=_('链接到外部 URL'),
         max_length=2000,
     )
 
@@ -410,7 +406,7 @@ class Build(
         verbose_name=_('Build Priority'),
         default=0,
         validators=[MinValueValidator(0)],
-        help_text=_('Priority of this build order'),
+        help_text=_('此构建顺序的优先级'),
     )
 
     project_code = models.ForeignKey(
@@ -419,7 +415,7 @@ class Build(
         blank=True,
         null=True,
         verbose_name=_('Project Code'),
-        help_text=_('Project code for this build order'),
+        help_text=_('此构建顺序的项目代码'),
     )
 
     def sub_builds(self, cascade=True):
@@ -1602,7 +1598,7 @@ class BuildLine(report.mixins.InvenTreeReportMixin, InvenTree.models.InvenTreeMo
         Build,
         on_delete=models.CASCADE,
         related_name='build_lines',
-        help_text=_('Build object'),
+        help_text=_('构建对象'),
     )
 
     bom_item = models.ForeignKey(
@@ -1615,7 +1611,7 @@ class BuildLine(report.mixins.InvenTreeReportMixin, InvenTree.models.InvenTreeMo
         default=1,
         validators=[MinValueValidator(0)],
         verbose_name=_('Quantity'),
-        help_text=_('Required quantity for build order'),
+        help_text=_('建造订单所需数量'),
     )
 
     consumed = models.DecimalField(
@@ -1624,7 +1620,7 @@ class BuildLine(report.mixins.InvenTreeReportMixin, InvenTree.models.InvenTreeMo
         default=0,
         validators=[MinValueValidator(0)],
         verbose_name=_('Consumed'),
-        help_text=_('Quantity of consumed stock'),
+        help_text=_('消耗库存数量'),
     )
 
     @property
@@ -1905,7 +1901,7 @@ class BuildItem(InvenTree.models.InvenTreeMetadataModel):
         on_delete=models.CASCADE,
         related_name='allocations',
         verbose_name=_('Stock Item'),
-        help_text=_('Source stock item'),
+        help_text=_('源库存物料'),
         limit_choices_to={'sales_order': None, 'belongs_to': None},
     )
 
@@ -1915,7 +1911,7 @@ class BuildItem(InvenTree.models.InvenTreeMetadataModel):
         default=1,
         validators=[MinValueValidator(0)],
         verbose_name=_('Quantity'),
-        help_text=_('Stock quantity to allocate to build'),
+        help_text=_('分配给构建的库存数量'),
     )
 
     install_into = models.ForeignKey(
@@ -1925,6 +1921,6 @@ class BuildItem(InvenTree.models.InvenTreeMetadataModel):
         null=True,
         related_name='items_to_install',
         verbose_name=_('Install into'),
-        help_text=_('Destination stock item'),
+        help_text=_('目标库存物料'),
         limit_choices_to={'is_building': True},
     )
