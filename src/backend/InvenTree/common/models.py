@@ -2419,7 +2419,9 @@ class BarcodeScanResult(InvenTree.models.InvenTreeModel):
     )
 
     result = models.BooleanField(
-        verbose_name=_('结果'), help_text=_('条形码扫描是否成功?'), default=False
+        verbose_name=_('Result'),
+        help_text=_('Was the barcode scan successful?'),
+        default=False,
     )
 
 
