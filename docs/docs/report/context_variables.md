@@ -1,15 +1,14 @@
 ---
-title: Context Variables
+title: 上下文变量（Context Variables）
 ---
 
+## 上下文变量
 
-## Context Variables
+上下文变量在渲染时提供给每个模板。可用的上下文变量取决于正在渲染模板的模型类型。
 
-Context variables are provided to each template when it is rendered. The available context variables depend on the model type for which the template is being rendered.
+### 全局上下文
 
-### Global Context
-
-In addition to the model-specific context variables, the following global context variables are available to all templates:
+除了特定于模型的上下文变量之外，以下全局上下文变量可用于所有模板：
 
 {{ report_context("base", "global") }}
 
@@ -17,23 +16,23 @@ In addition to the model-specific context variables, the following global contex
     options:
         show_source: True
 
-### Report Context
+### 报告上下文
 
-In addition to the [global context](#global-context), all *report* templates have access to the following context variables:
+除了[全局上下文](#global-context)之外，所有*报告*模板都可以访问以下上下文变量：
 
 {{ report_context("base", "report") }}
 
-When using the `merge` context variable, the selected items are available in the `instances` list. {{ templatefile("report/inventree_stock_report_merge.html") }} shows a complete example. To access individual item attributes, you can either loop through the `instances` or access them by index like `instance.0.name`.
+使用 `merge` 上下文变量时，所选项目在 `instances` 列表中可用。{{ templatefile("report/inventree_stock_report_merge.html") }} 展示了一个完整的例子。要访问单个项目属性，您可以循环遍历 `instances` 或通过索引访问它们，例如 `instance.0.name`。
 
-Below is an example template that generates a single report for some selected parts. Each part occupies a row in the table
+下面是一个示例模板，该模板为某些选定的零件生成单个报告。每个零件占据表格中的一行
 
 ```html
 {% raw %}
-<h2>Merged Report for Selected Parts</h2>
+<h2>所选零件的合并报告</h2>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
+    <th>名称</th>
+    <th>描述</th>
   </tr>
   {% for part in instances %}
     <tr>
@@ -45,43 +44,43 @@ Below is an example template that generates a single report for some selected pa
 {% endraw %}
 ```
 
-Note that custom plugins may also add additional context variables to the report context.
+请注意，自定义插件也可能会向报告上下文中添加其他上下文变量。
 
 ::: report.models.ReportTemplate.get_context
     options:
         show_source: True
 
-### Label Context
+### 标签上下文
 
-In addition to the [global context](#global-context), all *label* templates have access to the following context variables:
+除了[全局上下文](#global-context)之外，所有*标签*模板都可以访问以下上下文变量：
 
 {{ report_context("base", "label") }}
 
-Note that custom plugins may also add additional context variables to the label context.
+请注意，自定义插件也可能会向标签上下文中添加其他上下文变量。
 
 ::: report.models.LabelTemplate.get_context
     options:
         show_source: True
 
-## Template Types
+## 模板类型
 
-Templates (whether for generating [reports](./report.md) or [labels](./labels.md)) are rendered against a particular "model" type. The following model types are supported, and can have templates renderer against them:
+模板（无论是用于生成[报告](./report.md)还是[标签](./labels.md)）都是针对特定的“模型”类型进行渲染的。支持以下模型类型，并且可以针对它们渲染模板：
 
-| Model Type | Description |
+| 模型类型 | 描述 |
 | --- | --- |
-| company | A Company instance |
-| [build](#build-order) | A [Build Order](../manufacturing/build.md) instance |
-| [buildline](#build-line) | A [Build Order Line Item](../manufacturing/build.md) instance |
-| [salesorder](#sales-order) | A [Sales Order](../sales/sales_order.md) instance |
-| [returnorder](#return-order) | A [Return Order](../sales/return_order.md) instance |
-| [purchaseorder](#purchase-order) | A [Purchase Order](../purchasing/purchase_order.md) instance |
-| [stockitem](#stock-item) | A [StockItem](../stock/index.md#stock-item) instance |
-| [stocklocation](#stock-location) | A [StockLocation](../stock/index.md#stock-location) instance |
-| [part](#part) | A [Part](../part/index.md) instance |
+| company | Company 实例 |
+| [build](#build-order) | [Build Order](../manufacturing/build.md) 实例 |
+| [buildline](#build-line) | [Build Order Line Item](../manufacturing/build.md) 实例 |
+| [salesorder](#sales-order) | [Sales Order](../sales/sales_order.md) 实例 |
+| [returnorder](#return-order) | [Return Order](../sales/return_order.md) 实例 |
+| [purchaseorder](#purchase-order) | [Purchase Order](../purchasing/purchase_order.md) 实例 |
+| [stockitem](#stock-item) | [StockItem](../stock/index.md#stock-item) 实例 |
+| [stocklocation](#stock-location) | [StockLocation](../stock/index.md#stock-location) 实例 |
+| [part](#part) | [Part](../part/index.md) 实例 |
 
-### Company
+### 公司
 
-When printing a report or label against a Company instance, the following context variables are available:
+针对 Company 实例打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "company") }}
 
@@ -89,9 +88,9 @@ When printing a report or label against a Company instance, the following contex
     options:
         show_source: True
 
-### Build Order
+### 制造订单
 
-When printing a report or label against a [Build Order](../manufacturing/build.md) object, the following context variables are available:
+针对 [Build Order](../manufacturing/build.md) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "build") }}
 
@@ -99,9 +98,9 @@ When printing a report or label against a [Build Order](../manufacturing/build.m
     options:
         show_source: True
 
-### Build Line
+### 制造订单行
 
-When printing a report or label against a [BuildOrderLineItem](../manufacturing/build.md) object, the following context variables are available:
+针对 [BuildOrderLineItem](../manufacturing/build.md) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "buildline") }}
 
@@ -109,9 +108,9 @@ When printing a report or label against a [BuildOrderLineItem](../manufacturing/
     options:
         show_source: True
 
-### Sales Order
+### 销售订单
 
-When printing a report or label against a [SalesOrder](../sales/sales_order.md) object, the following context variables are available:
+针对 [SalesOrder](../sales/sales_order.md) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "salesorder") }}
 
@@ -119,9 +118,9 @@ When printing a report or label against a [SalesOrder](../sales/sales_order.md) 
     options:
         show_source: True
 
-### Sales Order Shipment
+### 销售订单发货
 
-When printing a report or label against a [SalesOrderShipment](../sales/sales_order.md#sales-order-shipments) object, the following context variables are available:
+当针对 [SalesOrderShipment](../sales/sales_order.md#sales-order-shipments) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "salesordershipment") }}
 
@@ -129,21 +128,21 @@ When printing a report or label against a [SalesOrderShipment](../sales/sales_or
     options:
         show_source: True
 
-### Return Order
+### 退货订单
 
-When printing a report or label against a [ReturnOrder](../sales/return_order.md) object, the following context variables are available:
+针对 [ReturnOrder](../sales/return_order.md) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "returnorder") }}
 
-### Purchase Order
+### 采购订单
 
-When printing a report or label against a [PurchaseOrder](../purchasing/purchase_order.md) object, the following context variables are available:
+针对 [PurchaseOrder](../purchasing/purchase_order.md) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "purchaseorder") }}
 
-### Stock Item
+### 库存项目
 
-When printing a report or label against a [StockItem](../stock/index.md#stock-item) object, the following context variables are available:
+针对 [StockItem](../stock/index.md#stock-item) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "stockitem") }}
 
@@ -151,9 +150,9 @@ When printing a report or label against a [StockItem](../stock/index.md#stock-it
     options:
         show_source: True
 
-### Stock Location
+### 库存位置
 
-When printing a report or label against a [StockLocation](../stock/index.md#stock-location) object, the following context variables are available:
+针对 [StockLocation](../stock/index.md#stock-location) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "stocklocation") }}
 
@@ -161,9 +160,9 @@ When printing a report or label against a [StockLocation](../stock/index.md#stoc
     options:
         show_source: True
 
-### Part
+### 零件
 
-When printing a report or label against a [Part](../part/index.md) object, the following context variables are available:
+针对 [Part](../part/index.md) 对象打印报告或标签时，可以使用以下上下文变量：
 
 {{ report_context("models", "part") }}
 
@@ -171,191 +170,186 @@ When printing a report or label against a [Part](../part/index.md) object, the f
     options:
         show_source: True
 
-## Model Variables
+## 模型变量
 
-Additional to the context variables provided directly to each template, each model type has a number of attributes and methods which can be accessedd via the template.
+除了直接提供给每个模板的上下文变量之外，每种模型类型都有许多可以通过模板访问的属性和方法。
 
-For each model type, a subset of the most commonly used attributes are listed below. For a full list of attributes and methods, refer to the source code for the particular model type.
+对于每种模型类型，下面列出了最常用的属性的子集。 有关属性和方法的完整列表，请参阅特定模型类型的源代码。
 
-### Parts
+### 零件
 
-#### Part
+#### 零件
 
-Each part object has access to a lot of context variables about the part. The following context variables are provided when accessing a `Part` object from within the template.
+每个零件对象都可以访问有关该零件的大量上下文变量。 从模板中访问 `Part` 对象时，将提供以下上下文变量。
 
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| name | Brief name for this part |
-| full_name | Full name for this part (including IPN, if not null and including variant, if not null) |
-| variant | Optional variant number for this part - Must be unique for the part name
-| category | The [PartCategory](#part-category) object to which this part belongs
-| description | Longer form description of the part
-| keywords | Optional keywords for improving part search results
-| IPN | Internal part number (optional)
-| revision | Part revision
-| is_template | If True, this part is a 'template' part
-| link | Link to an external page with more information about this part (e.g. internal Wiki)
-| image | Image of this part
-| default_location | The default [StockLocation](#stock-location) object where the item is normally stored (may be null)
-| default_supplier | The default [SupplierPart](#supplierpart) which should be used to procure and stock this part
-| default_expiry | The default expiry duration for any StockItem instances of this part
-| minimum_stock | Minimum preferred quantity to keep in stock
-| units | Units of measure for this part (default='pcs')
-| salable | Can this part be sold to customers?
-| assembly | Can this part be build from other parts?
-| component | Can this part be used to make other parts?
-| purchaseable | Can this part be purchased from suppliers?
-| trackable | Trackable parts can have unique serial numbers assigned, etc, etc
-| active | Is this part active? Parts are deactivated instead of being deleted
-| virtual | Is this part "virtual"? e.g. a software product or similar
-| notes | Additional notes field for this part
-| creation_date | Date that this part was added to the database
-| creation_user | User who added this part to the database
-| responsible | User who is responsible for this part (optional)
-| starred | Whether the part is starred or not |
-| disabled | Whether the part is disabled or not |
-| total_stock | The total amount in stock |
-| quantity_being_built | The amount being built |
-| required_build_order_quantity | The amount required for build orders |
-| allocated_build_order_quantity | The amount allocated for build orders |
-| build_order_allocations | Query set with all build order allocations for that part |
-| required_sales_order_quantity | The amount required for sales orders |
-| allocated_sales_order_quantity | The amount allocated for sales orders |
-| available | Whether the part is available or not |
-| on_order | The amount that are on order |
-| required | The total amount required for build orders and sales orders |
-| allocated | The total amount allocated for build orders and sales orders |
+| name | 此零件的简称 |
+| full_name | 此零件的全名（如果 IPN 不为空，则包括 IPN；如果 variant 不为空，则包括 variant） |
+| variant | 此零件的可选变体号 - 对于零件名称必须是唯一的 |
+| category | 此零件所属的 [PartCategory](#part-category) 对象 |
+| description | 零件的较长形式描述 |
+| keywords | 用于改进零件搜索结果的可选关键字 |
+| IPN | 内部零件号（可选） |
+| revision | 零件修订版 |
+| is_template | 如果为 True，则此零件是“模板”零件 |
+| link | 链接到包含有关此零件的更多信息的外部页面（例如，内部 Wiki） |
+| image | 此零件的图像 |
+| default_location | 正常存储该项目的默认 [StockLocation](#stock-location) 对象（可以为空） |
+| default_supplier | 应用于采购和库存此零件的默认 [SupplierPart](#supplierpart) |
+| default_expiry | 此零件的任何 StockItem 实例的默认到期时间 |
+| minimum_stock | 要保持库存的最小首选数量 |
+| units | 此零件的计量单位（默认为“pcs”） |
+| salable | 此零件可以出售给客户吗？ |
+| assembly | 可以从其他零件构建此零件吗？ |
+| component | 可以使用此零件来制造其他零件吗？ |
+| purchaseable | 可以从供应商处购买此零件吗？ |
+| trackable | 可跟踪零件可以分配唯一的序列号等 |
+| active | 此零件是否处于活动状态？ 零件已停用，而不是已删除 |
+| virtual | 此零件是“虚拟”的吗？ 例如，软件产品或类似产品 |
+| notes | 此零件的附加备注字段 |
+| creation_date | 将此零件添加到数据库的日期 |
+| creation_user | 将此零件添加到数据库的用户 |
+| responsible | 负责此零件的用户（可选） |
+| starred | 零件是否已加星标 |
+| disabled | 零件是否已禁用 |
+| total_stock | 库存总量 |
+| quantity_being_built | 正在构建的数量 |
+| required_build_order_quantity | 制造订单所需的数量 |
+| allocated_build_order_quantity | 为制造订单分配的数量 |
+| build_order_allocations | 查询集，其中包含该零件的所有制造订单分配 |
+| required_sales_order_quantity | 销售订单所需的数量 |
+| allocated_sales_order_quantity | 为销售订单分配的数量 |
+| available | 零件是否可用 |
+| on_order | 订购中的数量 |
+| required | 制造订单和销售订单所需的总数量 |
+| allocated | 为制造订单和销售订单分配的总数量 |
 
-#### Part Category
+#### 零件类别
 
-
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| name | Name of this category |
-| parent | Parent category |
-| default_location | Default [StockLocation](#stock-location) object for parts in this category or child categories |
-| default_keywords | Default keywords for parts created in this category |
+| name | 此类别的名称 |
+| parent | 父类别 |
+| default_location | 此类别或子类别中零件的默认 [StockLocation](#stock-location) 对象 |
+| default_keywords | 在此类别中创建的零件的默认关键字 |
 
-### Stock
+### 库存
 
-#### StockItem
+#### 库存项目
 
-
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| parent | Link to another [StockItem](#stock-item) from which this StockItem was created |
-| uid | Field containing a unique-id which is mapped to a third-party identifier (e.g. a barcode) |
-| part | Link to the master abstract [Part](#part) that this [StockItem](#stock-item) is an instance of |
-| supplier_part | Link to a specific [SupplierPart](#supplierpart) (optional) |
-| location | The [StockLocation](#stock-location) Where this [StockItem](#stock-item) is located |
-| quantity | Number of stocked units |
-| batch | Batch number for this [StockItem](#stock-item) |
-| serial | Unique serial number for this [StockItem](#stock-item) |
-| link | Optional URL to link to external resource |
-| updated | Date that this stock item was last updated (auto) |
-| expiry_date | Expiry date of the [StockItem](#stock-item) (optional) |
-| stocktake_date | Date of last stocktake for this item |
-| stocktake_user | User that performed the most recent stocktake |
-| review_needed | Flag if [StockItem](#stock-item) needs review |
-| delete_on_deplete | If True, [StockItem](#stock-item) will be deleted when the stock level gets to zero |
-| status | Status of this [StockItem](#stock-item) (ref: InvenTree.status_codes.StockStatus) |
-| status_label | Textual representation of the status e.g. "OK" |
-| notes | Extra notes field |
-| build | Link to a Build (if this stock item was created from a build) |
-| is_building | Boolean field indicating if this stock item is currently being built (or is "in production") |
-| purchase_order | Link to a [PurchaseOrder](#purchase-order) (if this stock item was created from a PurchaseOrder) |
-| infinite | If True this [StockItem](#stock-item) can never be exhausted |
-| sales_order | Link to a [SalesOrder](#sales-order) object (if the StockItem has been assigned to a SalesOrder) |
-| purchase_price | The unit purchase price for this [StockItem](#stock-item) - this is the unit price at time of purchase (if this item was purchased from an external supplier) |
-| packaging | Description of how the StockItem is packaged (e.g. "reel", "loose", "tape" etc) |
+| parent | 链接到从中创建此 StockItem 的另一个 [StockItem](#stock-item) |
+| uid | 包含唯一 ID 的字段，该 ID 映射到第三方标识符（例如，条形码） |
+| part | 链接到此 [StockItem](#stock-item) 是其实例的主抽象 [Part](#part) |
+| supplier_part | 链接到特定的 [SupplierPart](#supplierpart)（可选） |
+| location | 此 [StockItem](#stock-item) 所在的 [StockLocation](#stock-location) |
+| quantity | 库存单位的数量 |
+| batch | 此 [StockItem](#stock-item) 的批号 |
+| serial | 此 [StockItem](#stock-item) 的唯一序列号 |
+| link | 链接到外部资源的可选 URL |
+| updated | 上次更新此库存项目的日期（自动） |
+| expiry_date | [StockItem](#stock-item) 的到期日期（可选） |
+| stocktake_date | 此项目的上次库存盘点的日期 |
+| stocktake_user | 执行最近库存盘点的用户 |
+| review_needed | 如果 [StockItem](#stock-item) 需要审核，则标记 |
+| delete_on_deplete | 如果为 True，则当库存水平降至零时，将删除 [StockItem](#stock-item) |
+| status | 此 [StockItem](#stock-item) 的状态（参考：InvenTree.status_codes.StockStatus） |
+| status_label | 状态的文本表示形式，例如“OK” |
+| notes | 额外备注字段 |
+| build | 链接到制造（如果此库存项目是从制造创建的） |
+| is_building | 布尔字段，指示此库存项目当前是否正在制造（或是否“在生产中”） |
+| purchase_order | 链接到 [PurchaseOrder](#purchase-order)（如果此库存项目是从 PurchaseOrder 创建的） |
+| infinite | 如果为 True，则永远不会耗尽此 [StockItem](#stock-item) |
+| sales_order | 链接到 [SalesOrder](#sales-order) 对象（如果 StockItem 已分配给 SalesOrder） |
+| purchase_price | 此 [StockItem](#stock-item) 的单位购买价格 - 这是购买时的单价（如果此项目是从外部供应商处购买的） |
+| packaging | StockItem 的包装方式的描述（例如，“卷轴”、“散装”、“磁带”等） |
 
-#### StockLocation
+#### 库存位置
 
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| barcode | Brief payload data (e.g. for labels). Example: `{"stocklocation": 826}` where 826 is the primary key|
-| description | The description of the location  |
-| icon | The name of the icon if set, e.g. fas fa-warehouse |
-| item_count | Simply returns the number of stock items in this location |
-| name | The name of the location. This is only the name of this location, not the path |
-| owner | The owner of the location if it has one. The owner can only be assigned in the admin interface |
-| parent | The parent location. Returns None if it is already the top most one |
-| path | A queryset of locations that contains the hierarchy starting from the top most parent |
-| pathstring | A string that contains all names of the path separated by slashes e.g. A/B/C |
-| structural | True if the location is structural |
+| barcode | 简短的有效负载数据（例如，对于标签）。 示例：`{"stocklocation": 826}`，其中 826 是主键|
+| description | 位置的描述 |
+| icon | 图标的名称（如果已设置），例如 fas fa-warehouse |
+| item_count | 仅返回此位置中库存项目的数量 |
+| name | 位置的名称。 这只是此位置的名称，而不是路径 |
+| owner | 位置的所有者（如果有）。 只能在管理界面中分配所有者 |
+| parent | 父位置。 如果它已经是最高位置，则返回 None |
+| path | 包含从最高父级开始的层次结构的位置的查询集 |
+| pathstring | 包含以斜杠分隔的路径的所有名称的字符串，例如 A/B/C |
+| structural | 如果位置是结构性的，则为 True |
 
-### Suppliers
+### 供应商
 
-#### Company
+#### 公司
 
-
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| name | Name of the company |
-| description | Longer form description |
-| website | URL for the company website |
-| primary_address | [Address](#address) object that is marked as primary address |
-| address | String format of the primary address |
-| contact | Contact Name |
-| phone | Contact phone number |
-| email | Contact email address |
-| link | A second URL to the company (Actually only accessible in the admin interface) |
-| notes | Extra notes about the company (Actually only accessible in the admin interface) |
-| is_customer | Boolean value, is this company a customer |
-| is_supplier | Boolean value, is this company a supplier |
-| is_manufacturer | Boolean value, is this company a manufacturer |
-| currency_code | Default currency for the company |
-| parts | Query set with all parts that the company supplies |
+| name | 公司名称 |
+| description | 较长形式的描述 |
+| website | 公司网站的 URL |
+| primary_address | 标记为主要地址的 [Address](#address) 对象 |
+| address | 主要地址的字符串格式 |
+| contact | 联系人姓名 |
+| phone | 联系人电话号码 |
+| email | 联系人电子邮件地址 |
+| link | 指向公司的第二个 URL（实际上只能在管理界面中访问） |
+| notes | 关于公司的额外备注（实际上只能在管理界面中访问） |
+| is_customer | 布尔值，该公司是否是客户 |
+| is_supplier | 布尔值，该公司是否是供应商 |
+| is_manufacturer | 布尔值，该公司是否是制造商 |
+| currency_code | 公司的默认货币 |
+| parts | 查询集，其中包含公司提供的所有零件 |
 
-#### Address
+#### 地址
 
-
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| line1 | First line of the postal address |
-| line2 | Second line of the postal address |
-| postal_code | ZIP code of the city |
-| postal_city | City name |
-| country | Country name |
+| line1 | 邮政地址的第一行 |
+| line2 | 邮政地址的第二行 |
+| postal_code | 城市的邮政编码 |
+| postal_city | 城市名称 |
+| country | 国家名称 |
 
-#### Contact
+#### 联系方式
 
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| company | Company object where the contact belongs to |
-| name | First and second name of the contact |
-| phone | Phone number |
-| email | Email address |
-| role | Role of the contact |
+| company | 联系人所属的公司对象 |
+| name | 联系人的名字和姓氏 |
+| phone | 电话号码 |
+| email | 电子邮件地址 |
+| role | 联系人的角色 |
 
-#### SupplierPart
+#### 供应商零件
 
-
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| part | Link to the master Part (Obsolete) |
-| source_item | The sourcing [StockItem](#stock-item) linked to this [SupplierPart](#supplierpart) instance |
-| supplier | [Company](#company) that supplies this part |
-| SKU | Stock keeping unit (supplier part number) |
-| link | Link to external website for this supplier part |
-| description | Descriptive notes field |
-| note | Longer form note field |
-| base_cost | Base charge added to order independent of quantity e.g. "Reeling Fee" |
-| multiple | Multiple that the part is provided in |
-| lead_time | Supplier lead time |
-| packaging | packaging that the part is supplied in, e.g. "Reel" |
-| pretty_name | The IPN, supplier name, supplier SKU and (if not null) manufacturer string joined by `|`. Ex. `P00037 | Company | 000021` |
-| unit_pricing | The price for one unit. |
-| price_breaks | Return the associated price breaks in the correct order |
-| has_price_breaks | Whether this [SupplierPart](#supplierpart) has price breaks |
-| manufacturer_string | Format a MPN string for this [SupplierPart](#supplierpart). Concatenates manufacture name and part number. |
+| part | 链接到主零件（过时） |
+| source_item | 链接到此 [SupplierPart](#supplierpart) 实例的采购 [StockItem](#stock-item) |
+| supplier | 供应此零件的 [Company](#company) |
+| SKU | 库存单位（供应商零件号） |
+| link | 链接到此供应商零件的外部网站 |
+| description | 描述性备注字段 |
+| note | 较长形式的备注字段 |
+| base_cost | 添加到订单的独立于数量的基本费用，例如“卷绕费” |
+| multiple | 提供零件的倍数 |
+| lead_time | 供应商交货时间 |
+| packaging | 提供零件的包装，例如“卷轴” |
+| pretty_name | IPN、供应商名称、供应商 SKU 和（如果不是 null）制造商字符串用 `|` 连接。 例如，`P00037 | Company | 000021` |
+| unit_pricing | 一件产品的价格。 |
+| price_breaks | 按正确的顺序返回关联的价格折扣 |
+| has_price_breaks | 此 [SupplierPart](#supplierpart) 是否有价格折扣 |
+| manufacturer_string | 为此 [SupplierPart](#supplierpart) 格式化 MPN 字符串。 连接制造商名称和零件号。 |
 
-### User
+### 用户
 
-| Variable | Description |
+| 变量 | 描述 |
 |----------|-------------|
-| username | the username of the user |
-| fist_name | The first name of the user |
-| last_name | The last name of the user |
-| email | The email address of the user |
-| pk | The primary key of the user |
+| username | 用户的用户名 |
+| fist_name | 用户的名字 |
+| last_name | 用户的姓氏 |
+| email | 用户的电子邮件地址 |
+| pk | 用户的主键 |

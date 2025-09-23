@@ -1,129 +1,129 @@
 ---
-title: Part Views
+标题：零件视图（Part Views）
 ---
 
-## Part Category View
+## 零件类别视图
 
-From the *home screen*, select *Parts* to open the top-level part category view.
+从*主屏幕*中，选择*零件*以打开顶层零件类别视图。
 
-### Details Tab
+### 详细信息选项卡
 
-The *Details* tab shows information about the selected part category. In particular, it shows the name and description of the category, a link to the parent category (if available) and a list of subcategories.
+*详细信息*选项卡显示有关所选零件类别的信息。 特别是，它显示类别的名称和描述、指向父类别的链接（如果可用）以及子类别列表。
 
-{{ image("app/part_category_detail.png", "Part Category") }}
+{{ image("app/part_category_detail.png", "零件类别") }}
 
-#### Parent Category
+#### 父类别
 
-If the current category has a parent category (i.e. it is not a top-level category) then a link is provided to the parent category. Tap the *parent category* tile to navigate to the category detail page for the parent category.
+如果当前类别具有父类别（即，它不是顶层类别），则提供指向父类别的链接。 点击*父类别*磁贴以导航到父类别的类别详细信息页面。
 
-#### Subcategories
+#### 子类别
 
-If the current category has any subcategories, these are listed here. Select any of the subcategories to navigate to it.
+如果当前类别有任何子类别，则会在此处列出这些子类别。 选择任何子类别以导航到它。
 
-### Parts Tab
+### 零件选项卡
 
-The *Parts* tab displays all the parts available in this category. Tap a displayed part to navigate to the part detail view.
+*零件*选项卡显示此类别中所有可用的零件。 点击显示的零件以导航到零件详细信息视图。
 
-{{ image("app/category_parts_tab.png", "Category Parts") }}
+{{ image("app/category_parts_tab.png", "类别零件") }}
 
-The list of available parts can be filtered using the input box at the top of the screen:
+可以使用屏幕顶部的输入框过滤可用零件的列表：
 
-{{ image("app/category_parts_filter.png", "Category Parts Filter") }}
+{{ image("app/category_parts_filter.png", "类别零件过滤器") }}
 
-### Context Actions
+### 上下文操作
 
-The following *Context Actions* are available for the selected category:
+以下*上下文操作*可用于所选类别：
 
-{{ image("app/category_actions_tab.png", "Category Actions") }}
+{{ image("app/category_actions_tab.png", "类别操作") }}
 
-#### New Category
+#### 新类别
 
-Create a new subcategory under the current category:
+在当前类别下创建新的子类别：
 
-{{ image("app/new_category.jpg", "New Category") }}
+{{ image("app/new_category.jpg", "新类别") }}
 
-#### New Part
+#### 新零件
 
-Create a new part within the current category:
+在当前类别中创建新零件：
 
-{{ image("app/new_part.jpg", "New Part") }}
+{{ image("app/new_part.jpg", "新零件") }}
 
-### Edit Category
+### 编辑类别
 
-Select the *Edit* button in the top right corner of the screen to edit the details for the selected part category:
+选择屏幕右上角的*编辑*按钮以编辑所选零件类别的详细信息：
 
-{{ image("app/part_category_edit.jpg", "Edit Category") }}
+{{ image("app/part_category_edit.jpg", "编辑类别") }}
 
-!!! info "Permission Required"
-    If the user does not have permission to edit part details, this button will be hidden
+!!! info "需要权限"
+    如果用户没有编辑零件详细信息的权限，则此按钮将被隐藏
 
-In the part category display screen, there are three tabs of information available:
+在零件类别显示屏幕中，有三个可用的信息选项卡：
 
-## Part Detail View
+## 零件详细信息视图
 
-The *Part Detail* view displays information about a single part:
+*零件详细信息*视图显示有关单个零件的信息：
 
-{{ image("app/part_details.png", "Part Detail") }}
+{{ image("app/part_details.png", "零件详细信息") }}
 
-### Details Tab
+### 详细信息选项卡
 
-The *details* tab shows information about the selected part. Some of the displayed tiles provide further information when selected:
+*详细信息*选项卡显示有关所选零件的信息。 选择后，某些显示的磁贴会提供更多信息：
 
-#### Category
+#### 类别
 
-Tap on the displayed part category to navigate to a detail view for that category.
+点击显示的零件类别以导航到该类别的详细信息视图。
 
-#### Stock
+#### 库存
 
-The *stock* tile shows the total quantity of stock available for the part. Tap on this tile to navigate to the *Stock Tab* view for this part.
+*库存*磁贴显示该零件的可用库存总量。 点击此磁贴以导航到该零件的*库存选项卡*视图。
 
-#### Notes
+#### 备注
 
-Tap on the *notes* tile to view (and edit) the notes for this part:
+点击*备注*磁贴以查看（和编辑）该零件的备注：
 
-{{ image("app/part_notes.jpg", "Part Notes") }}
+{{ image("app/part_notes.jpg", "零件备注") }}
 
-#### Attachments
+#### 附件
 
-Tap on the *attachments* tile to view the file attachments for this part:
+点击*附件*磁贴以查看该零件的文件附件：
 
-{{ image("app/part_attachments.jpg", "Part Attachments") }}
+{{ image("app/part_attachments.jpg", "零件附件") }}
 
-New attachments can be uploaded by tapping on the icons in the top right of the screen.
+可以通过点击屏幕右上角的图标来上传新的附件。
 
-Select a particular attachment file to downloaded it to the local device.
+选择特定的附件文件以下载到本地设备。
 
-### Stock Tab
+### 库存选项卡
 
-The *Stock* tab displays all the stock items available for this part. Tap on a particular stock item to navigate to a detail view for that item.
+*库存*选项卡显示该零件的所有可用库存项目。 点击特定的库存项目以导航到该项目的详细信息视图。
 
-{{ image("app/part_stock.png", "Part Stock") }}
+{{ image("app/part_stock.png", "零件库存") }}
 
-The list of available stock items can be filtered using the input box at the top of the screen.
+可以使用屏幕顶部的输入框过滤可用库存项目的列表。
 
-### Actions Tab
+### 操作选项卡
 
-The *Actions* tab displays the available actions for the selected part:
+*操作*选项卡显示所选零件的可用操作：
 
-#### New Stock Item
+#### 新库存项目
 
-Create a new stock item for this part:
+为此零件创建一个新的库存项目：
 
-{{ image("app/new_stock_item.jpg", "New Stock Item") }}
+{{ image("app/new_stock_item.jpg", "新库存项目") }}
 
-### Edit Part
+### 编辑零件
 
-To edit the part details, select the *Edit* button in the top right corner of the screen:
+要编辑零件详细信息，请选择屏幕右上角的*编辑*按钮：
 
-{{ image("app/part_edit.jpg", "Edit Part") }}
+{{ image("app/part_edit.jpg", "编辑零件") }}
 
-!!! info "Permission Required"
-    If the user does not have permission to edit part details, this button will be hidden
+!!! info "需要权限"
+    如果用户没有编辑零件详细信息的权限，则此按钮将被隐藏
 
-### Part Image View
+### 零件图像视图
 
-Tap the image of the part (displayed at the top left of the screen) to launch the part image view:
+点击零件的图像（显示在屏幕的左上方）以启动零件图像视图：
 
-{{ image("app/part_image.jpg", "Part Image") }}
+{{ image("app/part_image.jpg", "零件图像") }}
 
-A full-screen view of the image is displayed. The user can also upload a new image for the part, either selecting an image from the device, or taking a new picture with the device's camera.
+将显示图像的全屏视图。 用户还可以为零件上传新图像，可以从设备中选择图像，也可以使用设备的相机拍摄新照片。
