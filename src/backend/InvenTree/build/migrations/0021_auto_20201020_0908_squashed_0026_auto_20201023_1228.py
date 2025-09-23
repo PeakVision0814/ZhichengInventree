@@ -22,42 +22,42 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='builditem',
             name='install_into',
-            field=models.ForeignKey(blank=True, help_text='Destination stock item', limit_choices_to={'is_building': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='items_to_install', to='stock.StockItem'),
+            field=models.ForeignKey(blank=True, help_text='目标库存物品', limit_choices_to={'is_building': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='items_to_install', to='stock.StockItem'),
         ),
         migrations.AlterField(
             model_name='builditem',
             name='stock_item',
-            field=models.ForeignKey(help_text='Source stock item', limit_choices_to={'belongs_to': None, 'build_order': None, 'sales_order': None}, on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem'),
+            field=models.ForeignKey(help_text='源库存物品', limit_choices_to={'belongs_to': None, 'build_order': None, 'sales_order': None}, on_delete=django.db.models.deletion.CASCADE, related_name='allocations', to='stock.StockItem'),
         ),
         migrations.AddField(
             model_name='build',
             name='destination',
-            field=models.ForeignKey(blank=True, help_text='Select location where the completed items will be stored', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='incoming_builds', to='stock.StockLocation', verbose_name='Destination Location'),
+            field=models.ForeignKey(blank=True, help_text='选择存储已完成项目的地点', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='incoming_builds', to='stock.StockLocation', verbose_name='Destination Location'),
         ),
         migrations.AlterField(
             model_name='build',
             name='parent',
-            field=mptt.fields.TreeForeignKey(blank=True, help_text='BuildOrder to which this build is allocated', null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='children', to='build.Build', verbose_name='Parent Build'),
+            field=mptt.fields.TreeForeignKey(blank=True, help_text='分配此构建的构建顺序', null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='children', to='build.Build', verbose_name='Parent Build'),
         ),
         migrations.AlterField(
             model_name='build',
             name='status',
-            field=models.PositiveIntegerField(choices=BuildStatus.items(), default=BuildStatus.PENDING.value, help_text='Build status code', validators=[django.core.validators.MinValueValidator(0)], verbose_name='Build Status'),
+            field=models.PositiveIntegerField(choices=BuildStatus.items(), default=BuildStatus.PENDING.value, help_text='构建状态代码', validators=[django.core.validators.MinValueValidator(0)], verbose_name='Build Status'),
         ),
         migrations.AlterField(
             model_name='build',
             name='part',
-            field=models.ForeignKey(help_text='Select part to build', limit_choices_to={'active': True, 'assembly': True, 'virtual': False}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part', verbose_name='Part'),
+            field=models.ForeignKey(help_text='选择部分进行构建', limit_choices_to={'active': True, 'assembly': True, 'virtual': False}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part', verbose_name='Part'),
         ),
         migrations.AddField(
             model_name='build',
             name='completed',
-            field=models.PositiveIntegerField(default=0, help_text='Number of stock items which have been completed', verbose_name='Completed items'),
+            field=models.PositiveIntegerField(default=0, help_text='已完成的库存商品数量', verbose_name='Completed items'),
         ),
         migrations.AlterField(
             model_name='build',
             name='quantity',
-            field=models.PositiveIntegerField(default=1, help_text='Number of stock items to build', validators=[django.core.validators.MinValueValidator(1)], verbose_name='Build Quantity'),
+            field=models.PositiveIntegerField(default=1, help_text='待建库存件数', validators=[django.core.validators.MinValueValidator(1)], verbose_name='Build Quantity'),
         ),
         migrations.AlterUniqueTogether(
             name='builditem',
