@@ -20,17 +20,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='batch',
-            field=models.CharField(blank=True, help_text='Batch code for this build output', max_length=100, null=True, verbose_name='Batch Code'),
+            field=models.CharField(blank=True, help_text='此构建输出的批处理代码', max_length=100, null=True, verbose_name='Batch Code'),
         ),
         migrations.AlterField(
             model_name='build',
             name='link',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='Link to external URL', verbose_name='External Link'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部URL链接', verbose_name='External Link'),
         ),
         migrations.AlterField(
             model_name='build',
             name='notes',
-            field=models.TextField(blank=True, help_text='Extra build notes', verbose_name='Notes'),
+            field=models.TextField(blank=True, help_text='附加构建说明', verbose_name='Notes'),
         ),
         migrations.AlterField(
             model_name='build',
@@ -40,31 +40,31 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='part',
-            field=models.ForeignKey(help_text='Select part to build', limit_choices_to={'active': True, 'assembly': True, 'is_template': False, 'virtual': False}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part', verbose_name='Part'),
+            field=models.ForeignKey(help_text='选择要构建的部件', limit_choices_to={'active': True, 'assembly': True, 'is_template': False, 'virtual': False}, on_delete=django.db.models.deletion.CASCADE, related_name='builds', to='part.Part', verbose_name='Part'),
         ),
         migrations.AlterField(
             model_name='build',
             name='quantity',
-            field=models.PositiveIntegerField(default=1, help_text='Number of parts to build', validators=[django.core.validators.MinValueValidator(1)], verbose_name='Build Quantity'),
+            field=models.PositiveIntegerField(default=1, help_text='选择要构建的部件', validators=[django.core.validators.MinValueValidator(1)], verbose_name='Build Quantity'),
         ),
         migrations.AlterField(
             model_name='build',
             name='sales_order',
-            field=models.ForeignKey(blank=True, help_text='SalesOrder to which this build is allocated', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds', to='order.SalesOrder', verbose_name='Sales Order Reference'),
+            field=models.ForeignKey(blank=True, help_text='销售订单，此构建分配给该订单。', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='builds', to='order.SalesOrder', verbose_name='Sales Order Reference'),
         ),
         migrations.AlterField(
             model_name='build',
             name='status',
-            field=models.PositiveIntegerField(choices=[(10, 'Pending'), (20, 'Allocated'), (30, 'Cancelled'), (40, 'Complete')], default=10, help_text='Build status code', validators=[django.core.validators.MinValueValidator(0)], verbose_name='Build Status'),
+            field=models.PositiveIntegerField(choices=[(10, 'Pending'), (20, 'Allocated'), (30, 'Cancelled'), (40, 'Complete')], default=10, help_text='构建状态代码', validators=[django.core.validators.MinValueValidator(0)], verbose_name='Build Status'),
         ),
         migrations.AlterField(
             model_name='build',
             name='take_from',
-            field=models.ForeignKey(blank=True, help_text='Select location to take stock from for this build (leave blank to take from any stock location)', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='sourcing_builds', to='stock.StockLocation', verbose_name='Source Location'),
+            field=models.ForeignKey(blank=True, help_text='选择此构建要从中取货的仓库位置（留空则从任意仓库位置取货）', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='sourcing_builds', to='stock.StockLocation', verbose_name='Source Location'),
         ),
         migrations.AlterField(
             model_name='build',
             name='title',
-            field=models.CharField(help_text='Brief description of the build', max_length=100, verbose_name='Build Title'),
+            field=models.CharField(help_text='简要的构建描述', max_length=100, verbose_name='Build Title'),
         ),
     ]
