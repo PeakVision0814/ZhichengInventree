@@ -1,7 +1,7 @@
 <div align="center">
   <img src="assets/images/logo/inventree.png" alt="InvenTree logo" width="200" height="auto" />
   <h1>InvenTree</h1>
-  <p>Open Source Inventory Management System </p>
+  <p>开源库存管理系统</p>
 
 <!-- Badges -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/inventree/inventree)
@@ -20,49 +20,49 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inventree/inventree)
 [![Docker Pulls](https://img.shields.io/docker/pulls/inventree/inventree)](https://hub.docker.com/r/inventree/inventree)
 
-[![GitHub Org's stars](https://img.shields.io/github/stars/inventree?style=social)](https://github.com/inventree/InvenTree/)
+[![GitHub Org's stars](https://img.shields.io/github/stars/inventree?style=social)](https://github.com/inventree/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/inventreedb?style=social)](https://twitter.com/inventreedb)
 [![Subreddit subscribers](https://img.shields.io/reddit/subreddit-subscribers/inventree?style=social)](https://www.reddit.com/r/InvenTree/)
 [![Mastdon](https://img.shields.io/badge/dynamic/json?label=Mastodon&query=followers_count&url=https%3A%2F%2Fchaos.social%2Fapi%2Fv1%2Faccounts%2Flookup%3Facct=InvenTree&logo=mastodon&style=social)](https://chaos.social/@InvenTree)
 
 <h4>
-    <a href="https://demo.inventree.org/">View Demo</a>
+    <a href="https://demo.inventree.org/">查看演示</a>
   <span> · </span>
-    <a href="https://docs.inventree.org/en/latest/">Documentation</a>
+    <a href="https://docs.inventree.org/en/latest/">文档</a>
   <span> · </span>
-    <a href="https://github.com/inventree/InvenTree/issues/new?template=bug_report.md&title=[BUG]">Report Bug</a>
+    <a href="https://github.com/inventree/InvenTree/issues/new?template=bug_report.md&title=[BUG]">报告Bug</a>
   <span> · </span>
-    <a href="https://github.com/inventree/InvenTree/issues/new?template=feature_request.md&title=[FR]">Request Feature</a>
+    <a href="https://github.com/inventree/InvenTree/issues/new?template=feature_request.md&title=[FR]">请求功能</a>
   </h4>
 </div>
 
 <!-- About the Project -->
-## :star2: About the Project
+## :star2: 关于本项目
 
-InvenTree is an open-source Inventory Management System which provides powerful low-level stock control and part tracking. The core of the InvenTree system is a Python/Django database backend which provides an admin interface (web-based) and a REST API for interaction with external interfaces and applications. A powerful plugin system provides support for custom applications and extensions.
+InvenTree 是一个开源库存管理系统，提供强大的底层库存控制和零件追踪功能。InvenTree 系统的核心是一个 Python/Django 数据库后端，它提供一个管理界面（基于 Web）和一个 REST API，用于与外部接口和应用程序交互。强大的插件系统为自定义应用程序和扩展提供支持。
 
-Check out [our website](https://inventree.org) for more details.
+查看[我们的网站](https://inventree.org)了解更多详情。
 
 <!-- Roadmap -->
-### :compass: Roadmap
+### :compass: 路线图
 
-Want to see what we are working on? Check out the [roadmap tag](https://github.com/inventree/InvenTree/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap) and [horizon milestone](https://github.com/inventree/InvenTree/milestone/42).
+想看看我们正在做什么吗？查看[路线图标签](https://github.com/inventree/InvenTree/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap)和[horizon 里程碑](https://github.com/inventree/InvenTree/milestone/42)。
 
 <!-- Integration -->
-### :hammer_and_wrench: Integration
+### :hammer_and_wrench: 集成
 
-InvenTree is designed to be **extensible**, and provides multiple options for **integration** with external applications or addition of custom plugins:
+InvenTree 设计为**可扩展的**，并为与外部应用程序**集成**或添加自定义插件提供多种选项：
 
 * [InvenTree API](https://docs.inventree.org/en/latest/api/)
-* [Python module](https://docs.inventree.org/en/latest/api/python/)
-* [Plugin interface](https://docs.inventree.org/en/latest/plugins/)
-* [Third party tools](https://docs.inventree.org/en/latest/plugins/integrate/)
+* [Python 模块](https://docs.inventree.org/en/latest/api/python/)
+* [插件接口](https://docs.inventree.org/en/latest/plugins/)
+* [第三方工具](https://docs.inventree.org/en/latest/plugins/integrate/)
 
 <!-- TechStack -->
-### :space_invader: Tech Stack
+### :space_invader: 技术栈
 
 <details>
-  <summary>Server</summary>
+  <summary>服务器</summary>
   <ul>
     <li><a href="https://www.python.org/">Python</a></li>
     <li><a href="https://www.djangoproject.com/">Django</a></li>
@@ -73,7 +73,7 @@ InvenTree is designed to be **extensible**, and provides multiple options for **
 </details>
 
 <details>
-<summary>Database</summary>
+<summary>数据库</summary>
   <ul>
     <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
     <li><a href="https://www.mysql.com/">MySQL</a></li>
@@ -83,7 +83,7 @@ InvenTree is designed to be **extensible**, and provides multiple options for **
 </details>
 
 <details>
-  <summary>Client</summary>
+  <summary>客户端</summary>
   <ul>
     <li><a href="https://react.dev/">React</a></li>
     <li><a href="https://lingui.dev/">Lingui</a></li>
@@ -108,67 +108,67 @@ InvenTree is designed to be **extensible**, and provides multiple options for **
 </details>
 
 <!-- Getting Started -->
-## 	:toolbox: Deployment / Getting Started
+## :toolbox: 部署 / 开始使用
 
-There are several options to deploy InvenTree.
+有多种部署 InvenTree 的选项。
 
 <div align="center"><h4>
     <a href="https://docs.inventree.org/en/latest/start/docker/">Docker</a>
     <span> · </span>
     <a href="https://inventree.org/digitalocean"><img src="https://www.deploytodo.com/do-btn-blue-ghost.svg" alt="Deploy to DO" width="auto" height="40" /></a>
     <span> · </span>
-    <a href="https://docs.inventree.org/en/latest/start/install/">Bare Metal</a>
+    <a href="https://docs.inventree.org/en/latest/start/install/">裸机</a>
 </h4></div>
 
-Single line install - read [the docs](https://docs.inventree.org/en/latest/start/installer/) for supported distros and details about the function:
+单行安装 - 阅读[文档](https://docs.inventree.org/en/latest/start/installer/)，了解支持的发行版以及有关该函数的详细信息：
 ```bash
 wget -qO install.sh https://get.inventree.org && bash install.sh
 ```
 
-Refer to the [getting started guide](https://docs.inventree.org/en/latest/start/install/) for a full set of installation and setup instructions.
+参考[入门指南](https://docs.inventree.org/en/latest/start/install/)以获取完整的安装和设置说明。
 
 <!-- Mobile App -->
-## 	:iphone: Mobile App
+## :iphone: 移动应用
 
-InvenTree is supported by a [companion mobile app](https://docs.inventree.org/app/) which allows users access to stock control information and functionality.
+InvenTree 由一个[配套移动应用](https://docs.inventree.org/app/)提供支持，该应用允许用户访问库存控制信息和功能。
 
 <div align="center"><h4>
-    <a href="https://play.google.com/store/apps/details?id=inventree.inventree_app">Android Play Store</a>
+    <a href="https://play.google.com/store/apps/details?id=inventree.inventree_app">Android Play 商店</a>
      <span> · </span>
     <a href="https://apps.apple.com/au/app/inventree/id1581731101#?platform=iphone">Apple App Store</a>
 </h4></div>
 
 <!-- Security -->
-## :lock: Code of Conduct & Security Policy
+## :lock: 行为准则 & 安全策略
 
-The InvenTree project team is committed to providing a safe and welcoming environment for all users. Please read our [Code of Conduct](CODE_OF_CONDUCT.md) for more information.
+InvenTree 项目团队致力于为所有用户提供安全和友好的环境。请阅读我们的 [行为准则](CODE_OF_CONDUCT.md) 了解更多信息。
 
-InvenTree is following industry best practices for security. Our security policy is included [in this repo](SECURITY.md). We provide dedicated security pages on [our documentation site](https://docs.inventree.org/en/latest/security/).
+InvenTree 遵循行业安全最佳实践。我们的安全策略包含[在此仓库中](SECURITY.md)。我们在[我们的文档站点](https://docs.inventree.org/en/latest/security/)上提供专门的安全页面。
 
 <!-- Contributing -->
-## :wave: Contributing
+## :wave: 贡献
 
-Contributions are welcomed and encouraged. Please help to make this project even better! Refer to the [contribution page](https://docs.inventree.org/en/latest/develop/contributing/).
+欢迎并鼓励贡献。请帮助使这个项目变得更好！参考[贡献页面](https://docs.inventree.org/en/latest/develop/contributing/)。
 
 <!-- Translation -->
-## :scroll: Translation
+## :scroll: 翻译
 
-Native language translation of the InvenTree web application is [community contributed via crowdin](https://crowdin.com/project/inventree). **Contributions are welcomed and encouraged**.
+InvenTree Web 应用程序的母语翻译是[通过 Crowdin 由社区贡献的](https://crowdin.com/project/inventree)。**欢迎并鼓励贡献**。
 
 <!-- Sponsor -->
-## :money_with_wings: Sponsor
+## :money_with_wings: 赞助
 
-If you use InvenTree and find it to be useful, please consider [sponsoring the project](https://github.com/sponsors/inventree).
+如果您使用 InvenTree 并发现它很有用，请考虑[赞助该项目](https://github.com/sponsors/inventree)。
 
 <!-- Acknowledgments -->
-## :gem: Acknowledgements
+## :gem: 致谢
 
-We want to acknowledge [PartKeepr](https://github.com/partkeepr/PartKeepr) as a valuable predecessor and inspiration.
-Find a full list of used third-party libraries in the license information dialog of your instance.
+我们要感谢 [PartKeepr](https://github.com/partkeepr/PartKeepr) 作为一个有价值的前身和灵感来源。
+在您的实例的许可信息对话框中查找已使用的第三方库的完整列表。
 
-## :heart: Support
+## :heart: 支持
 
-<p>This project is supported by the following sponsors:</p>
+<p>本项目由以下赞助商支持：</p>
 
 <p align="center">
 <a href="https://github.com/MartinLoeper"><img src="https://github.com/MartinLoeper.png" width="60px" alt="Martin Löper" /></a>
@@ -191,7 +191,7 @@ Find a full list of used third-party libraries in the license information dialog
 
 </p>
 
-<p>With ongoing resources provided by:</p>
+<p>拥有的持续资源由以下提供：</p>
 
 <p align="center">
   <a href="https://depot.dev?utm_source=inventree"><img src="https://depot.dev/badges/built-with-depot.svg" alt="Built with Depot" /></a>
@@ -204,6 +204,6 @@ Find a full list of used third-party libraries in the license information dialog
 
 
 <!-- License -->
-## :warning: License
+## :warning: 许可证
 
-Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. See [LICENSE.txt](https://github.com/inventree/InvenTree/blob/master/LICENSE) for more information.
+在 [MIT](https://choosealicense.com/licenses/mit/) 许可证下分发。有关更多信息，请参见 [LICENSE.txt](https://github.com/inventree/InvenTree/blob/master/LICENSE)。
