@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='buildline',
             name='consumed',
-            field=models.DecimalField(decimal_places=5, default=0, help_text='Quantity of consumed stock', max_digits=15, validators=[django.core.validators.MinValueValidator(0)], verbose_name='Consumed'),
+            field=models.DecimalField(decimal_places=5, default=0, help_text='已消耗的库存量', max_digits=15, validators=[django.core.validators.MinValueValidator(0)], verbose_name='Consumed'),
         ),
     ]
