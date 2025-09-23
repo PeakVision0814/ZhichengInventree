@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='build',
             name='reference',
-            field=models.CharField(help_text='Build Order Reference', max_length=64, unique=True, validators=[build.validators.validate_build_order_reference], verbose_name='Reference'),
+            field=models.CharField(help_text='建造顺序参考', max_length=64, unique=True, validators=[build.validators.validate_build_order_reference], verbose_name='Reference'),
         ),
     ]
