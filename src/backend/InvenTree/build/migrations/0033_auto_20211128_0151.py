@@ -15,11 +15,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='buildorderattachment',
             name='link',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='Link to external URL', null=True, verbose_name='Link'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部URL链接', null=True, verbose_name='Link'),
         ),
         migrations.AlterField(
             model_name='buildorderattachment',
             name='attachment',
-            field=models.FileField(blank=True, help_text='Select file to attach', null=True, upload_to='attachments', verbose_name='Attachment'),
+            field=models.FileField(blank=True, help_text='选择要附加的文件', null=True, upload_to='attachments', verbose_name='Attachment'),
         ),
     ]
