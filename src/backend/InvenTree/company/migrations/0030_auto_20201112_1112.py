@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='supplierpricebreak',
             name='quantity',
-            field=InvenTree.fields.RoundingDecimalField(decimal_places=5, default=1, help_text='Price break quantity', max_digits=15, validators=[django.core.validators.MinValueValidator(1)], verbose_name='Quantity'),
+            field=InvenTree.fields.RoundingDecimalField(decimal_places=5, default=1, help_text='价格突破数量', max_digits=15, validators=[django.core.validators.MinValueValidator(1)], verbose_name='Quantity'),
         ),
     ]

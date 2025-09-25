@@ -16,46 +16,46 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='supplierpart',
             name='MPN',
-            field=models.CharField(blank=True, help_text='Manufacturer part number', max_length=100, null=True, verbose_name='MPN'),
+            field=models.CharField(blank=True, help_text='制造商型号', max_length=100, null=True, verbose_name='MPN'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='SKU',
-            field=models.CharField(help_text='Supplier stock keeping unit', max_length=100, verbose_name='SKU'),
+            field=models.CharField(help_text='供应商库存单位', max_length=100, verbose_name='SKU'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='description',
-            field=models.CharField(blank=True, help_text='Supplier part description', max_length=250, null=True, verbose_name='Description'),
+            field=models.CharField(blank=True, help_text='供应商零件描述', max_length=250, null=True, verbose_name='Description'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='link',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='URL for external supplier part link', null=True, verbose_name='Link'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部供应商零件链接的URL', null=True, verbose_name='Link'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='manufacturer',
-            field=models.ForeignKey(blank=True, help_text='Select manufacturer', limit_choices_to={'is_manufacturer': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='manufactured_parts', to='company.Company', verbose_name='Manufacturer'),
+            field=models.ForeignKey(blank=True, help_text='选择制造商', limit_choices_to={'is_manufacturer': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='manufactured_parts', to='company.Company', verbose_name='Manufacturer'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='note',
-            field=models.CharField(blank=True, help_text='Notes', max_length=100, null=True, verbose_name='Note'),
+            field=models.CharField(blank=True, help_text='注释', max_length=100, null=True, verbose_name='Note'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='packaging',
-            field=models.CharField(blank=True, help_text='Part packaging', max_length=50, null=True),
+            field=models.CharField(blank=True, help_text='零部件包装', max_length=50, null=True),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='part',
-            field=models.ForeignKey(help_text='Select part', limit_choices_to={'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='part.Part', verbose_name='Base Part'),
+            field=models.ForeignKey(help_text='选择零件', limit_choices_to={'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='part.Part', verbose_name='Base Part'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='supplier',
-            field=models.ForeignKey(help_text='Select supplier', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplied_parts', to='company.Company', verbose_name='Supplier'),
+            field=models.ForeignKey(help_text='选择供应商', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplied_parts', to='company.Company', verbose_name='Supplier'),
         ),
     ]
