@@ -20,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='address',
             name='postal_city',
-            field=models.CharField(blank=True, help_text='Postal code city/region', max_length=50, verbose_name='City/Region'),
+            field=models.CharField(blank=True, help_text='邮政编码城市/地区', max_length=50, verbose_name='City/Region'),
         ),
     ]

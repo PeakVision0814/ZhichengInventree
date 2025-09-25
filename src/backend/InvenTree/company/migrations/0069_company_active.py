@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='company',
             name='active',
-            field=models.BooleanField(default=True, help_text='Is this company active?', verbose_name='Active'),
+            field=models.BooleanField(default=True, help_text='这家公司目前是否活跃?', verbose_name='Active'),
         ),
         migrations.AddField(
             model_name='supplierpart',
             name='active',
-            field=models.BooleanField(default=True, help_text='Is this supplier part active?', verbose_name='Active'),
+            field=models.BooleanField(default=True, help_text='这个供应商是否处于活动状态?', verbose_name='Active'),
         ),
     ]

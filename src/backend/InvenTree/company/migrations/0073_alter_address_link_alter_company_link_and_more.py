@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name="link",
             field=InvenTree.fields.InvenTreeURLField(
                 blank=True,
-                help_text="Link to address information (external)",
+                help_text="地址信息链接（外部）",
                 max_length=2000,
                 verbose_name="Link",
             ),
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             name="link",
             field=InvenTree.fields.InvenTreeURLField(
                 blank=True,
-                help_text="Link to external company information",
+                help_text="外部公司信息链接",
                 max_length=2000,
                 verbose_name="Link",
             ),
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             name="website",
             field=InvenTree.fields.InvenTreeURLField(
                 blank=True,
-                help_text="Company website URL",
+                help_text="公司网站 URL",
                 max_length=2000,
                 verbose_name="Website",
             ),
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
             name="link",
             field=InvenTree.fields.InvenTreeURLField(
                 blank=True,
-                help_text="URL for external supplier part link",
+                help_text="外部供应商零件链接的 URL",
                 max_length=2000,
                 null=True,
                 verbose_name="Link",

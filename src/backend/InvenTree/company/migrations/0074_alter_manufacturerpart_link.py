@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name="link",
             field=InvenTree.fields.InvenTreeURLField(
                 blank=True,
-                help_text="URL for external manufacturer part link",
+                help_text="外部制造商零件链接的URL",
                 max_length=2000,
                 null=True,
                 verbose_name="Link",
