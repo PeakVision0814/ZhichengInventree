@@ -14,16 +14,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='purchaseorder',
             name='URL',
-            field=models.URLField(blank=True, help_text='Link to external page'),
+            field=models.URLField(blank=True, help_text='外部页面链接'),
         ),
         migrations.AlterField(
             model_name='purchaseorder',
             name='description',
-            field=models.CharField(blank=True, help_text='Order description', max_length=250),
+            field=models.CharField(blank=True, help_text='订单描述', max_length=250),
         ),
         migrations.AlterField(
             model_name='purchaseorder',
             name='supplier',
-            field=models.ForeignKey(help_text='Company', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='Orders', to='company.Company'),
+            field=models.ForeignKey(help_text='公司', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='Orders', to='company.Company'),
         ),
     ]

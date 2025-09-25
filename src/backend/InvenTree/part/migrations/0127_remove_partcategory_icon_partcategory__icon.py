@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 migrations.AlterField(
                     model_name='partcategory',
                     name='_icon',
-                    field=models.CharField(blank=True, db_column='icon', help_text='Icon (optional)', max_length=100, validators=[common.icons.validate_icon], verbose_name='Icon'),
+                    field=models.CharField(blank=True, db_column='icon', help_text='图标(可选)', max_length=100, validators=[common.icons.validate_icon], verbose_name='Icon'),
                 ),
             ],
         ),

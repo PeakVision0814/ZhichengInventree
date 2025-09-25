@@ -114,33 +114,30 @@ class PartCategory(
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        verbose_name=_('Default Location'),
-        help_text=_('Default location for parts in this category'),
+        verbose_name=_('默认位置'),
+        help_text=_('本类别零件的默认位置'),
     )
 
     structural = models.BooleanField(
         default=False,
-        verbose_name=_('Structural'),
-        help_text=_(
-            'Parts may not be directly assigned to a structural category, '
-            'but may be assigned to child categories.'
-        ),
+        verbose_name=_('结构性'),
+        help_text=_('部件可能无法直接分配到结构类别, 但可能被分配到子类别.'),
     )
 
     default_keywords = models.CharField(
         null=True,
         blank=True,
         max_length=250,
-        verbose_name=_('Default keywords'),
-        help_text=_('Default keywords for parts in this category'),
+        verbose_name=_('默认关键词'),
+        help_text=_('本类零件的默认关键词'),
     )
 
     _icon = models.CharField(
         blank=True,
         null=True,
         max_length=100,
-        verbose_name=_('Icon'),
-        help_text=_('Icon (optional)'),
+        verbose_name=_('图标'),
+        help_text=_('图标 (可选)'),
         validators=[validate_icon],
         db_column='icon',
     )

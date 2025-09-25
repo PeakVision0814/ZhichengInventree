@@ -113,7 +113,7 @@ class CategorySerializer(
         queryset=PartCategory.objects.all(),
         required=False,
         allow_null=True,
-        label=_('Parent Category'),
+        label=_('父类目'),
         help_text=_('Parent part category'),
     )
 
@@ -144,7 +144,7 @@ class CategorySerializer(
         required=False,
         allow_blank=True,
         allow_null=True,
-        help_text=_('Icon (optional)'),
+        help_text=_('图标(可选)'),
         max_length=100,
     )
 
@@ -163,7 +163,7 @@ class CategoryTree(InvenTree.serializers.InvenTreeModelSerializer):
     subcategories = serializers.IntegerField(label=_('Subcategories'), read_only=True)
 
     icon = serializers.CharField(
-        required=False, allow_blank=True, help_text=_('Icon (optional)'), max_length=100
+        required=False, allow_blank=True, help_text=_('图标(可选)'), max_length=100
     )
 
     @staticmethod

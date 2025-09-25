@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             field=models.CharField(
                 blank=True,
                 db_column="icon",
-                help_text="Icon (optional)",
+                help_text="图标(可选)",
                 max_length=100,
                 null=True,
                 validators=[common.icons.validate_icon],

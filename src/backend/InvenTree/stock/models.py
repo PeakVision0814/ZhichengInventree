@@ -197,7 +197,7 @@ class StockLocation(
         null=True,
         max_length=100,
         verbose_name=_('Icon'),
-        help_text=_('Icon (optional)'),
+        help_text=_('图标(可选)'),
         db_column='icon',
         validators=[validate_icon],
     )
