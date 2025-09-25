@@ -485,21 +485,15 @@ class TaskOverviewSerializer(serializers.Serializer):
     )
 
     pending_tasks = serializers.IntegerField(
-        label=_('Pending Tasks'),
-        help_text='Number of active background tasks',
-        read_only=True,
+        label=_('Pending Tasks'), help_text='活动后台任务数', read_only=True
     )
 
     scheduled_tasks = serializers.IntegerField(
-        label=_('Scheduled Tasks'),
-        help_text='Number of scheduled background tasks',
-        read_only=True,
+        label=_('Scheduled Tasks'), help_text='计划中的后台任务数量', read_only=True
     )
 
     failed_tasks = serializers.IntegerField(
-        label=_('Failed Tasks'),
-        help_text='Number of failed background tasks',
-        read_only=True,
+        label=_('Failed Tasks'), help_text='失败的背景任务数', read_only=True
     )
 
 
@@ -512,18 +506,18 @@ class PendingTaskSerializer(InvenTreeModelSerializer):
         model = django_q.models.OrmQ
         fields = ['pk', 'key', 'lock', 'task_id', 'name', 'func', 'args', 'kwargs']
 
-    task_id = serializers.CharField(label=_('Task ID'), help_text=_('Unique task ID'))
+    task_id = serializers.CharField(label=_('Task ID'), help_text=_('唯一任务 ID'))
 
-    lock = serializers.DateTimeField(label=_('Lock'), help_text=_('Lock time'))
+    lock = serializers.DateTimeField(label=_('Lock'), help_text=_('锁定时间'))
 
-    name = serializers.CharField(label=_('Name'), help_text=_('Task name'))
+    name = serializers.CharField(label=_('Name'), help_text=_('任务名称'))
 
-    func = serializers.CharField(label=_('Function'), help_text=_('Function name'))
+    func = serializers.CharField(label=_('Function'), help_text=_('函数名'))
 
-    args = serializers.CharField(label=_('Arguments'), help_text=_('Task arguments'))
+    args = serializers.CharField(label=_('Arguments'), help_text=_('任务参数'))
 
     kwargs = serializers.CharField(
-        label=_('Keyword Arguments'), help_text=_('Task keyword arguments')
+        label=_('Keyword Arguments'), help_text=_('任务关键字参数')
     )
 
 

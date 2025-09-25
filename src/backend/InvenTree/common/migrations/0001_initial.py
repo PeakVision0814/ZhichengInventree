@@ -41,11 +41,11 @@ class Migration(migrations.Migration):
             name='Currency',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('symbol', models.CharField(help_text='Currency Symbol e.g. $', max_length=10)),
-                ('suffix', models.CharField(help_text='Currency Suffix e.g. AUD', max_length=10, unique=True)),
-                ('description', models.CharField(help_text='Currency Description', max_length=100)),
-                ('value', models.DecimalField(decimal_places=5, help_text='Currency Value', max_digits=10, validators=[django.core.validators.MinValueValidator(1e-05), django.core.validators.MaxValueValidator(100000)])),
-                ('base', models.BooleanField(default=False, help_text='Use this currency as the base currency')),
+                ('symbol', models.CharField(help_text='货币符号 例如 $', max_length=10)),
+                ('suffix', models.CharField(help_text='货币后缀，例如 AUD', max_length=10, unique=True)),
+                ('description', models.CharField(help_text='货币描述', max_length=100)),
+                ('value', models.DecimalField(decimal_places=5, help_text='货币价值', max_digits=10, validators=[django.core.validators.MinValueValidator(1e-05), django.core.validators.MaxValueValidator(100000)])),
+                ('base', models.BooleanField(default=False, help_text='使用此货币作为基础货币')),
             ],
         ),
     ]
