@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name="tax_id",
             field=models.CharField(
                 blank=True,
-                help_text="Company Tax ID",
+                help_text="公司税号",
                 max_length=50,
                 verbose_name="Tax ID",
             ),

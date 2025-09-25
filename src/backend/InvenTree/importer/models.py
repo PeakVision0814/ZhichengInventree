@@ -71,7 +71,7 @@ class DataImportSession(models.Model):
     data_file = models.FileField(
         upload_to='import',
         verbose_name=_('Data File'),
-        help_text=_('Data file to import'),
+        help_text=_('待导入的数据文件'),
         validators=[
             FileExtensionValidator(
                 allowed_extensions=InvenTree.helpers.GetExportFormats()

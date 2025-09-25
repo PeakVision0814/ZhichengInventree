@@ -72,7 +72,7 @@ class DataExportOptionsSerializer(serializers.Serializer):
         choices=InvenTree.helpers.GetExportOptions(),
         default='csv',
         label=_('Export Format'),
-        help_text=_('Select export file format'),
+        help_text=_('选择导出文件格式'),
     )
 
     # Select plugin for export - the options will be dynamically generated later on
@@ -80,5 +80,5 @@ class DataExportOptionsSerializer(serializers.Serializer):
         choices=[],
         default='inventree-exporter',
         label=_('Export Plugin'),
-        help_text=_('Select export plugin'),
+        help_text=_('选择导出插件'),
     )
