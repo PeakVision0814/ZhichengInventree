@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='supplierpricebreak',
             name='updated',
-            field=models.DateTimeField(auto_now=True, help_text='Timestamp of last update', null=True, verbose_name='Updated'),
+            field=models.DateTimeField(auto_now=True, help_text='最后更新时间戳', null=True, verbose_name='Updated'),
         ),
     ]

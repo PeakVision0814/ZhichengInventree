@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='company',
             name='website',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='Company website URL', verbose_name='Website'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='公司网站网址', verbose_name='Website'),
         ),
     ]

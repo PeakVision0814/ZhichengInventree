@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='supplierpart',
             name='pack_size',
-            field=InvenTree.fields.RoundingDecimalField(decimal_places=5, default=1, help_text='Unit quantity supplied in a single pack', max_digits=15, validators=[django.core.validators.MinValueValidator(0.001)], verbose_name='Pack Quantity'),
+            field=InvenTree.fields.RoundingDecimalField(decimal_places=5, default=1, help_text='单包装内提供的单位数量', max_digits=15, validators=[django.core.validators.MinValueValidator(0.001)], verbose_name='Pack Quantity'),
         ),
     ]

@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='company',
             name='notes',
-            field=InvenTree.fields.InvenTreeNotesField(blank=True, help_text='Company Notes', max_length=50000, null=True, verbose_name='Notes'),
+            field=InvenTree.fields.InvenTreeNotesField(blank=True, help_text='公司备忘录', max_length=50000, null=True, verbose_name='Notes'),
         ),
     ]

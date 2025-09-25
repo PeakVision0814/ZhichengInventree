@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='supplierpricebreak',
             name='price',
-            field=InvenTree.fields.InvenTreeModelMoneyField(currency_choices=[], decimal_places=6, default_currency='', help_text='Unit price at specified quantity', max_digits=19, null=True, validators=[djmoney.models.validators.MinMoneyValidator(0)], verbose_name='Price'),
+            field=InvenTree.fields.InvenTreeModelMoneyField(currency_choices=[], decimal_places=6, default_currency='', help_text='指定数量的单价', max_digits=19, null=True, validators=[djmoney.models.validators.MinMoneyValidator(0)], verbose_name='Price'),
         ),
     ]

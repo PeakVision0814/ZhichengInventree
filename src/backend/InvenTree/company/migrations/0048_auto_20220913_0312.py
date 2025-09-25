@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='supplierpart',
             name='barcode_data',
-            field=models.CharField(blank=True, help_text='Third party barcode data', max_length=500, verbose_name='Barcode Data'),
+            field=models.CharField(blank=True, help_text='第三方条码数据', max_length=500, verbose_name='Barcode Data'),
         ),
         migrations.AddField(
             model_name='supplierpart',
             name='barcode_hash',
-            field=models.CharField(blank=True, help_text='Unique hash of barcode data', max_length=128, verbose_name='Barcode Hash'),
+            field=models.CharField(blank=True, help_text='条码数据的唯一哈希值', max_length=128, verbose_name='Barcode Hash'),
         ),
     ]
