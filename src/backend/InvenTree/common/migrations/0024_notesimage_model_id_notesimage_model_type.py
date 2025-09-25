@@ -15,11 +15,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='notesimage',
             name='model_id',
-            field=models.IntegerField(blank=True, default=None, help_text='Target model ID for this image', null=True),
+            field=models.IntegerField(blank=True, default=None, help_text='此图像的目标模型ID', null=True),
         ),
         migrations.AddField(
             model_name='notesimage',
             name='model_type',
-            field=models.CharField(blank=True, null=True, help_text='Target model type for this image', max_length=100, validators=[common.validators.validate_notes_model_type]),
+            field=models.CharField(blank=True, null=True, help_text='此图像的目标模型类型', max_length=100, validators=[common.validators.validate_notes_model_type]),
         ),
     ]

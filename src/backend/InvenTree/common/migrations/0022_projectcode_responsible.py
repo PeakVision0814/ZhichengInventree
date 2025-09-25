@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='projectcode',
             name='responsible',
-            field=models.ForeignKey(blank=True, help_text='User or group responsible for this project', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='project_codes', to='users.owner', verbose_name='Responsible'),
+            field=models.ForeignKey(blank=True, help_text='负责此项目的用户或组', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='project_codes', to='users.owner', verbose_name='Responsible'),
         ),
     ]

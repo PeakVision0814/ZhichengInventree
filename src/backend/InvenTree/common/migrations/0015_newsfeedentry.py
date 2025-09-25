@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('published', models.DateTimeField(max_length=250, verbose_name='Published')),
                 ('author', models.CharField(max_length=250, verbose_name='Author')),
                 ('summary', models.CharField(max_length=250, verbose_name='Summary')),
-                ('read', models.BooleanField(default=False, help_text='Was this news item read?', verbose_name='Read')),
+                ('read', models.BooleanField(default=False, help_text='是否已阅读此新闻?', verbose_name='Read')),
             ],
         ),
     ]

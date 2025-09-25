@@ -14,8 +14,8 @@ class Migration(migrations.Migration):
             name='ProjectCode',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(help_text='Unique project code', max_length=50, unique=True, verbose_name='Project Code')),
-                ('description', models.CharField(blank=True, help_text='Project description', max_length=200, verbose_name='Description')),
+                ('code', models.CharField(help_text='唯一的项目代码', max_length=50, unique=True, verbose_name='Project Code')),
+                ('description', models.CharField(blank=True, help_text='项目描述', max_length=200, verbose_name='Description')),
             ],
             options={
                 'verbose_name': 'Project Code',

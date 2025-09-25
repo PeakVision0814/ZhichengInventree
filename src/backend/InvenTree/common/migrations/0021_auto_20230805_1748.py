@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='inventreesetting',
             name='value',
-            field=models.CharField(blank=True, help_text='Settings value', max_length=2000),
+            field=models.CharField(blank=True, help_text='设置值', max_length=2000),
         ),
         migrations.AlterField(
             model_name='inventreeusersetting',
             name='value',
-            field=models.CharField(blank=True, help_text='Settings value', max_length=2000),
+            field=models.CharField(blank=True, help_text='设置值', max_length=2000),
         ),
     ]

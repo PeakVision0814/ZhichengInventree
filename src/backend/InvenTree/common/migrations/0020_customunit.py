@@ -14,9 +14,9 @@ class Migration(migrations.Migration):
             name='CustomUnit',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Unit name', max_length=50, unique=True, verbose_name='Name')),
-                ('symbol', models.CharField(blank=True, help_text='Optional unit symbol', max_length=10, unique=True, verbose_name='Symbol')),
-                ('definition', models.CharField(help_text='Unit definition', max_length=50, verbose_name='Definition')),
+                ('name', models.CharField(help_text='单位名称', max_length=50, unique=True, verbose_name='Name')),
+                ('symbol', models.CharField(blank=True, help_text='可选单位符号', max_length=10, unique=True, verbose_name='Symbol')),
+                ('definition', models.CharField(help_text='单元定义', max_length=50, verbose_name='Definition')),
             ],
             options={
                 'verbose_name': 'Custom Unit',

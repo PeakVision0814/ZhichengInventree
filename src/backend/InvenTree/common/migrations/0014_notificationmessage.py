@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('read', models.BooleanField(default=False)),
                 ('source_content_type', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='notification_source', to='contenttypes.contenttype')),
                 ('target_content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='notification_target', to='contenttypes.contenttype')),
-                ('user', models.ForeignKey(blank=True, help_text='User', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='User')),
+                ('user', models.ForeignKey(blank=True, help_text='用户', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='User')),
             ],
         ),
     ]
