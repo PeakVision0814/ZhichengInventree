@@ -206,7 +206,7 @@ class CompanySerializer(
     address_count = serializers.IntegerField(read_only=True)
 
     currency = InvenTreeCurrencySerializer(
-        help_text=_('Default currency used for this supplier'), required=True
+        help_text=_('此供应商默认使用的货币'), required=True
     )
 
     def save(self):

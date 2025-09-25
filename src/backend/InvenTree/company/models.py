@@ -885,7 +885,7 @@ class SupplierPart(
         default=1,
         validators=[MinValueValidator(1)],
         verbose_name=_('multiple'),
-        help_text=_('Order multiple'),
+        help_text=_('批量订购'),
     )
 
     # TODO - Reimplement lead-time as a charfield with special validation (pattern matching).
@@ -897,14 +897,14 @@ class SupplierPart(
         default=0,
         validators=[MinValueValidator(0)],
         verbose_name=_('Available'),
-        help_text=_('Quantity available from supplier'),
+        help_text=_('供应商可提供的数量'),
     )
 
     availability_updated = models.DateTimeField(
         null=True,
         blank=True,
         verbose_name=_('Availability Updated'),
-        help_text=_('Date of last update of availability data'),
+        help_text=_('可用车辆数据最后更新日期'),
     )
 
     def update_available_quantity(self, quantity):
