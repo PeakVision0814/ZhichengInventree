@@ -51,7 +51,7 @@ def read_license_file(path: Path) -> list:
         return []
 
     try:
-        data = json.loads(path.read_text())
+        data = json.loads(path.read_text(encoding='utf-8'))
     except Exception as e:
         logger.exception("Failed to parse license file '%s': %s", path, e)
         return []
@@ -79,10 +79,8 @@ def read_license_file(path: Path) -> list:
 class LicenseViewSerializer(serializers.Serializer):
     """Serializer for license information."""
 
-    backend = serializers.ListField(help_text='Backend licenses texts', read_only=True)
-    frontend = serializers.ListField(
-        help_text='Frontend licenses texts', read_only=True
-    )
+    backend = serializers.ListField(help_text='后端许可证文本', read_only=True)
+    frontend = serializers.ListField(help_text='前端许可证文本', read_only=True)
 
 
 class LicenseView(APIView):
