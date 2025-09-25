@@ -17,12 +17,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='supplierpart',
             name='part',
-            field=models.ForeignKey(help_text='Select part', limit_choices_to={'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='part.Part'),
+            field=models.ForeignKey(help_text='选择零件', limit_choices_to={'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='part.Part'),
         ),
         migrations.AddField(
             model_name='supplierpart',
             name='supplier',
-            field=models.ForeignKey(help_text='Select supplier', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='parts', to='company.Company'),
+            field=models.ForeignKey(help_text='选择供应商', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='parts', to='company.Company'),
         ),
         migrations.AddField(
             model_name='contact',

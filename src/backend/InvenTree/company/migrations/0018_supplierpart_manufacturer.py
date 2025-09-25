@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='supplierpart',
             name='manufacturer',
-            field=models.ForeignKey(blank=True, help_text='Select manufacturer', limit_choices_to={'is_manufacturer': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='manufactured_parts', to='company.Company'),
+            field=models.ForeignKey(blank=True, help_text='选择制造商', limit_choices_to={'is_manufacturer': True}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='manufactured_parts', to='company.Company'),
         ),
     ]

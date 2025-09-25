@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='supplierpart',
             name='supplier',
-            field=models.ForeignKey(help_text='Select supplier', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplied_parts', to='company.Company'),
+            field=models.ForeignKey(help_text='选择供应商', limit_choices_to={'is_supplier': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplied_parts', to='company.Company'),
         ),
     ]

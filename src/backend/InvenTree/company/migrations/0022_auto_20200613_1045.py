@@ -15,41 +15,41 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='company',
             name='address',
-            field=models.CharField(blank=True, help_text='Company address', max_length=200, verbose_name='Address'),
+            field=models.CharField(blank=True, help_text='公司地址', max_length=200, verbose_name='Address'),
         ),
         migrations.AlterField(
             model_name='company',
             name='contact',
-            field=models.CharField(blank=True, help_text='Point of contact', max_length=100, verbose_name='Contact'),
+            field=models.CharField(blank=True, help_text='联系人', max_length=100, verbose_name='Contact'),
         ),
         migrations.AlterField(
             model_name='company',
             name='description',
-            field=models.CharField(help_text='Description of the company', max_length=500, verbose_name='Company description'),
+            field=models.CharField(help_text='公司描述', max_length=500, verbose_name='Company description'),
         ),
         migrations.AlterField(
             model_name='company',
             name='email',
-            field=models.EmailField(blank=True, help_text='Contact email address', max_length=254, verbose_name='Email'),
+            field=models.EmailField(blank=True, help_text='联系邮箱地址', max_length=254, verbose_name='Email'),
         ),
         migrations.AlterField(
             model_name='company',
             name='name',
-            field=models.CharField(help_text='Company name', max_length=100, unique=True, verbose_name='Company name'),
+            field=models.CharField(help_text='公司名称', max_length=100, unique=True, verbose_name='Company name'),
         ),
         migrations.AlterField(
             model_name='company',
             name='phone',
-            field=models.CharField(blank=True, help_text='Contact phone number', max_length=50, verbose_name='Phone number'),
+            field=models.CharField(blank=True, help_text='联系电话', max_length=50, verbose_name='Phone number'),
         ),
         migrations.AlterField(
             model_name='company',
             name='website',
-            field=models.URLField(blank=True, help_text='Company website URL', verbose_name='Website'),
+            field=models.URLField(blank=True, help_text='公司网站网址', verbose_name='Website'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='part',
-            field=models.ForeignKey(help_text='Select part', limit_choices_to={'is_template': False, 'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='part.Part', verbose_name='Base Part'),
+            field=models.ForeignKey(help_text='选择零件', limit_choices_to={'is_template': False, 'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='part.Part', verbose_name='Base Part'),
         ),
     ]

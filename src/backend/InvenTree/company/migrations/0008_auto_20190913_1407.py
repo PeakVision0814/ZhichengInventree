@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='company',
             name='URL',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='Link to external company information'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部公司信息链接'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='URL',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='URL for external supplier part link'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部供应商部件链接的URL'),
         ),
     ]
