@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='supplierpart',
             name='pack_quantity',
-            field=models.CharField(blank=True, help_text='Total quantity supplied in a single pack. Leave empty for single items.', max_length=25, verbose_name='Pack Quantity'),
+            field=models.CharField(blank=True, help_text='单个包装中供应的总数量. 单件商品时留空. ', max_length=25, verbose_name='Pack Quantity'),
         ),
         migrations.AddField(
             model_name='supplierpart',
