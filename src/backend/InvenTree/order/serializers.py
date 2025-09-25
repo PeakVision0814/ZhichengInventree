@@ -74,7 +74,7 @@ class TotalPriceMixin(serializers.Serializer):
         allow_null=True,
         required=False,
         label=_('Order Currency'),
-        help_text=_('Currency for this order (leave blank to use company default)'),
+        help_text=_('此订单的币种(留空则使用公司的默认币种)'),
     )
 
 
@@ -87,21 +87,21 @@ class DuplicateOrderSerializer(serializers.Serializer):
         fields = ['order_id', 'copy_lines', 'copy_extra_lines']
 
     order_id = serializers.IntegerField(
-        required=True, label=_('Order ID'), help_text=_('ID of the order to duplicate')
+        required=True, label=_('Order ID'), help_text=_('要复制的订单 ID')
     )
 
     copy_lines = serializers.BooleanField(
         required=False,
         default=True,
         label=_('Copy Lines'),
-        help_text=_('Copy line items from the original order'),
+        help_text=_('从原始订单复制行项目'),
     )
 
     copy_extra_lines = serializers.BooleanField(
         required=False,
         default=True,
         label=_('Copy Extra Lines'),
-        help_text=_('Copy extra line items from the original order'),
+        help_text=_('从原始订单复制额外的行项目'),
     )
 
 
@@ -171,7 +171,7 @@ class AbstractOrderSerializer(DataImportExportSerializerMixin, serializers.Seria
 
     duplicate = DuplicateOrderSerializer(
         label=_('Duplicate Order'),
-        help_text=_('Specify options for duplicating this order'),
+        help_text=_('指定此订单的复制选项'),
         required=False,
         write_only=True,
     )
@@ -443,7 +443,7 @@ class PurchaseOrderCompleteSerializer(OrderAdjustSerializer):
 
     accept_incomplete = serializers.BooleanField(
         label=_('Accept Incomplete'),
-        help_text=_('Allow order to be closed with incomplete line items'),
+        help_text=_('允许订单在未完成的行项目情况下关闭'),
         required=False,
         default=False,
     )
@@ -630,9 +630,7 @@ class PurchaseOrderLineItemSerializer(
 
     auto_pricing = serializers.BooleanField(
         label=_('Auto Pricing'),
-        help_text=_(
-            'Automatically calculate purchase price based on supplier part data'
-        ),
+        help_text=_('根据供应商零件数据自动计算采购价格'),
         default=True,
     )
 
@@ -640,9 +638,7 @@ class PurchaseOrderLineItemSerializer(
         source='get_destination', read_only=True, allow_null=True
     )
 
-    purchase_price_currency = InvenTreeCurrencySerializer(
-        help_text=_('Purchase price currency')
-    )
+    purchase_price_currency = InvenTreeCurrencySerializer(help_text=_('购买价格货币'))
 
     order_detail = PurchaseOrderSerializer(
         source='order', read_only=True, allow_null=True, many=False
@@ -654,9 +650,7 @@ class PurchaseOrderLineItemSerializer(
 
     merge_items = serializers.BooleanField(
         label=_('Merge Items'),
-        help_text=_(
-            'Merge items with the same part, destination and target date into one line item'
-        ),
+        help_text=_('合并相同部件、目的地和目标日期的条目为一条记录'),
         default=True,
         write_only=True,
     )
@@ -766,7 +760,7 @@ class PurchaseOrderLineItemReceiveSerializer(serializers.Serializer):
         allow_null=True,
         required=False,
         label=_('Location'),
-        help_text=_('Select destination location for received items'),
+        help_text=_('选择接收物品的目的地位置'),
     )
 
     quantity = serializers.DecimalField(
@@ -782,7 +776,7 @@ class PurchaseOrderLineItemReceiveSerializer(serializers.Serializer):
 
     batch_code = serializers.CharField(
         label=_('Batch Code'),
-        help_text=_('Enter batch code for incoming stock items'),
+        help_text=_('输入入库库存物品的批次代码'),
         required=False,
         default='',
         allow_blank=True,
@@ -790,7 +784,7 @@ class PurchaseOrderLineItemReceiveSerializer(serializers.Serializer):
 
     expiry_date = serializers.DateField(
         label=_('Expiry Date'),
-        help_text=_('Enter expiry date for incoming stock items'),
+        help_text=_('输入入库库存物品的有效期'),
         required=False,
         allow_null=True,
         default=None,
@@ -798,7 +792,7 @@ class PurchaseOrderLineItemReceiveSerializer(serializers.Serializer):
 
     serial_numbers = serializers.CharField(
         label=_('Serial Numbers'),
-        help_text=_('Enter serial numbers for incoming stock items'),
+        help_text=_('输入入库库存物品的序列号'),
         required=False,
         default='',
         allow_blank=True,
@@ -808,7 +802,7 @@ class PurchaseOrderLineItemReceiveSerializer(serializers.Serializer):
 
     packaging = serializers.CharField(
         label=_('Packaging'),
-        help_text=_('Override packaging information for incoming stock items'),
+        help_text=_('覆盖入库库存物品的包装信息'),
         required=False,
         default='',
         allow_blank=True,
@@ -816,7 +810,7 @@ class PurchaseOrderLineItemReceiveSerializer(serializers.Serializer):
 
     note = serializers.CharField(
         label=_('Note'),
-        help_text=_('Additional note for incoming stock items'),
+        help_text=_('入库库存物品的附加备注'),
         required=False,
         default='',
         allow_blank=True,
@@ -824,7 +818,7 @@ class PurchaseOrderLineItemReceiveSerializer(serializers.Serializer):
 
     barcode = serializers.CharField(
         label=_('Barcode'),
-        help_text=_('Scanned barcode'),
+        help_text=_('扫描的条形码'),
         default='',
         required=False,
         allow_null=True,
@@ -906,7 +900,7 @@ class PurchaseOrderReceiveSerializer(serializers.Serializer):
         required=False,
         allow_null=True,
         label=_('Location'),
-        help_text=_('Select destination location for received items'),
+        help_text=_('选择接收物品的目的地位置'),
     )
 
     def validate(self, data):
@@ -1261,9 +1255,7 @@ class SalesOrderLineItemSerializer(
 
     sale_price = InvenTreeMoneySerializer(allow_null=True)
 
-    sale_price_currency = InvenTreeCurrencySerializer(
-        help_text=_('Sale price currency')
-    )
+    sale_price_currency = InvenTreeCurrencySerializer(help_text=_('销售价格货币'))
 
 
 @register_importer()
@@ -1566,7 +1558,7 @@ class SalesOrderCompleteSerializer(OrderAdjustSerializer):
 
     accept_incomplete = serializers.BooleanField(
         label=_('Accept Incomplete'),
-        help_text=_('Allow order to be closed with incomplete line items'),
+        help_text=_('允许关闭未完成的订单行项目'),
         required=False,
         default=False,
     )
@@ -1665,7 +1657,7 @@ class SalesOrderSerialAllocationSerializer(serializers.Serializer):
 
     serial_numbers = serializers.CharField(
         label=_('Serial Numbers'),
-        help_text=_('Enter serial numbers to allocate'),
+        help_text=_('输入序列号以分配'),
         required=True,
         allow_blank=False,
     )
@@ -2013,12 +2005,12 @@ class ReturnOrderReceiveSerializer(serializers.Serializer):
         allow_null=False,
         required=True,
         label=_('Location'),
-        help_text=_('Select destination location for received items'),
+        help_text=_('选择接收物品的目的地位置'),
     )
 
     note = serializers.CharField(
         label=_('Note'),
-        help_text=_('Additional note for incoming stock items'),
+        help_text=_('入库物品的附加说明'),
         required=False,
         default='',
         allow_blank=True,
@@ -2120,9 +2112,7 @@ class ReturnOrderLineItemSerializer(
         source='order', many=False, read_only=True, allow_null=True
     )
 
-    quantity = serializers.FloatField(
-        label=_('Quantity'), help_text=_('Quantity to return')
-    )
+    quantity = serializers.FloatField(label=_('Quantity'), help_text=_('退货数量'))
 
     item_detail = stock.serializers.StockItemSerializer(
         source='item', many=False, read_only=True, allow_null=True
@@ -2133,7 +2123,7 @@ class ReturnOrderLineItemSerializer(
     )
 
     price = InvenTreeMoneySerializer(allow_null=True)
-    price_currency = InvenTreeCurrencySerializer(help_text=_('Line price currency'))
+    price_currency = InvenTreeCurrencySerializer(help_text=_('行价货币'))
 
 
 @register_importer()

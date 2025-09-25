@@ -20,13 +20,13 @@ class Migration(migrations.Migration):
             name='PurchaseOrder',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('reference', models.CharField(help_text='Order reference', max_length=64, unique=True)),
-                ('description', models.CharField(help_text='Order description', max_length=250)),
+                ('reference', models.CharField(help_text='订单参考编号', max_length=64, unique=True)),
+                ('description', models.CharField(help_text='订单描述', max_length=250)),
                 ('creation_date', models.DateField(auto_now=True)),
                 ('issue_date', models.DateField(blank=True, null=True)),
-                ('notes', models.TextField(blank=True, help_text='Order notes')),
+                ('notes', models.TextField(blank=True, help_text='订单备注')),
                 ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to=settings.AUTH_USER_MODEL)),
-                ('supplier', models.ForeignKey(help_text='Company', on_delete=django.db.models.deletion.CASCADE, related_name='Orders', to='company.Company')),
+                ('supplier', models.ForeignKey(help_text='公司', on_delete=django.db.models.deletion.CASCADE, related_name='Orders', to='company.Company')),
             ],
             options={
                 'abstract': False,
@@ -37,10 +37,10 @@ class Migration(migrations.Migration):
             name='PurchaseOrderLineItem',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantity', models.PositiveIntegerField(default=1, help_text='Item quantity', validators=[django.core.validators.MinValueValidator(0)])),
-                ('reference', models.CharField(blank=True, help_text='Line item reference', max_length=100)),
-                ('received', models.PositiveIntegerField(default=0, help_text='Number of items received')),
-                ('order', models.ForeignKey(help_text='Purchase Order', on_delete=django.db.models.deletion.CASCADE, related_name='lines', to='order.PurchaseOrder')),
+                ('quantity', models.PositiveIntegerField(default=1, help_text='物品数量', validators=[django.core.validators.MinValueValidator(0)])),
+                ('reference', models.CharField(blank=True, help_text='行项目参考编号', max_length=100)),
+                ('received', models.PositiveIntegerField(default=0, help_text='已接收的物品数量')),
+                ('order', models.ForeignKey(help_text='采购订单', on_delete=django.db.models.deletion.CASCADE, related_name='lines', to='order.PurchaseOrder')),
             ],
             options={
                 'abstract': False,

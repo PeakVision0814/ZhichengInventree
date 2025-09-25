@@ -92,7 +92,7 @@ class PurchaseOrderTest(OrderTest):
                 'required': False,
                 'read_only': False,
                 'label': 'Order Currency',
-                'help_text': 'Currency for this order (leave blank to use company default)',
+                'help_text': '本订单的货币(留空以使用公司默认货币)',
             },
         )
 
