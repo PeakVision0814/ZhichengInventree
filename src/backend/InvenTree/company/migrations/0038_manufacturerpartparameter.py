@@ -15,9 +15,9 @@ class Migration(migrations.Migration):
             name='ManufacturerPartParameter',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Parameter name', max_length=500, verbose_name='Name')),
-                ('value', models.CharField(help_text='Parameter value', max_length=500, verbose_name='Value')),
-                ('units', models.CharField(blank=True, help_text='Parameter units', max_length=64, null=True, verbose_name='Units')),
+                ('name', models.CharField(help_text='参数名称', max_length=500, verbose_name='Name')),
+                ('value', models.CharField(help_text='参数值', max_length=500, verbose_name='Value')),
+                ('units', models.CharField(blank=True, help_text='参数单位', max_length=64, null=True, verbose_name='Units')),
                 ('manufacturer_part', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parameters', to='company.manufacturerpart', verbose_name='Manufacturer Part')),
             ],
             options={

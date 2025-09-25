@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='supplierpart',
             name='manufacturer_part',
-            field=models.ForeignKey(blank=True, help_text='Select manufacturer part', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='company.ManufacturerPart', verbose_name='Manufacturer Part'),
+            field=models.ForeignKey(blank=True, help_text='选择制造商零件', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='supplier_parts', to='company.ManufacturerPart', verbose_name='Manufacturer Part'),
         ),
     ]

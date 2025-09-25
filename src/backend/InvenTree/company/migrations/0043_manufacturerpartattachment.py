@@ -19,12 +19,12 @@ class Migration(migrations.Migration):
             name='ManufacturerPartAttachment',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('attachment', models.FileField(blank=True, help_text='Select file to attach', null=True, upload_to='attachments', verbose_name='Attachment')),
-                ('link', InvenTree.fields.InvenTreeURLField(blank=True, help_text='Link to external URL', null=True, verbose_name='Link')),
-                ('comment', models.CharField(blank=True, help_text='File comment', max_length=100, verbose_name='Comment')),
+                ('attachment', models.FileField(blank=True, help_text='选择要附加的文件', null=True, upload_to='attachments', verbose_name='Attachment')),
+                ('link', InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部网址链接', null=True, verbose_name='Link')),
+                ('comment', models.CharField(blank=True, help_text='文件注释', max_length=100, verbose_name='Comment')),
                 ('upload_date', models.DateField(auto_now_add=True, null=True, verbose_name='upload date')),
                 ('manufacturer_part', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='attachments', to='company.manufacturerpart', verbose_name='Manufacturer Part')),
-                ('user', models.ForeignKey(blank=True, help_text='User', null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='User')),
+                ('user', models.ForeignKey(blank=True, help_text='用户', null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='User')),
             ],
             options={
                 'abstract': False,

@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
             name='ManufacturerPart',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('MPN', models.CharField(help_text='Manufacturer Part Number', max_length=100, null=True, verbose_name='MPN')),
-                ('link', InvenTree.fields.InvenTreeURLField(blank=True, help_text='URL for external manufacturer part link', null=True, verbose_name='Link')),
-                ('description', models.CharField(blank=True, help_text='Manufacturer part description', max_length=250, null=True, verbose_name='Description')),
-                ('manufacturer', models.ForeignKey(help_text='Select manufacturer', limit_choices_to={'is_manufacturer': True}, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='manufactured_parts', to='company.Company', verbose_name='Manufacturer')),
-                ('part', models.ForeignKey(help_text='Select part', limit_choices_to={'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='manufacturer_parts', to='part.Part', verbose_name='Base Part')),
+                ('MPN', models.CharField(help_text='制造商料号', max_length=100, null=True, verbose_name='MPN')),
+                ('link', InvenTree.fields.InvenTreeURLField(blank=True, help_text='外部制造商零件链接的URL', null=True, verbose_name='Link')),
+                ('description', models.CharField(blank=True, help_text='制造商零件描述', max_length=250, null=True, verbose_name='Description')),
+                ('manufacturer', models.ForeignKey(help_text='选择制造商', limit_choices_to={'is_manufacturer': True}, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='manufactured_parts', to='company.Company', verbose_name='Manufacturer')),
+                ('part', models.ForeignKey(help_text='选择部零件', limit_choices_to={'purchaseable': True}, on_delete=django.db.models.deletion.CASCADE, related_name='manufacturer_parts', to='part.Part', verbose_name='Base Part')),
             ],
             options={
                 'unique_together': {('part', 'manufacturer', 'MPN')},
