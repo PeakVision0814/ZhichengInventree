@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='customunit',
             name='symbol',
-            field=models.CharField(blank=True, help_text='Optional unit symbol', max_length=10, verbose_name='Symbol'),
+            field=models.CharField(blank=True, help_text='可选单位符号', max_length=10, verbose_name='Symbol'),
         ),
     ]

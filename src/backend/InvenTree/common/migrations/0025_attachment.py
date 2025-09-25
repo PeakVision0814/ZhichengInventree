@@ -25,15 +25,15 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('model_id', models.PositiveIntegerField()),
-                ('attachment', models.FileField(blank=True, help_text='Select file to attach', null=True, upload_to=common.models.rename_attachment, verbose_name='Attachment')),
-                ('link', InvenTree.fields.InvenTreeURLField(blank=True, help_text='Link to external URL', null=True, verbose_name='Link')),
-                ('comment', models.CharField(blank=True, help_text='Attachment comment', max_length=250, verbose_name='Comment')),
-                ('upload_date', models.DateField(auto_now_add=True, help_text='Date the file was uploaded', null=True, verbose_name='Upload date')),
-                ('file_size', models.PositiveIntegerField(default=0, help_text='File size in bytes', verbose_name='File size')),
-                ('model_type', models.CharField(help_text='Target model type for this image', max_length=100, validators=[common.validators.validate_attachment_model_type])),
-                ('upload_user', models.ForeignKey(blank=True, help_text='User', null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='User')),
-                ('metadata', models.JSONField(blank=True, help_text='JSON metadata field, for use by external plugins', null=True, verbose_name='Plugin Metadata')),
-                ('tags', taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'))
+                ('attachment', models.FileField(blank=True, help_text='选择要附加的文件', null=True, upload_to=common.models.rename_attachment, verbose_name='Attachment')),
+                ('link', InvenTree.fields.InvenTreeURLField(blank=True, help_text='链接到外部URL', null=True, verbose_name='Link')),
+                ('comment', models.CharField(blank=True, help_text='附件评论', max_length=250, verbose_name='Comment')),
+                ('upload_date', models.DateField(auto_now_add=True, help_text='文件上传日期', null=True, verbose_name='Upload date')),
+                ('file_size', models.PositiveIntegerField(default=0, help_text='文件大小(字节)', verbose_name='File size')),
+                ('model_type', models.CharField(help_text='此图像的目标模型类型', max_length=100, validators=[common.validators.validate_attachment_model_type])),
+                ('upload_user', models.ForeignKey(blank=True, help_text='用户', null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='User')),
+                ('metadata', models.JSONField(blank=True, help_text='JSON 元数据字段，供外部插件使用', null=True, verbose_name='Plugin Metadata')),
+                ('tags', taggit.managers.TaggableManager(blank=True, help_text='逗号分隔的标签列表.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'))
             ],
             bases=(InvenTree.models.PluginValidationMixin, models.Model),
             options={
