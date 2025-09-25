@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='company',
             name='description',
-            field=models.CharField(blank=True, help_text='Description of the company', max_length=500, verbose_name='Company description'),
+            field=models.CharField(blank=True, help_text='公司描述', max_length=500, verbose_name='Company description'),
         ),
     ]

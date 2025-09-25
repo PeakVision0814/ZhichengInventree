@@ -23,22 +23,22 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='company',
             name='is_customer',
-            field=models.BooleanField(default=False, help_text='Do you sell items to this company?', verbose_name='Is customer'),
+            field=models.BooleanField(default=False, help_text='你们是否向这家公司销售产品?', verbose_name='Is customer'),
         ),
         migrations.AlterField(
             model_name='company',
             name='is_manufacturer',
-            field=models.BooleanField(default=False, help_text='Does this company manufacture parts?', verbose_name='Is manufacturer'),
+            field=models.BooleanField(default=False, help_text='这家公司制造零部件吗?', verbose_name='Is manufacturer'),
         ),
         migrations.AlterField(
             model_name='company',
             name='is_supplier',
-            field=models.BooleanField(default=True, help_text='Do you purchase items from this company?', verbose_name='Is supplier'),
+            field=models.BooleanField(default=True, help_text='您会从这家公司购买商品吗?', verbose_name='Is supplier'),
         ),
         migrations.AlterField(
             model_name='company',
             name='link',
-            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='Link to external company information', verbose_name='Link'),
+            field=InvenTree.fields.InvenTreeURLField(blank=True, help_text='链接到外部公司信息', verbose_name='Link'),
         ),
         migrations.AlterField(
             model_name='company',
@@ -48,17 +48,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='supplierpart',
             name='base_cost',
-            field=models.DecimalField(decimal_places=3, default=0, help_text='Minimum charge (e.g. stocking fee)', max_digits=10, validators=[django.core.validators.MinValueValidator(0)], verbose_name='base cost'),
+            field=models.DecimalField(decimal_places=3, default=0, help_text='最低收费(例如：备货费)', max_digits=10, validators=[django.core.validators.MinValueValidator(0)], verbose_name='base cost'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='multiple',
-            field=models.PositiveIntegerField(default=1, help_text='Order multiple', validators=[django.core.validators.MinValueValidator(1)], verbose_name='multiple'),
+            field=models.PositiveIntegerField(default=1, help_text='批量订购', validators=[django.core.validators.MinValueValidator(1)], verbose_name='multiple'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='packaging',
-            field=models.CharField(blank=True, help_text='Part packaging', max_length=50, null=True, verbose_name='Packaging'),
+            field=models.CharField(blank=True, help_text='零件包装', max_length=50, null=True, verbose_name='Packaging'),
         ),
         migrations.AlterField(
             model_name='supplierpricebreak',
