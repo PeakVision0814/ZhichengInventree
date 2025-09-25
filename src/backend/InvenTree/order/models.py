@@ -88,7 +88,7 @@ class TotalPriceMixin(models.Model):
         blank=True,
         allow_negative=False,
         verbose_name=_('Total Price'),
-        help_text=_('Total price for this order'),
+        help_text=_('此订单总价'),
     )
 
     order_currency = models.CharField(
@@ -96,7 +96,7 @@ class TotalPriceMixin(models.Model):
         verbose_name=_('Order Currency'),
         blank=True,
         null=True,
-        help_text=_('Currency for this order (leave blank to use company default)'),
+        help_text=_('本订单的货币(留空以使用公司默认货币)'),
         validators=[InvenTree.validators.validate_currency_code],
     )
 
@@ -433,7 +433,7 @@ class Order(
         max_length=250,
         blank=True,
         verbose_name=_('Description'),
-        help_text=_('Order description (optional)'),
+        help_text=_('订单说明(可选)'),
     )
 
     project_code = models.ForeignKey(
@@ -442,30 +442,25 @@ class Order(
         blank=True,
         null=True,
         verbose_name=_('Project Code'),
-        help_text=_('Select project code for this order'),
+        help_text=_('选择该项目代码以用于此订单'),
     )
 
     link = InvenTreeURLField(
-        blank=True,
-        verbose_name=_('Link'),
-        help_text=_('Link to external page'),
-        max_length=2000,
+        blank=True, verbose_name=_('Link'), help_text=_('外部页面链接'), max_length=2000
     )
 
     start_date = models.DateField(
         null=True,
         blank=True,
         verbose_name=_('Start date'),
-        help_text=_('Scheduled start date for this order'),
+        help_text=_('本订单的预定开始日期'),
     )
 
     target_date = models.DateField(
         blank=True,
         null=True,
         verbose_name=_('Target Date'),
-        help_text=_(
-            'Expected date for order delivery. Order will be overdue after this date.'
-        ),
+        help_text=_('预计订单送达日期. 此日期之后订单将被视为逾期.'),
     )
 
     creation_date = models.DateField(
@@ -485,7 +480,7 @@ class Order(
         blank=True,
         null=True,
         verbose_name=_('Issue Date'),
-        help_text=_('Date order was issued'),
+        help_text=_('已下达日期指令'),
     )
 
     responsible = models.ForeignKey(
@@ -493,7 +488,7 @@ class Order(
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        help_text=_('User or group responsible for this order'),
+        help_text=_('负责此订单的用户或组'),
         verbose_name=_('Responsible'),
         related_name='+',
     )
@@ -504,7 +499,7 @@ class Order(
         blank=True,
         null=True,
         verbose_name=_('Contact'),
-        help_text=_('Point of contact for this order'),
+        help_text=_('本订单的联系人'),
         related_name='+',
     )
 
@@ -514,7 +509,7 @@ class Order(
         blank=True,
         null=True,
         verbose_name=_('Address'),
-        help_text=_('Company address for this order'),
+        help_text=_('本订单的公司地址'),
         related_name='+',
     )
 
@@ -605,7 +600,7 @@ class PurchaseOrder(TotalPriceMixin, Order):
         max_length=64,
         blank=False,
         verbose_name=_('Reference'),
-        help_text=_('Order reference'),
+        help_text=_('订单参考编号'),
         default=order.validators.generate_next_purchase_order_reference,
         validators=[order.validators.validate_purchase_order_reference],
     )
@@ -615,7 +610,7 @@ class PurchaseOrder(TotalPriceMixin, Order):
         choices=PurchaseOrderStatus.items(),
         status_class=PurchaseOrderStatus,
         verbose_name=_('Status'),
-        help_text=_('Purchase order status'),
+        help_text=_('采购订单状态'),
     )
 
     @property
@@ -630,7 +625,7 @@ class PurchaseOrder(TotalPriceMixin, Order):
         limit_choices_to={'is_supplier': True},
         related_name='purchase_orders',
         verbose_name=_('Supplier'),
-        help_text=_('Company from which the items are being ordered'),
+        help_text=_('订购物品的公司(供应商)'),
     )
 
     @property
@@ -642,7 +637,7 @@ class PurchaseOrder(TotalPriceMixin, Order):
         max_length=64,
         blank=True,
         verbose_name=_('Supplier Reference'),
-        help_text=_('Supplier order reference code'),
+        help_text=_('供应商订单参考代码'),
     )
 
     received_by = models.ForeignKey(
@@ -658,7 +653,7 @@ class PurchaseOrder(TotalPriceMixin, Order):
         blank=True,
         null=True,
         verbose_name=_('Completion Date'),
-        help_text=_('Date order was completed'),
+        help_text=_('订单完成日期'),
     )
 
     destination = TreeForeignKey(
@@ -668,7 +663,7 @@ class PurchaseOrder(TotalPriceMixin, Order):
         blank=True,
         null=True,
         verbose_name=_('Destination'),
-        help_text=_('Destination for received items'),
+        help_text=_('接收物品的目的地'),
     )
 
     @transaction.atomic
@@ -1290,7 +1285,7 @@ class SalesOrder(TotalPriceMixin, Order):
         max_length=64,
         blank=False,
         verbose_name=_('Reference'),
-        help_text=_('Order reference'),
+        help_text=_('订单参考编号'),
         default=order.validators.generate_next_sales_order_reference,
         validators=[order.validators.validate_sales_order_reference],
     )
@@ -1302,7 +1297,7 @@ class SalesOrder(TotalPriceMixin, Order):
         limit_choices_to={'is_customer': True},
         related_name='return_orders',
         verbose_name=_('Customer'),
-        help_text=_('Company to which the items are being sold'),
+        help_text=_('购买物品的公司(客户)'),
     )
 
     @property
@@ -1315,7 +1310,7 @@ class SalesOrder(TotalPriceMixin, Order):
         choices=SalesOrderStatus.items(),
         status_class=SalesOrderStatus,
         verbose_name=_('Status'),
-        help_text=_('Sales order status'),
+        help_text=_('销售订单状态'),
     )
 
     @property
@@ -1327,7 +1322,7 @@ class SalesOrder(TotalPriceMixin, Order):
         max_length=64,
         blank=True,
         verbose_name=_('Customer Reference '),
-        help_text=_('Customer order reference code'),
+        help_text=_('客户订单参考代码'),
     )
 
     shipment_date = models.DateField(
@@ -1711,7 +1706,7 @@ class OrderLineItem(InvenTree.models.InvenTreeMetadataModel):
 
     quantity = RoundingDecimalField(
         verbose_name=_('Quantity'),
-        help_text=_('Item quantity'),
+        help_text=_('物品数量'),
         default=1,
         max_digits=15,
         decimal_places=5,
@@ -1728,30 +1723,22 @@ class OrderLineItem(InvenTree.models.InvenTreeMetadataModel):
         max_length=100,
         blank=True,
         verbose_name=_('Reference'),
-        help_text=_('Line item reference'),
+        help_text=_('行项目参考编号'),
     )
 
     notes = models.CharField(
-        max_length=500,
-        blank=True,
-        verbose_name=_('Notes'),
-        help_text=_('Line item notes'),
+        max_length=500, blank=True, verbose_name=_('Notes'), help_text=_('行项目备注')
     )
 
     link = InvenTreeURLField(
-        blank=True,
-        verbose_name=_('Link'),
-        help_text=_('Link to external page'),
-        max_length=2000,
+        blank=True, verbose_name=_('Link'), help_text=_('外部页面链接'), max_length=2000
     )
 
     target_date = models.DateField(
         blank=True,
         null=True,
         verbose_name=_('Target Date'),
-        help_text=_(
-            'Target date for this line item (leave blank to use the target date from the order)'
-        ),
+        help_text=_('此行项目的目标日期(留空则使用订单的目标日期)'),
     )
 
 
@@ -1771,14 +1758,14 @@ class OrderExtraLine(OrderLineItem):
         max_length=250,
         blank=True,
         verbose_name=_('Description'),
-        help_text=_('Line item description (optional)'),
+        help_text=_('行项目描述(可选)'),
     )
 
     context = models.JSONField(
         blank=True,
         null=True,
         verbose_name=_('Context'),
-        help_text=_('Additional context for this line'),
+        help_text=_('此行项目的附加上下文'),
     )
 
     price = InvenTreeModelMoneyField(
@@ -1788,7 +1775,7 @@ class OrderExtraLine(OrderLineItem):
         blank=True,
         allow_negative=True,
         verbose_name=_('Price'),
-        help_text=_('Unit price'),
+        help_text=_('单价'),
     )
 
 
@@ -1865,7 +1852,7 @@ class PurchaseOrderLineItem(OrderLineItem):
         on_delete=models.CASCADE,
         related_name='lines',
         verbose_name=_('Order'),
-        help_text=_('Purchase Order'),
+        help_text=_('采购订单'),
     )
 
     def get_base_part(self):
@@ -1884,7 +1871,7 @@ class PurchaseOrderLineItem(OrderLineItem):
         null=True,
         related_name='purchase_order_line_items',
         verbose_name=_('Part'),
-        help_text=_('Supplier part'),
+        help_text=_('供应商零件'),
     )
 
     received = models.DecimalField(
@@ -1892,7 +1879,7 @@ class PurchaseOrderLineItem(OrderLineItem):
         max_digits=15,
         default=0,
         verbose_name=_('Received'),
-        help_text=_('Number of items received'),
+        help_text=_('已接收的物品数量'),
     )
 
     purchase_price = InvenTreeModelMoneyField(
@@ -1901,7 +1888,7 @@ class PurchaseOrderLineItem(OrderLineItem):
         null=True,
         blank=True,
         verbose_name=_('Purchase Price'),
-        help_text=_('Unit purchase price'),
+        help_text=_('单位采购价格'),
     )
 
     @property
@@ -1917,7 +1904,7 @@ class PurchaseOrderLineItem(OrderLineItem):
         limit_choices_to={'external': True},
         null=True,
         verbose_name=_('Build Order'),
-        help_text=_('External Build Order to be fulfilled by this line item'),
+        help_text=_('将由该行项目履行的外部构建订单'),
     )
 
     destination = TreeForeignKey(
@@ -1927,7 +1914,7 @@ class PurchaseOrderLineItem(OrderLineItem):
         related_name='po_lines',
         blank=True,
         null=True,
-        help_text=_('Destination for received items'),
+        help_text=_('接收物品的目的地'),
     )
 
     def get_destination(self):
@@ -1994,7 +1981,7 @@ class PurchaseOrderExtraLine(OrderExtraLine):
         on_delete=models.CASCADE,
         related_name='extra_lines',
         verbose_name=_('Order'),
-        help_text=_('Purchase Order'),
+        help_text=_('采购订单'),
     )
 
 
@@ -2040,7 +2027,7 @@ class SalesOrderLineItem(OrderLineItem):
         on_delete=models.CASCADE,
         related_name='lines',
         verbose_name=_('Order'),
-        help_text=_('Sales Order'),
+        help_text=_('销售订单'),
     )
 
     part = models.ForeignKey(
@@ -2049,7 +2036,7 @@ class SalesOrderLineItem(OrderLineItem):
         related_name='sales_order_line_items',
         null=True,
         verbose_name=_('Part'),
-        help_text=_('Part'),
+        help_text=_('零件'),
         limit_choices_to={'salable': True},
     )
 
@@ -2059,7 +2046,7 @@ class SalesOrderLineItem(OrderLineItem):
         null=True,
         blank=True,
         verbose_name=_('Sale Price'),
-        help_text=_('Unit sale price'),
+        help_text=_('单价'),
     )
 
     @property
@@ -2069,7 +2056,7 @@ class SalesOrderLineItem(OrderLineItem):
 
     shipped = RoundingDecimalField(
         verbose_name=_('Shipped'),
-        help_text=_('Shipped quantity'),
+        help_text=_('发货数量'),
         default=0,
         max_digits=15,
         decimal_places=5,
@@ -2202,21 +2189,18 @@ class SalesOrderShipment(
         null=False,
         related_name='shipments',
         verbose_name=_('Order'),
-        help_text=_('Sales Order'),
+        help_text=_('销售订单'),
     )
 
     shipment_date = models.DateField(
-        null=True,
-        blank=True,
-        verbose_name=_('Shipment Date'),
-        help_text=_('Date of shipment'),
+        null=True, blank=True, verbose_name=_('Shipment Date'), help_text=_('发货日期')
     )
 
     delivery_date = models.DateField(
         null=True,
         blank=True,
         verbose_name=_('Delivery Date'),
-        help_text=_('Date of delivery of shipment'),
+        help_text=_('货件的交付日期'),
     )
 
     checked_by = models.ForeignKey(
@@ -2225,7 +2209,7 @@ class SalesOrderShipment(
         blank=True,
         null=True,
         verbose_name=_('Checked By'),
-        help_text=_('User who checked this shipment'),
+        help_text=_('检查此货件的用户'),
         related_name='+',
     )
 
@@ -2233,7 +2217,7 @@ class SalesOrderShipment(
         max_length=100,
         blank=False,
         verbose_name=_('Shipment'),
-        help_text=_('Shipment number'),
+        help_text=_('货件编号'),
         default='1',
     )
 
@@ -2242,7 +2226,7 @@ class SalesOrderShipment(
         blank=True,
         unique=False,
         verbose_name=_('Tracking Number'),
-        help_text=_('Shipment tracking information'),
+        help_text=_('货件追踪信息'),
     )
 
     invoice_number = models.CharField(
@@ -2250,14 +2234,11 @@ class SalesOrderShipment(
         blank=True,
         unique=False,
         verbose_name=_('Invoice Number'),
-        help_text=_('Reference number for associated invoice'),
+        help_text=_('相关联发票的参考编号'),
     )
 
     link = InvenTreeURLField(
-        blank=True,
-        verbose_name=_('Link'),
-        help_text=_('Link to external page'),
-        max_length=2000,
+        blank=True, verbose_name=_('Link'), help_text=_('外部页面链接'), max_length=2000
     )
 
     def is_complete(self):
@@ -2368,7 +2349,7 @@ class SalesOrderExtraLine(OrderExtraLine):
         on_delete=models.CASCADE,
         related_name='extra_lines',
         verbose_name=_('Order'),
-        help_text=_('Sales Order'),
+        help_text=_('销售订单'),
     )
 
 
@@ -2465,7 +2446,7 @@ class SalesOrderAllocation(models.Model):
         blank=True,
         related_name='allocations',
         verbose_name=_('Shipment'),
-        help_text=_('Sales order shipment reference'),
+        help_text=_('销售订单货运参考'),
     )
 
     item = models.ForeignKey(
@@ -2479,7 +2460,7 @@ class SalesOrderAllocation(models.Model):
             'sales_order': None,
         },
         verbose_name=_('Item'),
-        help_text=_('Select stock item to allocate'),
+        help_text=_('选择要分配的库存物品'),
     )
 
     quantity = RoundingDecimalField(
@@ -2488,7 +2469,7 @@ class SalesOrderAllocation(models.Model):
         validators=[MinValueValidator(0)],
         default=1,
         verbose_name=_('Quantity'),
-        help_text=_('Enter stock allocation quantity'),
+        help_text=_('输入库存分配数量'),
     )
 
     def get_location(self):
@@ -2603,7 +2584,7 @@ class ReturnOrder(TotalPriceMixin, Order):
         max_length=64,
         blank=False,
         verbose_name=_('Reference'),
-        help_text=_('Return Order reference'),
+        help_text=_('退货单号'),
         default=order.validators.generate_next_return_order_reference,
         validators=[order.validators.validate_return_order_reference],
     )
@@ -2615,7 +2596,7 @@ class ReturnOrder(TotalPriceMixin, Order):
         limit_choices_to={'is_customer': True},
         related_name='sales_orders',
         verbose_name=_('Customer'),
-        help_text=_('Company from which items are being returned'),
+        help_text=_('退货物品的公司'),
     )
 
     @property
@@ -2628,21 +2609,21 @@ class ReturnOrder(TotalPriceMixin, Order):
         choices=ReturnOrderStatus.items(),
         status_class=ReturnOrderStatus,
         verbose_name=_('Status'),
-        help_text=_('Return order status'),
+        help_text=_('退货状态'),
     )
 
     customer_reference = models.CharField(
         max_length=64,
         blank=True,
         verbose_name=_('Customer Reference '),
-        help_text=_('Customer order reference code'),
+        help_text=_('客户订单参考代码'),
     )
 
     complete_date = models.DateField(
         blank=True,
         null=True,
         verbose_name=_('Completion Date'),
-        help_text=_('Date order was completed'),
+        help_text=_('订单日期已处理完成'),
     )
 
     # region state changes
