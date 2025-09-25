@@ -29,14 +29,14 @@ class Migration(migrations.Migration):
                 (
                     "key",
                     models.IntegerField(
-                        help_text="Value that will be saved in the models database",
+                        help_text="将在模型数据库中保存的值",
                         verbose_name="Key",
                     ),
                 ),
                 (
                     "name",
                     models.CharField(
-                        help_text="Name of the state",
+                        help_text="州名",
                         max_length=250,
                         verbose_name="Name",
                     ),
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 (
                     "label",
                     models.CharField(
-                        help_text="Label that will be displayed in the frontend",
+                        help_text="在前端显示的标签",
                         max_length=250,
                         verbose_name="Label",
                     ),
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
                     models.CharField(
                         choices=state_color_mappings(),
                         default="secondary",
-                        help_text="Color that will be displayed in the frontend",
+                        help_text="在前端显示的颜色",
                         max_length=10,
                         verbose_name="Color",
                     ),
@@ -62,14 +62,14 @@ class Migration(migrations.Migration):
                 (
                     "logical_key",
                     models.IntegerField(
-                        help_text="State logical key that is equal to this custom state in business logic",
+                        help_text="在业务逻辑中等于此自定义状态的状态逻辑键",
                         verbose_name="Logical Key",
                     ),
                 ),
                 (
                     "reference_status",
                     models.CharField(
-                        help_text="Status set that is extended with this custom state",
+                        help_text="由此扩展此自定义状态的状态集",
                         max_length=250,
                         verbose_name="Reference Status Set",
                     ),
@@ -78,7 +78,7 @@ class Migration(migrations.Migration):
                     "model",
                     models.ForeignKey(
                         blank=True,
-                        help_text="Model this state is associated with",
+                        help_text="与此状态关联的模型",
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         to="contenttypes.contenttype",

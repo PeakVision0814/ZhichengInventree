@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                     'metadata',
                     models.JSONField(
                         blank=True,
-                        help_text='JSON metadata field, for use by external plugins',
+                        help_text='JSON元数据字段，供外部插件使用',
                         null=True,
                         verbose_name='Plugin Metadata',
                     ),
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 (
                     'name',
                     models.CharField(
-                        help_text='Name of the selection list',
+                        help_text='选择列表的名称',
                         max_length=100,
                         unique=True,
                         verbose_name='Name',
@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                     'description',
                     models.CharField(
                         blank=True,
-                        help_text='Description of the selection list',
+                        help_text='选择列表的描述',
                         max_length=250,
                         verbose_name='Description',
                     ),
@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
                     'locked',
                     models.BooleanField(
                         default=False,
-                        help_text='Is this selection list locked?',
+                        help_text='这个选择列表是否被锁定?',
                         verbose_name='Locked',
                     ),
                 ),
@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
                     'active',
                     models.BooleanField(
                         default=True,
-                        help_text='Can this selection list be used?',
+                        help_text='这个选择列表可以使用吗?',
                         verbose_name='Active',
                     ),
                 ),
@@ -72,7 +72,7 @@ class Migration(migrations.Migration):
                     'source_string',
                     models.CharField(
                         blank=True,
-                        help_text='Optional string identifying the source used for this list',
+                        help_text='可选字符串，用于标识此列表的来源',
                         max_length=1000,
                         verbose_name='Source String',
                     ),
@@ -81,7 +81,7 @@ class Migration(migrations.Migration):
                     'created',
                     models.DateTimeField(
                         auto_now_add=True,
-                        help_text='Date and time that the selection list was created',
+                        help_text='选择列表的创建日期和时间',
                         verbose_name='Created',
                     ),
                 ),
@@ -89,7 +89,7 @@ class Migration(migrations.Migration):
                     'last_updated',
                     models.DateTimeField(
                         auto_now=True,
-                        help_text='Date and time that the selection list was last updated',
+                        help_text='选择列表最后更新的日期和时间',
                         verbose_name='Last Updated',
                     ),
                 ),
