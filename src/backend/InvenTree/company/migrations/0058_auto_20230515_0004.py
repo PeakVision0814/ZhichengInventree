@@ -15,11 +15,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='manufacturerpart',
             name='tags',
-            field=taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'),
+            field=taggit.managers.TaggableManager(blank=True, help_text='用逗号分隔的标签列表。', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'),
         ),
         migrations.AlterField(
             model_name='supplierpart',
             name='tags',
-            field=taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'),
+            field=taggit.managers.TaggableManager(blank=True, help_text='用逗号分隔的标签列表。', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'),
         ),
     ]
