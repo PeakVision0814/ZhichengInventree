@@ -18,12 +18,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='inventreecustomuserstatemodel',
             name='key',
-            field=models.IntegerField(help_text='Numerical value that will be saved in the models database', verbose_name='Value'),
+            field=models.IntegerField(help_text='将数值保存在模型数据库中', verbose_name='Value'),
         ),
         migrations.AlterField(
             model_name='inventreecustomuserstatemodel',
             name='name',
-            field=models.CharField(help_text='Name of the state', max_length=250, validators=[common.validators.validate_uppercase, common.validators.validate_variable_string], verbose_name='Name'),
+            field=models.CharField(help_text='国家名称', max_length=250, validators=[common.validators.validate_uppercase, common.validators.validate_variable_string], verbose_name='Name'),
         ),
         migrations.AlterUniqueTogether(
             name='inventreecustomuserstatemodel',

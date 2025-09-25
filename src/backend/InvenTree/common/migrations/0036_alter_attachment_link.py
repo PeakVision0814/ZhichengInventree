@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name="link",
             field=InvenTree.fields.InvenTreeURLField(
                 blank=True,
-                help_text="Link to external URL",
+                help_text="外部URL链接",
                 max_length=2000,
                 null=True,
                 verbose_name="Link",

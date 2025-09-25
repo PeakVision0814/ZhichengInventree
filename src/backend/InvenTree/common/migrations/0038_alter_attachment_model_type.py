@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             model_name="attachment",
             name="model_type",
             field=models.CharField(
-                help_text="Target model type for image",
+                help_text="图像的目标模型类型",
                 max_length=100,
                 validators=[common.validators.validate_attachment_model_type],
                 verbose_name="Model type",

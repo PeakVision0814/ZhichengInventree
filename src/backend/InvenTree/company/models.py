@@ -139,21 +139,21 @@ class Company(
     name = models.CharField(
         max_length=100,
         blank=False,
-        help_text=_('Company name'),
+        help_text=_('公司名称'),
         verbose_name=_('Company name'),
     )
 
     description = models.CharField(
         max_length=500,
         verbose_name=_('Company description'),
-        help_text=_('Description of the company'),
+        help_text=_('公司描述'),
         blank=True,
     )
 
     website = InvenTreeURLField(
         blank=True,
         verbose_name=_('Website'),
-        help_text=_('Company website URL'),
+        help_text=_('公司网站网址'),
         max_length=2000,
     )
 
@@ -161,27 +161,21 @@ class Company(
         max_length=50,
         verbose_name=_('Phone number'),
         blank=True,
-        help_text=_('Contact phone number'),
+        help_text=_('联系电话'),
     )
 
     email = models.EmailField(
-        blank=True,
-        null=True,
-        verbose_name=_('Email'),
-        help_text=_('Contact email address'),
+        blank=True, null=True, verbose_name=_('Email'), help_text=_('联系邮箱地址')
     )
 
     contact = models.CharField(
-        max_length=100,
-        verbose_name=_('Contact'),
-        blank=True,
-        help_text=_('Point of contact'),
+        max_length=100, verbose_name=_('Contact'), blank=True, help_text=_('联系人')
     )
 
     link = InvenTreeURLField(
         blank=True,
         verbose_name=_('Link'),
-        help_text=_('Link to external company information'),
+        help_text=_('外部公司信息链接'),
         max_length=2000,
     )
 
@@ -195,7 +189,7 @@ class Company(
     )
 
     active = models.BooleanField(
-        default=True, verbose_name=_('Active'), help_text=_('Is this company active?')
+        default=True, verbose_name=_('Active'), help_text=_('这家公司目前是否活跃?')
     )
 
     is_customer = models.BooleanField(

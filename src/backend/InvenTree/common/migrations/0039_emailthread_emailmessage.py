@@ -16,12 +16,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='EmailThread',
             fields=[
-                ('metadata', models.JSONField(blank=True, help_text='JSON metadata field, for use by external plugins', null=True, verbose_name='Plugin Metadata')),
-                ('key', models.CharField(blank=True, help_text='Unique key for this thread (used to identify the thread)', max_length=250, null=True, verbose_name='Key')),
-                ('global_id', models.UUIDField(default=uuid.uuid4, editable=False, help_text='Unique identifier for this thread', primary_key=True, serialize=False, verbose_name='Global ID')),
-                ('started_internal', models.BooleanField(default=False, help_text='Was this thread started internally?', verbose_name='Started Internal')),
-                ('created', models.DateTimeField(auto_now_add=True, help_text='Date and time that the thread was created', verbose_name='Created')),
-                ('updated', models.DateTimeField(auto_now=True, help_text='Date and time that the thread was last updated', verbose_name='Updated')),
+                ('metadata', models.JSONField(blank=True, help_text='JSON元数据字段，供外部插件使用', null=True, verbose_name='Plugin Metadata')),
+                ('key', models.CharField(blank=True, help_text='此线程的唯一键(用于标识线程)', max_length=250, null=True, verbose_name='Key')),
+                ('global_id', models.UUIDField(default=uuid.uuid4, editable=False, help_text='此线程的唯一标识符', primary_key=True, serialize=False, verbose_name='Global ID')),
+                ('started_internal', models.BooleanField(default=False, help_text='这条线程是否由内部启动?', verbose_name='Started Internal')),
+                ('created', models.DateTimeField(auto_now_add=True, help_text='线程创建的时间和日期', verbose_name='Created')),
+                ('updated', models.DateTimeField(auto_now=True, help_text='线程最后更新的时间和日期', verbose_name='Updated')),
             ],
             options={
                 'verbose_name': 'Email Thread',
@@ -34,9 +34,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='EmailMessage',
             fields=[
-                ('global_id', models.UUIDField(default=uuid.uuid4, editable=False, help_text='Unique identifier for this message', primary_key=True, serialize=False, unique=True, verbose_name='Global ID')),
-                ('message_id_key', models.CharField(blank=True, help_text='Identifier for this message (might be supplied by external system)', max_length=250, null=True, verbose_name='Message ID')),
-                ('thread_id_key', models.CharField(blank=True, help_text='Identifier for this message thread (might be supplied by external system)', max_length=250, null=True, verbose_name='Thread ID')),
+                ('global_id', models.UUIDField(default=uuid.uuid4, editable=False, help_text='此线程的唯一标识符', primary_key=True, serialize=False, unique=True, verbose_name='Global ID')),
+                ('message_id_key', models.CharField(blank=True, help_text='此消息的标识符(可能由外部系统提供)', max_length=250, null=True, verbose_name='Message ID')),
+                ('thread_id_key', models.CharField(blank=True, help_text='此消息线程的标识符(可能由外部系统提供)', max_length=250, null=True, verbose_name='Thread ID')),
                 ('subject', models.CharField(max_length=250)),
                 ('body', models.TextField()),
                 ('to', models.EmailField(max_length=254)),
@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
                 ('error_code', models.CharField(blank=True, max_length=50, null=True)),
                 ('error_message', models.TextField(blank=True, null=True)),
                 ('error_timestamp', models.DateTimeField(blank=True, null=True)),
-                ('thread', models.ForeignKey(blank=True, help_text='Linked thread for this message', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='messages', to='common.emailthread', verbose_name='Thread')),
+                ('thread', models.ForeignKey(blank=True, help_text='此消息的关联线程', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='messages', to='common.emailthread', verbose_name='Thread')),
             ],
             options={
                 'verbose_name': 'Email Message',

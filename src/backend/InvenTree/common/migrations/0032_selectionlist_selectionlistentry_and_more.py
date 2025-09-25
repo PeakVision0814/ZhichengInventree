@@ -115,7 +115,7 @@ class Migration(migrations.Migration):
                 (
                     'value',
                     models.CharField(
-                        help_text='Value of the selection list entry',
+                        help_text='选择列表项的值',
                         max_length=255,
                         verbose_name='Value',
                     ),
@@ -123,7 +123,7 @@ class Migration(migrations.Migration):
                 (
                     'label',
                     models.CharField(
-                        help_text='Label for the selection list entry',
+                        help_text='选择列表项的标签',
                         max_length=255,
                         verbose_name='Label',
                     ),
@@ -132,7 +132,7 @@ class Migration(migrations.Migration):
                     'description',
                     models.CharField(
                         blank=True,
-                        help_text='Description of the selection list entry',
+                        help_text='选择列表项的描述',
                         max_length=250,
                         verbose_name='Description',
                     ),
@@ -141,7 +141,7 @@ class Migration(migrations.Migration):
                     'active',
                     models.BooleanField(
                         default=True,
-                        help_text='Is this selection list entry active?',
+                        help_text='此选择列表项是否处于活动状态?',
                         verbose_name='Active',
                     ),
                 ),
@@ -149,7 +149,7 @@ class Migration(migrations.Migration):
                     'list',
                     models.ForeignKey(
                         blank=True,
-                        help_text='Selection list to which this entry belongs',
+                        help_text='归属的列表',
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name='entries',
@@ -169,7 +169,7 @@ class Migration(migrations.Migration):
             name='default',
             field=models.ForeignKey(
                 blank=True,
-                help_text='Default entry for this selection list',
+                help_text='此选择列表的默认条目',
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
                 to='common.selectionlistentry',
@@ -181,7 +181,7 @@ class Migration(migrations.Migration):
             name='source_plugin',
             field=models.ForeignKey(
                 blank=True,
-                help_text='Plugin which provides the selection list',
+                help_text='提供选择列表的插件',
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
                 to='plugin.pluginconfig',
