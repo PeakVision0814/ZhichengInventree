@@ -87,13 +87,13 @@ class DataImportSession(models.Model):
         max_length=100,
         validators=[importer.validators.validate_importer_model_type],
         verbose_name=_('Model Type'),
-        help_text=_('Target model type for this import session'),
+        help_text=_('本次导入会话的目标模型类型'),
     )
 
     status = models.PositiveIntegerField(
         default=DataImportStatusCode.INITIAL.value,
         choices=DataImportStatusCode.items(),
-        help_text=_('Import status'),
+        help_text=_('导入状态'),
     )
 
     user = models.ForeignKey(
@@ -124,7 +124,7 @@ class DataImportSession(models.Model):
     update_records = models.BooleanField(
         default=False,
         verbose_name=_('Update Existing Records'),
-        help_text=_('If enabled, existing records will be updated with new data'),
+        help_text=_('如果启用, 现有记录将用新数据更新'),
     )
 
     @property
@@ -366,7 +366,7 @@ class DataImportSession(models.Model):
             # If we are updating records, ensure the ID field is included
             fields[self.ID_FIELD_LABEL] = {
                 'label': _('ID'),
-                'help_text': _('Existing database identifier for the record'),
+                'help_text': _('现有数据库记录的标识符'),
                 'type': 'integer',
                 'required': True,
                 'read_only': False,

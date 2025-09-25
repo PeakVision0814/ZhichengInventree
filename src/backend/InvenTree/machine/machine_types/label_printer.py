@@ -208,9 +208,7 @@ class LabelPrinterBaseDriver(BaseDriver):
         """
 
         copies = serializers.IntegerField(
-            default=1,
-            label=_('Copies'),
-            help_text=_('Number of copies to print for each label'),
+            default=1, label=_('Copies'), help_text=_('每个标签的打印份数')
         )
 
 

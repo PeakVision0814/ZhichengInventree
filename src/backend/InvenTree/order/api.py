@@ -295,7 +295,7 @@ class PurchaseOrderFilter(OrderFilter):
         method='filter_part',
     )
 
-    @extend_schema_field(rest_framework.serializers.IntegerField(help_text=_('Part')))
+    @extend_schema_field(rest_framework.serializers.IntegerField(help_text=_('零件')))
     def filter_part(self, queryset, name, part: Part):
         """Filter by provided Part instance."""
         orders = part.purchase_orders()
@@ -309,7 +309,7 @@ class PurchaseOrderFilter(OrderFilter):
     )
 
     @extend_schema_field(
-        rest_framework.serializers.IntegerField(help_text=_('Supplier Part'))
+        rest_framework.serializers.IntegerField(help_text=_('供应商零件'))
     )
     def filter_supplier_part(
         self, queryset, name, supplier_part: company.models.SupplierPart
@@ -334,7 +334,7 @@ class PurchaseOrderFilter(OrderFilter):
     )
 
     @extend_schema_field(
-        rest_framework.serializers.IntegerField(help_text=_('External Build Order'))
+        rest_framework.serializers.IntegerField(help_text=_('外部建造顺序'))
     )
     def filter_external_build(self, queryset, name, build):
         """Filter to only include orders which fill fulfil the provided Build Order.
@@ -558,7 +558,7 @@ class PurchaseOrderLineItemFilter(LineItemFilter):
     )
 
     @extend_schema_field(
-        rest_framework.serializers.IntegerField(help_text=_('Internal Part'))
+        rest_framework.serializers.IntegerField(help_text=_('内部部件'))
     )
     def filter_base_part(self, queryset, name, base_part):
         """Filter by the 'base_part' attribute.
@@ -1179,7 +1179,7 @@ class SalesOrderAllocationFilter(rest_filters.FilterSet):
         queryset=Part.objects.all(), method='filter_part', label=_('Part')
     )
 
-    @extend_schema_field(rest_framework.serializers.IntegerField(help_text=_('Part')))
+    @extend_schema_field(rest_framework.serializers.IntegerField(help_text=_('零件')))
     def filter_part(self, queryset, name, part):
         """Filter by the 'part' attribute.
 
@@ -1227,9 +1227,7 @@ class SalesOrderAllocationFilter(rest_filters.FilterSet):
         method='filter_location',
     )
 
-    @extend_schema_field(
-        rest_framework.serializers.IntegerField(help_text=_('Location'))
-    )
+    @extend_schema_field(rest_framework.serializers.IntegerField(help_text=_('位置')))
     def filter_location(self, queryset, name, location):
         """Filter by the location of the allocated StockItem."""
         locations = location.get_descendants(include_self=True)

@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             model_name="dataimportsession",
             name="model_type",
             field=models.CharField(
-                help_text="Target model type for this import session",
+                help_text="本次导入会话的目标模型类型",
                 max_length=100,
                 validators=[importer.validators.validate_importer_model_type],
                 verbose_name="Model Type",

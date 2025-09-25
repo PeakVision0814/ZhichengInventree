@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name="update_records",
             field=models.BooleanField(
                 default=False,
-                help_text="If enabled, existing records will be updated with new data",
+                help_text="如果启用，现有记录将被更新为新数据",
                 verbose_name="Update Existing Records",
             ),
         ),

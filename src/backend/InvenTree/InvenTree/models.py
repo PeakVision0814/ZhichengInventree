@@ -190,7 +190,7 @@ class MetadataMixin(models.Model):
         blank=True,
         null=True,
         verbose_name=_('Plugin Metadata'),
-        help_text=_('JSON metadata field, for use by external plugins'),
+        help_text=_('JSON元数据字段, 供外部插件使用'),
     )
 
     def get_metadata(self, key: str, backup_value=None):
@@ -847,14 +847,14 @@ class PathStringMixin(models.Model):
         abstract = True
 
     name = models.CharField(
-        blank=False, max_length=100, verbose_name=_('Name'), help_text=_('Name')
+        blank=False, max_length=100, verbose_name=_('Name'), help_text=_('姓名')
     )
 
     description = models.CharField(
         blank=True,
         max_length=250,
         verbose_name=_('Description'),
-        help_text=_('Description (optional)'),
+        help_text=_('描述(可选)'),
     )
 
     # When a category is deleted, graft the children onto its parent
@@ -869,7 +869,7 @@ class PathStringMixin(models.Model):
 
     # The 'pathstring' field is calculated each time the model is saved
     pathstring = models.CharField(
-        blank=True, max_length=250, verbose_name=_('Path'), help_text=_('Path')
+        blank=True, max_length=250, verbose_name=_('Path'), help_text=_('路径')
     )
 
     def save(self, *args, **kwargs):
@@ -1058,7 +1058,7 @@ class InvenTreeNotesMixin(models.Model):
         super().delete(*args, **kwargs)
 
     notes = InvenTree.fields.InvenTreeNotesField(
-        verbose_name=_('Notes'), help_text=_('Markdown notes (optional)')
+        verbose_name=_('Notes'), help_text=_('Markdown笔记(可选)')
     )
 
 
@@ -1090,14 +1090,14 @@ class InvenTreeBarcodeMixin(models.Model):
         blank=True,
         max_length=500,
         verbose_name=_('Barcode Data'),
-        help_text=_('Third party barcode data'),
+        help_text=_('第三方条码数据'),
     )
 
     barcode_hash = models.CharField(
         blank=True,
         max_length=128,
         verbose_name=_('Barcode Hash'),
-        help_text=_('Unique hash of barcode data'),
+        help_text=_('条码数据的唯一哈希值'),
     )
 
     @classmethod

@@ -19,24 +19,19 @@ class MachineConfig(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     name = models.CharField(
-        unique=True,
-        max_length=255,
-        verbose_name=_('Name'),
-        help_text=_('Name of machine'),
+        unique=True, max_length=255, verbose_name=_('Name'), help_text=_('机器名称')
     )
 
     machine_type = models.CharField(
-        max_length=255, verbose_name=_('Machine Type'), help_text=_('Type of machine')
+        max_length=255, verbose_name=_('Machine Type'), help_text=_('机器类型')
     )
 
     driver = models.CharField(
-        max_length=255,
-        verbose_name=_('Driver'),
-        help_text=_('Driver used for the machine'),
+        max_length=255, verbose_name=_('Driver'), help_text=_('机器使用的驱动程序')
     )
 
     active = models.BooleanField(
-        default=True, verbose_name=_('Active'), help_text=_('Machines can be disabled')
+        default=True, verbose_name=_('Active'), help_text=_('机器可以被禁用')
     )
 
     def __str__(self) -> str:

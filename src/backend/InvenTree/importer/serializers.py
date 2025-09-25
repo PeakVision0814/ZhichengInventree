@@ -175,7 +175,7 @@ class DataImportAcceptRowSerializer(serializers.Serializer):
         many=True,
         required=True,
         label=_('Rows'),
-        help_text=_('List of row IDs to accept'),
+        help_text=_('接受的行ID列表'),
     )
 
     def validate_rows(self, rows):

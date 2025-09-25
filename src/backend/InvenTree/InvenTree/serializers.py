@@ -111,7 +111,7 @@ class InvenTreeCurrencySerializer(serializers.ChoiceField):
             kwargs['label'] = _('Currency')
 
         if 'help_text' not in kwargs:
-            kwargs['help_text'] = _('Select currency from available options')
+            kwargs['help_text'] = _('选择可用的货币')
 
         if InvenTree.ready.isGeneratingSchema():
             kwargs['help_text'] = (
@@ -501,7 +501,7 @@ class RemoteImageMixin(metaclass=serializers.SerializerMetaclass):
         allow_blank=True,
         write_only=True,
         label=_('Remote Image'),
-        help_text=_('URL of remote image file'),
+        help_text=_('远程图像文件的URL'),
     )
 
     def validate_remote_image(self, url):

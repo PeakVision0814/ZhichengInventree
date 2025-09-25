@@ -23,10 +23,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('timestamp', models.DateTimeField(auto_now_add=True, verbose_name='Timestamp')),
-                ('data_file', models.FileField(help_text='Data file to import', upload_to='import', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=InvenTree.helpers.GetExportFormats()), importer.validators.validate_data_file], verbose_name='Data File')),
+                ('data_file', models.FileField(help_text='要导入的数据文件', upload_to='import', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=InvenTree.helpers.GetExportFormats()), importer.validators.validate_data_file], verbose_name='Data File')),
                 ('columns', models.JSONField(blank=True, null=True, verbose_name='Columns')),
                 ('model_type', models.CharField(max_length=100, validators=[importer.validators.validate_importer_model_type])),
-                ('status', models.PositiveIntegerField(choices=DataImportStatusCode.items(), default=DataImportStatusCode.INITIAL.value, help_text='Import status')),
+                ('status', models.PositiveIntegerField(choices=DataImportStatusCode.items(), default=DataImportStatusCode.INITIAL.value, help_text='导入状态')),
                 ('field_defaults', models.JSONField(blank=True, null=True, validators=[importer.validators.validate_field_defaults], verbose_name='Field Defaults')),
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='User')),
             ],
