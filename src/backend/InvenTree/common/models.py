@@ -2622,9 +2622,7 @@ class EmailMessage(models.Model):
         blank=True,
         null=True,
         verbose_name=_('Message ID'),
-        help_text=_(
-            'Identifier for this message (might be supplied by external system)'
-        ),
+        help_text=_('此消息的标识符(可能由外部系统提供)'),
     )
     thread_id_key = models.CharField(
         max_length=250,
