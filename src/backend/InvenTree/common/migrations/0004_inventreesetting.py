@@ -14,8 +14,8 @@ class Migration(migrations.Migration):
             name='InvenTreeSetting',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('key', models.CharField(help_text='Settings key', max_length=50, unique=True)),
-                ('value', models.CharField(blank=True, help_text='Settings value', max_length=200)),
+                ('key', models.CharField(help_text='设置键', max_length=50, unique=True)),
+                ('value', models.CharField(blank=True, help_text='设置值', max_length=200)),
             ],
         ),
     ]

@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='inventreesetting',
             name='description',
-            field=models.CharField(blank=True, help_text='Settings description', max_length=200),
+            field=models.CharField(blank=True, help_text='设置描述', max_length=200),
         ),
         migrations.AlterField(
             model_name='inventreesetting',
             name='key',
-            field=models.CharField(help_text='Settings key', max_length=50, unique=True),
+            field=models.CharField(help_text='设置键', max_length=50, unique=True),
         ),
     ]

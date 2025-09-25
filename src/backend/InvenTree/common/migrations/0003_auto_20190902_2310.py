@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='currency',
             name='value',
-            field=models.DecimalField(decimal_places=5, default=1.0, help_text='Currency Value', max_digits=10, validators=[django.core.validators.MinValueValidator(1e-05), django.core.validators.MaxValueValidator(100000)]),
+            field=models.DecimalField(decimal_places=5, default=1.0, help_text='货币价值', max_digits=10, validators=[django.core.validators.MinValueValidator(1e-05), django.core.validators.MaxValueValidator(100000)]),
         ),
     ]
