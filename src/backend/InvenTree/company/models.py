@@ -195,19 +195,19 @@ class Company(
     is_customer = models.BooleanField(
         default=False,
         verbose_name=_('Is customer'),
-        help_text=_('Do you sell items to this company?'),
+        help_text=_('您是否向该公司出售商品?'),
     )
 
     is_supplier = models.BooleanField(
         default=True,
         verbose_name=_('Is supplier'),
-        help_text=_('Do you purchase items from this company?'),
+        help_text=_('您是否从这家公司购买商品?'),
     )
 
     is_manufacturer = models.BooleanField(
         default=False,
         verbose_name=_('Is manufacturer'),
-        help_text=_('Does this company manufacture parts?'),
+        help_text=_('这家公司制造零件吗?'),
     )
 
     currency = models.CharField(
@@ -215,15 +215,12 @@ class Company(
         verbose_name=_('Currency'),
         blank=True,
         default=currency_code_default,
-        help_text=_('Default currency used for this company'),
+        help_text=_('此公司的默认货币'),
         validators=[InvenTree.validators.validate_currency_code],
     )
 
     tax_id = models.CharField(
-        max_length=50,
-        blank=True,
-        verbose_name=_('Tax ID'),
-        help_text=_('Company Tax ID'),
+        max_length=50, blank=True, verbose_name=_('Tax ID'), help_text=_('公司税号')
     )
 
     @property
@@ -403,82 +400,71 @@ class Address(InvenTree.models.InvenTreeModel):
         related_name='addresses',
         on_delete=models.CASCADE,
         verbose_name=_('Company'),
-        help_text=_('Select company'),
+        help_text=_('选择公司'),
     )
 
     title = models.CharField(
         max_length=100,
         verbose_name=_('Address title'),
-        help_text=_('Title describing the address entry'),
+        help_text=_('地址输入的标题描述'),
         blank=False,
     )
 
     primary = models.BooleanField(
-        default=False,
-        verbose_name=_('Primary address'),
-        help_text=_('Set as primary address'),
+        default=False, verbose_name=_('Primary address'), help_text=_('设为默认地址')
     )
 
     line1 = models.CharField(
-        max_length=50,
-        verbose_name=_('Line 1'),
-        help_text=_('Address line 1'),
-        blank=True,
+        max_length=50, verbose_name=_('Line 1'), help_text=_('地址行1'), blank=True
     )
 
     line2 = models.CharField(
-        max_length=50,
-        verbose_name=_('Line 2'),
-        help_text=_('Address line 2'),
-        blank=True,
+        max_length=50, verbose_name=_('Line 2'), help_text=_('地址行2'), blank=True
     )
 
     postal_code = models.CharField(
         max_length=10,
         verbose_name=_('Postal code'),
-        help_text=_('Postal code'),
+        help_text=_('邮政编码'),
         blank=True,
     )
 
     postal_city = models.CharField(
         max_length=50,
         verbose_name=_('City/Region'),
-        help_text=_('Postal code city/region'),
+        help_text=_('邮政编码城市/地区'),
         blank=True,
     )
 
     province = models.CharField(
         max_length=50,
         verbose_name=_('State/Province'),
-        help_text=_('State or province'),
+        help_text=_('州或省'),
         blank=True,
     )
 
     country = models.CharField(
-        max_length=50,
-        verbose_name=_('Country'),
-        help_text=_('Address country'),
-        blank=True,
+        max_length=50, verbose_name=_('Country'), help_text=_('地址国家'), blank=True
     )
 
     shipping_notes = models.CharField(
         max_length=100,
         verbose_name=_('Courier shipping notes'),
-        help_text=_('Notes for shipping courier'),
+        help_text=_('快递运输注意事项'),
         blank=True,
     )
 
     internal_shipping_notes = models.CharField(
         max_length=100,
         verbose_name=_('Internal shipping notes'),
-        help_text=_('Shipping notes for internal use'),
+        help_text=_('内部使用运输说明'),
         blank=True,
     )
 
     link = InvenTreeURLField(
         blank=True,
         verbose_name=_('Link'),
-        help_text=_('Link to address information (external)'),
+        help_text=_('链接到地址信息(外部)'),
         max_length=2000,
     )
 
@@ -521,7 +507,7 @@ class ManufacturerPart(
         related_name='manufacturer_parts',
         verbose_name=_('Base Part'),
         limit_choices_to={'purchaseable': True},
-        help_text=_('Select part'),
+        help_text=_('选择部件'),
     )
 
     manufacturer = models.ForeignKey(
@@ -531,21 +517,18 @@ class ManufacturerPart(
         related_name='manufactured_parts',
         limit_choices_to={'is_manufacturer': True},
         verbose_name=_('Manufacturer'),
-        help_text=_('Select manufacturer'),
+        help_text=_('选择制造商'),
     )
 
     MPN = models.CharField(
-        null=True,
-        max_length=100,
-        verbose_name=_('MPN'),
-        help_text=_('Manufacturer Part Number'),
+        null=True, max_length=100, verbose_name=_('MPN'), help_text=_('制造商零件编号')
     )
 
     link = InvenTreeURLField(
         blank=True,
         null=True,
         verbose_name=_('Link'),
-        help_text=_('URL for external manufacturer part link'),
+        help_text=_('外部制造商零件链接的URL'),
         max_length=2000,
     )
 
@@ -554,7 +537,7 @@ class ManufacturerPart(
         blank=True,
         null=True,
         verbose_name=_('Description'),
-        help_text=_('Manufacturer part description'),
+        help_text=_('制造商零件描述'),
     )
 
     tags = TaggableManager(blank=True)
@@ -623,17 +606,11 @@ class ManufacturerPartParameter(InvenTree.models.InvenTreeModel):
     )
 
     name = models.CharField(
-        max_length=500,
-        blank=False,
-        verbose_name=_('Name'),
-        help_text=_('Parameter name'),
+        max_length=500, blank=False, verbose_name=_('Name'), help_text=_('参数名称')
     )
 
     value = models.CharField(
-        max_length=500,
-        blank=False,
-        verbose_name=_('Value'),
-        help_text=_('Parameter value'),
+        max_length=500, blank=False, verbose_name=_('Value'), help_text=_('参数值')
     )
 
     units = models.CharField(
@@ -641,7 +618,7 @@ class ManufacturerPartParameter(InvenTree.models.InvenTreeModel):
         blank=True,
         null=True,
         verbose_name=_('Units'),
-        help_text=_('Parameter units'),
+        help_text=_('参数单位'),
     )
 
 
@@ -811,7 +788,7 @@ class SupplierPart(
         related_name='supplier_parts',
         verbose_name=_('Base Part'),
         limit_choices_to={'purchaseable': True},
-        help_text=_('Select part'),
+        help_text=_('选择部分'),
     )
 
     supplier = models.ForeignKey(
@@ -820,19 +797,19 @@ class SupplierPart(
         related_name='supplied_parts',
         limit_choices_to={'is_supplier': True},
         verbose_name=_('Supplier'),
-        help_text=_('Select supplier'),
+        help_text=_('选择供应商'),
     )
 
     SKU = models.CharField(
         max_length=100,
         verbose_name=__('SKU = Stock Keeping Unit (supplier part number)', 'SKU'),
-        help_text=_('Supplier stock keeping unit'),
+        help_text=_('供应商库存单位'),
     )
 
     active = models.BooleanField(
         default=True,
         verbose_name=_('Active'),
-        help_text=_('Is this supplier part active?'),
+        help_text=_('这个供应商是否处于活动状态?'),
     )
 
     manufacturer_part = models.ForeignKey(
@@ -842,14 +819,14 @@ class SupplierPart(
         null=True,
         related_name='supplier_parts',
         verbose_name=_('Manufacturer Part'),
-        help_text=_('Select manufacturer part'),
+        help_text=_('选择制造商零件'),
     )
 
     link = InvenTreeURLField(
         blank=True,
         null=True,
         verbose_name=_('Link'),
-        help_text=_('URL for external supplier part link'),
+        help_text=_('外部供应商零件链接的URL'),
         max_length=2000,
     )
 
@@ -858,7 +835,7 @@ class SupplierPart(
         blank=True,
         null=True,
         verbose_name=_('Description'),
-        help_text=_('Supplier part description'),
+        help_text=_('供应商零件描述'),
     )
 
     note = models.CharField(
@@ -866,7 +843,7 @@ class SupplierPart(
         blank=True,
         null=True,
         verbose_name=_('Note'),
-        help_text=_('Notes'),
+        help_text=_('备注'),
     )
 
     base_cost = models.DecimalField(
@@ -875,7 +852,7 @@ class SupplierPart(
         default=0,
         validators=[MinValueValidator(0)],
         verbose_name=_('base cost'),
-        help_text=_('Minimum charge (e.g. stocking fee)'),
+        help_text=_('最低收费(例如库存费)'),
     )
 
     packaging = models.CharField(
@@ -883,15 +860,13 @@ class SupplierPart(
         blank=True,
         null=True,
         verbose_name=_('Packaging'),
-        help_text=_('Part packaging'),
+        help_text=_('部件包装'),
     )
 
     pack_quantity = models.CharField(
         max_length=25,
         verbose_name=_('Pack Quantity'),
-        help_text=_(
-            'Total quantity supplied in a single pack. Leave empty for single items.'
-        ),
+        help_text=_('单个包装中供应的总数量. 若为单个商品, 请留空.'),
         blank=True,
     )
 
