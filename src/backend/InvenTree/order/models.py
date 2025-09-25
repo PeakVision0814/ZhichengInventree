@@ -2871,7 +2871,7 @@ class ReturnOrderLineItem(StatusCodeMixin, OrderLineItem):
         on_delete=models.CASCADE,
         related_name='lines',
         verbose_name=_('Order'),
-        help_text=_('Return Order'),
+        help_text=_('退货订单'),
     )
 
     item = models.ForeignKey(
@@ -2879,12 +2879,12 @@ class ReturnOrderLineItem(StatusCodeMixin, OrderLineItem):
         on_delete=models.CASCADE,
         related_name='return_order_lines',
         verbose_name=_('Item'),
-        help_text=_('Select item to return from customer'),
+        help_text=_('选择要从客户退回的物品'),
     )
 
     quantity = models.DecimalField(
         verbose_name=('Quantity'),
-        help_text=('Quantity to return'),
+        help_text=('要退回的数量'),
         max_digits=15,
         decimal_places=5,
         validators=[MinValueValidator(0)],
@@ -2895,7 +2895,7 @@ class ReturnOrderLineItem(StatusCodeMixin, OrderLineItem):
         null=True,
         blank=True,
         verbose_name=_('Received Date'),
-        help_text=_('The date this this return item was received'),
+        help_text=_('收到此退货物品的日期'),
     )
 
     @property
@@ -2908,14 +2908,14 @@ class ReturnOrderLineItem(StatusCodeMixin, OrderLineItem):
         choices=ReturnOrderLineStatus.items(),
         status_class=ReturnOrderLineStatus,
         verbose_name=_('Outcome'),
-        help_text=_('Outcome for this line item'),
+        help_text=_('本条目结果'),
     )
 
     price = InvenTreeModelMoneyField(
         null=True,
         blank=True,
         verbose_name=_('Price'),
-        help_text=_('Cost associated with return or repair for this line item'),
+        help_text=_('此行项目退货或维修所产生的费用'),
     )
 
 
@@ -2937,5 +2937,5 @@ class ReturnOrderExtraLine(OrderExtraLine):
         on_delete=models.CASCADE,
         related_name='extra_lines',
         verbose_name=_('Order'),
-        help_text=_('Return Order'),
+        help_text=_('退货单'),
     )
