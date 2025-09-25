@@ -140,11 +140,7 @@ class GlobalSettingsSerializer(SettingsSerializer):
         ]
 
     read_only = serializers.SerializerMethodField(
-        read_only=True,
-        help_text=_(
-            'Indicates if the setting is overridden by an environment variable'
-        ),
-        label=_('Override'),
+        read_only=True, help_text=_('表示该设置是否被环境变量覆盖'), label=_('Override')
     )
 
     def get_read_only(self, obj) -> bool:
@@ -484,7 +480,7 @@ class TaskOverviewSerializer(serializers.Serializer):
 
     is_running = serializers.BooleanField(
         label=_('Is Running'),
-        help_text='Boolean value to indicate if the background worker process is running.',
+        help_text='布尔值, 指示后台工作进程是否正在运行。',
         read_only=True,
     )
 

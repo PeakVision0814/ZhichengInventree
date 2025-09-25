@@ -2629,9 +2629,7 @@ class EmailMessage(models.Model):
         blank=True,
         null=True,
         verbose_name=_('Thread ID'),
-        help_text=_(
-            'Identifier for this message thread (might be supplied by external system)'
-        ),
+        help_text=_('此消息线程的标识符(可能由外部系统提供)'),
     )
     thread = models.ForeignKey(
         'EmailThread',
@@ -2640,7 +2638,7 @@ class EmailMessage(models.Model):
         null=True,
         related_name='messages',
         verbose_name=_('Thread'),
-        help_text=_('Linked thread for this message'),
+        help_text=_('关联消息的线程'),
     )
     subject = models.CharField(max_length=250, blank=False, null=False)
     body = models.TextField(blank=False, null=False)
@@ -2708,11 +2706,11 @@ class EmailThread(InvenTree.models.InvenTreeMetadataModel):
         verbose_name=_('Key'),
         null=True,
         blank=True,
-        help_text=_('Unique key for this thread (used to identify the thread)'),
+        help_text=_('此线程的唯一键(用于标识线程)'),
     )
     global_id = models.UUIDField(
         verbose_name=_('Global ID'),
-        help_text=_('Unique identifier for this thread'),
+        help_text=_('此线程的唯一标识符'),
         primary_key=True,
         default=uuid.uuid4,
         editable=False,
@@ -2720,17 +2718,17 @@ class EmailThread(InvenTree.models.InvenTreeMetadataModel):
     started_internal = models.BooleanField(
         default=False,
         verbose_name=_('Started Internal'),
-        help_text=_('Was this thread started internally?'),
+        help_text=_('这个线程是内部发起的吗?'),
     )
     created = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_('Created'),
-        help_text=_('Date and time that the thread was created'),
+        help_text=_('线程创建的日期和时间'),
     )
     updated = models.DateTimeField(
         auto_now=True,
         verbose_name=_('Updated'),
-        help_text=_('Date and time that the thread was last updated'),
+        help_text=_('线程上次更新的日期和时间'),
     )
 
 
