@@ -1,19 +1,19 @@
 ---
-title: Machine Mixin
+title: 机器混合(Machine Mixin)
 ---
 
-## MachineDriverMixin
+## 机器驱动混合
 
-The `MachineDriverMixin` class is used to implement custom machine drivers (or machine types) in InvenTree.
+`MachineDriverMixin` 类用于在 InvenTree 中实现自定义机器驱动程序（或机器类型）。
 
-InvenTree supports integration with [external machines](../machines/overview.md), through the use of plugin-supplied device drivers.
+InvenTree 支持通过使用插件提供的设备驱动程序与[外部机器](../machines/overview.md)集成。
 
-### get_machine_drivers
+### 获取机器驱动程序
 
-To register custom machine driver(s), the `get_machine_drivers` method must be implemented. This method should return a list of machine driver classes that the plugin supports.
+要注册自定义机器驱动程序，必须实现 `get_machine_drivers` 方法。此方法应返回插件支持的机器驱动程序类列表。
 
 ::: plugin.base.integration.MachineMixin.MachineDriverMixin.get_machine_drivers
-    options:
+    选项：
       show_bases: False
       show_root_heading: False
       show_root_toc_entry: False
@@ -22,14 +22,14 @@ To register custom machine driver(s), the `get_machine_drivers` method must be i
       extra:
         show_source: True
 
-The default implementation returns an empty list, meaning no custom machine drivers are registered.
+默认实现返回一个空列表，表示没有注册自定义机器驱动程序。
 
-### get_machine_types
+### 获取机器类型
 
-To register custom machine type(s), the `get_machine_types` method must be implemented. This method should return a list of machine type classes that the plugin supports.
+要注册自定义机器类型，必须实现 `get_machine_types` 方法。此方法应返回插件支持的机器类型类列表。
 
 ::: plugin.base.integration.MachineMixin.MachineDriverMixin.get_machine_types
-    options:
+    选项：
       show_bases: False
       show_root_heading: False
       show_root_toc_entry: False
@@ -38,14 +38,14 @@ To register custom machine type(s), the `get_machine_types` method must be imple
       extra:
         show_source: True
 
-The default implementation returns an empty list, meaning no custom machine types are registered.
+默认实现返回一个空列表，表示没有注册自定义机器类型。
 
-## Sample Plugin
+## 示例插件
 
-A sample plugin is provided which implements a simple [label printing](../machines/label_printer.md) machine driver:
+提供了一个示例插件，它实现了一个简单的[标签打印](../machines/label_printer.md)机器驱动程序：
 
 ::: plugin.samples.machines.sample_printer.SamplePrinterMachine
-    options:
+    选项：
         show_bases: False
         show_root_heading: False
         show_root_toc_entry: False

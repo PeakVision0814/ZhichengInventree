@@ -1,11 +1,11 @@
 ---
-title: Navigation Mixin
+title: 导航混合(Navigation Mixin)
 ---
 
-## NavigationMixin
+## 导航混合
 
-Use the class constant `NAVIGATION` for a array of links that should be added to InvenTrees navigation header.
-The array must contain at least one dict that at least define a name and a link for each element. The link must be formatted for a URL pattern name lookup - links to external sites are not possible directly. The optional icon must be a class reference to an icon.
+使用类常量 `NAVIGATION` 定义一个链接数组，这些链接应添加到 InvenTrees 导航标题中。
+该数组必须至少包含一个字典，其中至少为每个元素定义一个名称和一个链接。链接必须格式化为 URL 模式名称查找——不能直接链接到外部站点。可选的图标必须是对图标的类引用。
 
 ``` python
 class MyNavigationPlugin(NavigationMixin, InvenTreePlugin):
@@ -16,8 +16,8 @@ class MyNavigationPlugin(NavigationMixin, InvenTreePlugin):
         {'name': 'SampleIntegration', 'link': 'plugin:sample:hi', 'icon': 'ti ti-box'},
     ]
 
-    NAVIGATION_TAB_NAME = "Sample Nav"
+    NAVIGATION_TAB_NAME = "示例导航"
     NAVIGATION_TAB_ICON = 'ti ti-plus-circle'
 ```
 
-The optional class constants `NAVIGATION_TAB_NAME` and `NAVIGATION_TAB_ICON` can be used to change the name and icon for the parent navigation node.
+可选的类常量 `NAVIGATION_TAB_NAME` 和 `NAVIGATION_TAB_ICON` 可用于更改父导航节点的名称和图标。

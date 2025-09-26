@@ -1,34 +1,34 @@
 ---
-title: Locate Mixin
+title: 定位混合类(Locate Mixin)
 ---
 
-## LocateMixin
+## 定位混合类
 
-The `LocateMixin` class enables plugins to "locate" stock items (or stock locations) via an entirely custom method.
+`LocateMixin` 类允许插件通过完全自定义的方法“定位”库存物品（或库存地点）。
 
-For example, a warehouse could be arranged with each individual 'parts bin' having an audio-visual indicator (e.g. RGB LED and buzzer). "Locating" a particular stock item causes the LED to flash and the buzzer to sound.
+例如，仓库可以这样布置：每个单独的“零件箱”都有一个视听指示器（例如，RGB LED 和蜂鸣器）。“定位”特定的库存物品会导致 LED 闪烁，蜂鸣器发出声音。
 
-Another example might be a parts retrieval system, where "locating" a stock item causes the stock item to be "delivered" to the user via a conveyor.
+另一个例子可能是零件检索系统，其中“定位”库存物品会导致该库存物品通过传送带“交付”给用户。
 
-The possibilities are endless!
+可能性是无限的！
 
-### Web Integration
+### Web 集成
 
-{{ image("plugin/web_locate.png", "Locate stock item from web interface", maxheight="400px") }}
+{{ image("plugin/web_locate.png", "从 Web 界面定位库存物品", maxheight="400px") }}
 
-### App Integration
+### App 集成
 
-If a locate plugin is installed and activated, the [InvenTree mobile app](../../app/index.md) displays a button for locating a StockItem or StockLocation (see below):
+如果安装并激活了定位插件，[InvenTree 移动应用程序](../../app/index.md) 会显示一个用于定位库存物品或库存位置的按钮（见下文）：
 
-{{ image("plugin/app_locate.png", "Locate stock item from app", maxheight="400px") }}
+{{ image("plugin/app_locate.png", "从 App 定位库存物品", maxheight="400px") }}
 
-### Implementation
+### 实施
 
-Refer to the [InvenTree source code]({{ sourcefile("src/backend/InvenTree/plugin/samples/locate/locate_sample.py") }}) for a simple implementation example.
+请参考 [InvenTree 源代码]({{ sourcefile("src/backend/InvenTree/plugin/samples/locate/locate_sample.py") }}) 获取一个简单的实现示例。
 
-### Sample Plugin
+### 示例插件
 
-A simple example is provided in the InvenTree code base:
+InvenTree 代码库中提供了一个简单的例子：
 
 ::: plugin.samples.locate.locate_sample.SampleLocatePlugin
     options:

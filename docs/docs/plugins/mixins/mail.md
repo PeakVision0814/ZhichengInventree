@@ -1,14 +1,14 @@
 ---
-title: Mail Mixin
+title: 邮件混合(Mail Mixin)
 ---
 
-## MailMixin
+## 邮件混合
 
-The `MailMixin` class provides basic functionality for processing in- and outgoing mails.
+`MailMixin` 类提供了处理传入和传出邮件的基本功能。
 
-### Sample Plugin
+### 示例插件
 
-The following example demonstrates how to use the `MailMixin` class to process incoming and outgoing emails:
+以下示例演示了如何使用 `MailMixin` 类来处理传入和传出电子邮件：
 
 ::: plugin.samples.mail.mail_sample.MailPluginSample
     options:

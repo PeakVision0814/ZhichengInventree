@@ -1,22 +1,22 @@
 ---
-title: Report Mixin
+title: 报告混入（Report Mixin）
 ---
 
-## ReportMixin
+## 报告混入
 
-The `ReportMixin` class provides a plugin with the ability to extend the functionality of custom [report templates](../../report/report.md). A plugin which implements the ReportMixin mixin class can add custom context data to a report template for rendering.
+`ReportMixin` 类为插件提供了扩展自定义[报告模板](../../report/report.md)功能的能力。实现 ReportMixin 混入类的插件可以向报告模板添加自定义上下文数据以进行渲染。
 
-### Add Report Context
+### 添加报告上下文
 
-A plugin which implements the ReportMixin mixin can define the `add_report_context` method, allowing custom context data to be added to a report template at time of printing.
+实现 ReportMixin 混入的插件可以定义 `add_report_context` 方法，允许在打印时将自定义上下文数据添加到报告模板中。
 
-### Add Label Context
+### 添加标签上下文
 
-Additionally the `add_label_context` method, allowing custom context data to be added to a label template at time of printing.
+此外，`add_label_context` 方法允许在打印时将自定义上下文数据添加到标签模板中。
 
-### Sample Plugin
+### 示例插件
 
-A sample plugin which provides additional context data to the report templates is available:
+一个为报告模板提供额外上下文数据的示例插件如下：
 
 ::: plugin.samples.integration.report_plugin_sample.SampleReportPlugin
     options:
