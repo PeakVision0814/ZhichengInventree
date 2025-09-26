@@ -208,15 +208,15 @@ class PartCategory(
 
     @property
     def item_count(self):
-        """Return the number of parts contained in this PartCategory."""
+        """返回此零件类别包含的零件数量."""
         return self.partcount()
 
     def get_items(self, cascade=False):
-        """Return a queryset containing the parts which exist in this category."""
+        """返回一个包含该类别的零件的查询集."""
         return self.get_parts(cascade=cascade)
 
     def partcount(self, cascade=True, active=False):
-        """Return the total part count under this category (including children of child categories)."""
+        """返回此类别下的总零件数(包括子类别的子类别)."""
         query = self.get_parts(cascade=cascade)
 
         if active:
@@ -225,7 +225,7 @@ class PartCategory(
         return query.count()
 
     def prefetch_parts_parameters(self, cascade=True):
-        """Prefectch parts parameters."""
+        """预取部分参数."""
         return (
             self.get_parts(cascade=cascade)
             .prefetch_related('parameters', 'parameters__template')
@@ -233,7 +233,7 @@ class PartCategory(
         )
 
     def get_unique_parameters(self, cascade=True, prefetch=None):
-        """Get all unique parameter names for all parts from this category."""
+        """获取该类别中所有部件的所有唯一参数名称."""
         unique_parameters_names = []
 
         parts = prefetch or self.prefetch_parts_parameters(cascade=cascade)
@@ -247,7 +247,7 @@ class PartCategory(
         return sorted(unique_parameters_names)
 
     def get_parts_parameters(self, cascade=True, prefetch=None):
-        """Get all parameter names and values for all parts from this category."""
+        """获取此类别中所有部件的参数名称和值."""
         category_parameters = []
 
         parts = prefetch or self.prefetch_parts_parameters(cascade=cascade)
@@ -273,7 +273,7 @@ class PartCategory(
 
     @classmethod
     def get_parent_categories(cls):
-        """Return tuple list of parent (root) categories."""
+        """返回父(根)类别的元组列表."""
         # Get root nodes
         root_categories = cls.objects.filter(level=0)
 
