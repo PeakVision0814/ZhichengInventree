@@ -1,20 +1,20 @@
 ---
-title: Data Export Mixin
+title: 数据导出 Mixin（Data Export Mixin）
 ---
 
 ## DataExportMixin
 
-The `DataExportMixin` class provides a plugin with the ability to customize the data export process. The [InvenTree API](../../api/index.md) provides an integrated method to export a dataset to a tabulated file. The default export process is generic, and simply exports the data presented via the API in a tabulated file format.
+`DataExportMixin` 类提供了一个插件，使其能够自定义数据导出过程。[InvenTree API](../../api/index.md) 提供了一种集成方法，可以将数据集导出到表格文件中。默认的导出过程是通用的，只是简单地将通过 API 呈现的数据导出为表格文件格式。
 
-Custom data export plugins allow this process to be adjusted:
+自定义数据导出插件允许调整此过程：
 
-- Data columns can be added or removed
-- Rows can be removed or added
-- Custom calculations or annotations can be performed.
+- 可以添加或删除数据列
+- 可以删除或添加行
+- 可以执行自定义计算或注释。
 
-### Supported Export Types
+### 支持的导出类型
 
-Each plugin can dictate which datasets are supported using the `supports_export` method. This allows a plugin to dynamically specify whether it can be selected by the user for a given export session.
+每个插件都可以使用 `supports_export` 方法来指示支持哪些数据集。这允许插件动态指定是否可以由用户为给定的导出会话选择它。
 
 ::: plugin.base.integration.DataExport.DataExportMixin.supports_export
     options:
@@ -26,11 +26,11 @@ Each plugin can dictate which datasets are supported using the `supports_export`
       extra:
         show_source: True
 
-The default implementation returns `True` for all data types.
+默认实现对所有数据类型返回 `True`。
 
-### Filename Generation
+### 文件名生成
 
-The `generate_filename` method constructs a filename for the exported file.
+`generate_filename` 方法为导出的文件构造文件名。
 
 ::: plugin.base.integration.DataExport.DataExportMixin.generate_filename
     options:
@@ -42,9 +42,9 @@ The `generate_filename` method constructs a filename for the exported file.
       extra:
         show_source: True
 
-### Adjust Columns
+### 调整列
 
-The `update_headers` method allows the plugin to adjust the columns selected to be exported to the file.
+`update_headers` 方法允许插件调整选择要导出到文件的列。
 
 ::: plugin.base.integration.DataExport.DataExportMixin.update_headers
     options:
@@ -56,9 +56,9 @@ The `update_headers` method allows the plugin to adjust the columns selected to 
       extra:
         show_source: True
 
-### Queryset Filtering
+### Queryset 过滤
 
-The `filter_queryset` method allows the plugin to provide custom filtering to the database query, before it is exported.
+`filter_queryset` 方法允许插件在导出之前，为数据库查询提供自定义过滤。
 
 ::: plugin.base.integration.DataExport.DataExportMixin.filter_queryset
     options:
@@ -70,9 +70,9 @@ The `filter_queryset` method allows the plugin to provide custom filtering to th
       extra:
         show_source: True
 
-### Export Data
+### 导出数据
 
-The `export_data` method performs the step of transforming a [Django QuerySet]({% include "django.html" %}/ref/models/querysets/) into a dataset which can be processed by the [tablib](https://tablib.readthedocs.io/en/stable/) library.
+`export_data` 方法执行将 [Django QuerySet]({% include "django.html" %}/ref/models/querysets/) 转换为可由 [tablib](https://tablib.readthedocs.io/en/stable/) 库处理的数据集的步骤。
 
 ::: plugin.base.integration.DataExport.DataExportMixin.export_data
     options:
@@ -84,21 +84,21 @@ The `export_data` method performs the step of transforming a [Django QuerySet]({
       extra:
         show_source: True
 
-Note that the default implementation simply uses the builtin tabulation functionality of the provided serializer class. In most cases, this will be sufficient.
+请注意，默认实现仅使用提供的序列化器类的内置制表功能。在大多数情况下，这已足够。
 
-## Custom Export Options
+## 自定义导出选项
 
-To provide the user with custom options to control the behavior of the export process *at the time of export*, the plugin can define a custom serializer class.
+为了向用户提供自定义选项，以在 *导出时* 控制导出过程的行为，插件可以定义自定义序列化器类。
 
-To enable this feature, define an `ExportOptionsSerializer` attribute on the plugin class which points to a DRF serializer class. Refer to the examples below for more information.
+要启用此功能，请在插件类上定义一个 `ExportOptionsSerializer` 属性，该属性指向 DRF 序列化器类。有关更多信息，请参阅以下示例。
 
-### Builtin Exporter Classes
+### 内置导出器类
 
-InvenTree provides the following builtin data exporter classes.
+InvenTree 提供了以下内置数据导出器类。
 
 ### InvenTreeExporter
 
-A generic exporter class which simply serializes the API output into a data file.
+一个通用的导出器类，它只是将 API 输出序列化到数据文件中。
 
 ::: plugin.builtin.exporter.inventree_exporter.InvenTreeExporter
     options:
@@ -108,9 +108,9 @@ A generic exporter class which simply serializes the API output into a data file
         show_source: True
         members: []
 
-### BOM Exporter
+### BOM 导出器
 
-A custom exporter which only supports [bill of materials](../../manufacturing/bom.md) exporting.
+一个自定义导出器，仅支持 [物料清单](../../manufacturing/bom.md) 导出。
 
 ::: plugin.builtin.exporter.bom_exporter.BomExporterPlugin
     options:
@@ -120,8 +120,8 @@ A custom exporter which only supports [bill of materials](../../manufacturing/bo
         show_source: True
         members: []
 
-## Source Code
+## 源代码
 
-The full source code of the `DataExportMixin` class:
+`DataExportMixin` 类的完整源代码：
 
 {{ includefile("src/backend/InvenTree/plugin/base/integration/DataExport.py", title="DataExportMixin") }}

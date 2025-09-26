@@ -1,92 +1,92 @@
 ---
-title: Event Mixin
+title: 事件混入（Event Mixin）
 ---
 
 ## EventMixin
 
-The `EventMixin` class enables plugins to respond to certain triggered events.
+`EventMixin` 类使插件能够响应某些触发的事件。
 
-When a certain (server-side) event occurs, the background worker passes the event information to any plugins which inherit from the `EventMixin` base class.
+当发生某个（服务器端）事件时，后台工作程序会将事件信息传递给任何继承自 `EventMixin` 基类的插件。
 
-!!! tip "Enable Event Integration"
-    The *Enable Event Integration* option must first be enabled to allow plugins to respond to events.
+!!! tip "启用事件集成"
+    必须首先启用*启用事件集成*选项，以允许插件响应事件。
 
-{{ image("plugin/enable_events.png", "Enable event integration") }}
+{{ image("plugin/enable_events.png", "启用事件集成") }}
 
-## Events
+## 事件
 
-Events are passed through using a string identifier, e.g. `build.completed`
+事件使用字符串标识符传递，例如 `build.completed`
 
-The arguments (and keyword arguments) passed to the receiving function depend entirely on the type of event.
+传递给接收函数的参数（和关键字参数）完全取决于事件的类型。
 
-!!! info "Read the Code"
-    Implementing a response to a particular event requires a working knowledge of the InvenTree code base, especially related to that event being received. While the *available* events are documented here, to implement a response to a particular event you will need to read the code to understand what data is passed to the event handler.
+!!! info "阅读代码"
+    实现对特定事件的响应需要对 InvenTree 代码库有一定了解，特别是与接收到的该事件相关的代码。虽然此处记录了*可用*事件，但要实现对特定事件的响应，您需要阅读代码以了解传递给事件处理程序的数据。
 
-## Generic Events
+## 通用事件
 
-There are a number of *generic* events which are generated on certain database actions. Whenever a database object is created, updated, or deleted, a corresponding event is generated.
+在某些数据库操作上会生成许多*通用*事件。 每当在数据库中创建、更新或删除数据库对象时，都会生成相应的事件。
 
-#### Object Created
+#### 对象已创建
 
-When a new object is created in the database, an event is generated with the following event name: `<app>_<model>.created`, where `<model>` is the name of the model class (e.g. `part`, `stockitem`, etc).
+当在数据库中创建一个新对象时，会生成一个事件，其事件名称如下：`<app>_<model>.created`，其中 `<model>` 是模型类的名称（例如 `part`、`stockitem` 等）。
 
-The event is called with the following keywords arguments:
+该事件使用以下关键字参数调用：
 
-- `model`: The model class of the object that was created
-- `id`: The primary key of the object that was created
+- `model`：已创建对象的模型类
+- `id`：已创建对象的主键
 
-**Example:**
+**示例：**
 
-A new `Part` object is created with primary key `123`, resulting in the following event being generated:
+创建一个新的 `Part` 对象，其主键为 `123`，从而导致生成以下事件：
 
 ```python
 trigger_event('part_part.created', model='part', id=123)
 ```
 
-### Object Updated
+### 对象已更新
 
-When an object is updated in the database, an event is generated with the following event name: `<app>_<model>.saved`, where `<model>` is the name of the model class (e.g. `part`, `stockitem`, etc).
+当在数据库中更新一个对象时，会生成一个事件，其事件名称如下：`<app>_<model>.saved`，其中 `<model>` 是模型类的名称（例如 `part`、`stockitem` 等）。
 
-The event is called with the following keywords arguments:
+该事件使用以下关键字参数调用：
 
-- `model`: The model class of the object that was updated
-- `id`: The primary key of the object that was updated
+- `model`：已更新对象的模型类
+- `id`：已更新对象的主键
 
-**Example:**
+**示例：**
 
-A `Part` object with primary key `123` is updated, resulting in the following event being generated:
+更新一个主键为 `123` 的 `Part` 对象，从而导致生成以下事件：
 
 ```python
 trigger_event('part_part.saved', model='part', id=123)
 ```
 
-### Object Deleted
+### 对象已删除
 
-When an object is deleted from the database, an event is generated with the following event name: `<app>_<model>.deleted`, where `<model>` is the name of the model class (e.g. `part`, `stockitem`, etc).
+当从数据库中删除一个对象时，会生成一个事件，其事件名称如下：`<app>_<model>.deleted`，其中 `<model>` 是模型类的名称（例如 `part`、`stockitem` 等）。
 
-The event is called with the following keywords arguments:
+该事件使用以下关键字参数调用：
 
-- `model`: The model class of the object that was deleted
-- `id`: The primary key of the object that was deleted (if available)
+- `model`：已删除对象的模型类
+- `id`：已删除对象的主键（如果可用）
 
-**Example:**
+**示例：**
 
-A `Part` object with primary key `123` is deleted, resulting in the following event being generated:
+删除一个主键为 `123` 的 `Part` 对象，从而导致生成以下事件：
 
 ```python
 trigger_event('part_part.deleted', model='part', id=123)
 ```
 
-!!! warning "Object Deleted"
-    Note that the event is triggered *after* the object has been deleted from the database, so the object itself is no longer available.
+!!! warning "对象已删除"
+    请注意，该事件是在从数据库中删除对象 *后* 触发的，因此该对象本身不再可用。
 
-## Specific Events
+## 特定事件
 
-In addition to the *generic* events listed above, there are a number of other events which are triggered by *specific* actions within the InvenTree codebase.
+除了上面列出的*通用*事件外，还有许多其他事件由 InvenTree 代码库中的*特定*操作触发。
 
-The available events are provided in the enumerations listed below. Note that while the names of the events are documented here, the exact arguments passed to the event handler will depend on the specific event being triggered.
+可用事件在下面列出的枚举中提供。 请注意，虽然此处记录了事件的名称，但传递给事件处理程序的具体参数将取决于触发的特定事件。
 
-### Build Events
+### 构建事件
 
 ::: build.events.BuildEvents
     options:
@@ -96,7 +96,7 @@ The available events are provided in the enumerations listed below. Note that wh
         show_source: True
         members: []
 
-### Part Events
+### 零件事件
 
 ::: part.events.PartEvents
     options:
@@ -106,7 +106,7 @@ The available events are provided in the enumerations listed below. Note that wh
         show_source: True
         members: []
 
-### Stock Events
+### 库存事件
 
 ::: stock.events.StockEvents
     options:
@@ -116,7 +116,7 @@ The available events are provided in the enumerations listed below. Note that wh
         show_source: True
         members: []
 
-### Purchase Order Events
+### 采购订单事件
 
 ::: order.events.PurchaseOrderEvents
     options:
@@ -126,7 +126,7 @@ The available events are provided in the enumerations listed below. Note that wh
         show_source: True
         members: []
 
-### Sales Order Events
+### 销售订单事件
 
 ::: order.events.SalesOrderEvents
     options:
@@ -136,7 +136,7 @@ The available events are provided in the enumerations listed below. Note that wh
         show_source: True
         members: []
 
-### Return Order Events
+### 退货订单事件
 
 ::: order.events.ReturnOrderEvents
     options:
@@ -146,7 +146,7 @@ The available events are provided in the enumerations listed below. Note that wh
         show_source: True
         members: []
 
-### Plugin Events
+### 插件事件
 
 ::: plugin.events.PluginEvents
     options:
@@ -156,11 +156,11 @@ The available events are provided in the enumerations listed below. Note that wh
         show_source: True
         members: []
 
-## Samples
+## 示例
 
-### Sample Plugin - All events
+### 示例插件 - 所有事件
 
-Implementing classes must at least provide a `process_event` function:
+实现类必须至少提供一个 `process_event` 函数：
 
 ::: plugin.samples.event.event_sample.EventPluginSample
     options:
@@ -170,11 +170,11 @@ Implementing classes must at least provide a `process_event` function:
         show_source: True
         members: []
 
-### Sample Plugin - Specific Events
+### 示例插件 - 特定事件
 
-If you want to process just some specific events, you can also implement the `wants_process_event` function to decide if you want to process this event or not. This function will be executed synchronously, so be aware that it should contain simple logic.
+如果你只想处理一些特定的事件，你也可以实现 `wants_process_event` 函数来决定是否要处理这个事件。这个函数会被同步执行，所以要注意它应该包含简单的逻辑。
 
-Overall this function can reduce the workload on the background workers significantly since less events are queued to be processed.
+总的来说，这个函数可以大大减少后台工作程序的负担，因为需要处理的事件较少。
 
 ::: plugin.samples.event.filtered_event_sample.FilteredEventPluginSample
     options:
