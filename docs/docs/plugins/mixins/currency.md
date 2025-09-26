@@ -1,16 +1,16 @@
 ---
-title: Currency Exchange Mixin
+title: 货币兑换混合类（Currency Exchange Mixin）
 ---
 
 ## CurrencyExchangeMixin
 
-The `CurrencyExchangeMixin` class enabled plugins to provide custom backends for updating currency exchange rate information.
+`CurrencyExchangeMixin` 类允许插件提供自定义后端，用于更新货币汇率信息。
 
-Any implementing classes must provide the `update_exchange_rates` method.
+任何实现类都必须提供 `update_exchange_rates` 方法。
 
-### Builtin Plugin
+### 内置插件
 
-The default builtin plugin for handling currency exchange rates is the `InvenTreeCurrencyExchangePlugin` class.
+用于处理货币汇率的默认内置插件是 `InvenTreeCurrencyExchangePlugin` 类。
 
 ::: plugin.builtin.integration.currency_exchange.InvenTreeCurrencyExchange
     options:
@@ -21,9 +21,9 @@ The default builtin plugin for handling currency exchange rates is the `InvenTre
         members: []
 
 
-### Sample Plugin
+### 示例插件
 
-A simple example is shown below (with fake data).
+下面展示了一个简单的示例（使用虚假数据）。
 
 ```python
 
@@ -31,24 +31,24 @@ from plugin import InvenTreePlugin
 from plugin.mixins import CurrencyExchangeMixin
 
 class MyFirstCurrencyExchangePlugin(CurrencyExchangeMixin, InvenTreePlugin):
-    """Sample currency exchange plugin"""
+    """示例货币兑换插件"""
 
     ...
 
     def update_exchange_rates(self, base_currency: str, symbols: list[str]) -> dict:
-        """Update currency exchange rates.
+        """更新货币汇率。
 
-        This method *must* be implemented by the plugin class.
+        该方法*必须*由插件类实现。
 
-        Arguments:
-            base_currency: The base currency to use for exchange rates
-            symbols: A list of currency symbols to retrieve exchange rates for
+        参数:
+            base_currency: 用于汇率的基础货币
+            symbols: 要检索汇率的货币符号列表
 
-        Returns:
-            A dictionary of exchange rates, or None if the update failed
+        返回值:
+            一个汇率字典，如果更新失败则返回 None
 
-        Raises:
-            Can raise any exception if the update fails
+        异常:
+            如果更新失败，可以引发任何异常
         """
 
         rates = {
