@@ -1,10 +1,10 @@
 ---
-title: Action Plugins
+title: 操作插件（Action Plugins）
 ---
 
 ## ActionMixin
 
-Arbitrary "actions" can be called by POSTing data to the `/api/action/` endpoint. The POST request must include the name of the action to be performed, and a matching ActionPlugin plugin must be loaded by the server. Arbitrary data can also be provided to the action plugin via the POST data:
+可以通过将数据 POST 到 `/api/action/` 端点来调用任意“操作”。POST 请求必须包含要执行的操作的名称，并且服务器必须加载匹配的 ActionPlugin 插件。也可以通过 POST 数据将任意数据提供给操作插件：
 
 ```
 POST {
@@ -15,9 +15,9 @@ POST {
 }
 ```
 
-### Sample Plugin
+### 示例插件
 
-A sample action plugin is provided in the `InvenTree` source code, which can be used as a template for creating custom action plugins:
+`InvenTree` 源代码中提供了一个示例操作插件，可以用作创建自定义操作插件的模板：
 
 ::: plugin.samples.integration.simpleactionplugin.SimpleActionPlugin
     options:
