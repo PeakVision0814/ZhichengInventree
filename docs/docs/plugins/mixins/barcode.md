@@ -1,32 +1,32 @@
 ---
-title: Barcode Mixin
+title: 条形码混合类（Barcode Mixin）
 ---
 
 ## BarcodeMixin
 
-InvenTree supports decoding of arbitrary barcode data and generation of internal barcode formats via a **Barcode Plugin** interface. Barcode data POSTed to the `/api/barcode/` endpoint will be supplied to all loaded barcode plugins, and the first plugin to successfully interpret the barcode data will return a response to the client.
+InvenTree 支持通过 **条形码插件** 接口解码任意条形码数据和生成内部条形码格式。POST 到 `/api/barcode/` 端点的条形码数据将提供给所有已加载的条形码插件，并且第一个成功解释条形码数据的插件将向客户端返回响应。
 
-InvenTree can generate native QR codes to represent database objects (e.g. a single StockItem). This barcode can then be used to perform quick lookup of a stock item or location in the database. A client application (for example the InvenTree mobile app) scans a barcode, and sends the barcode data to the InvenTree server. The server then uses the **InvenTreeBarcodePlugin** (found at `src/backend/InvenTree/plugin/builtin/barcodes/inventree_barcode.py`) to decode the supplied barcode data.
+InvenTree 可以生成原生 QR 码来表示数据库对象（例如，单个库存项目）。然后，可以使用此条形码在数据库中执行库存项目或位置的快速查找。客户端应用程序（例如 InvenTree 移动应用程序）扫描条形码，并将条形码数据发送到 InvenTree 服务器。然后，服务器使用 **InvenTreeBarcodePlugin**（位于 `src/backend/InvenTree/plugin/builtin/barcodes/inventree_barcode.py`）来解码提供的条形码数据。
 
-Any third-party barcodes can be decoded by writing a matching plugin to decode the barcode data. These plugins could then perform a server-side action or render a JSON response back to the client for further action.
+任何第三方条形码都可以通过编写匹配的插件来解码条形码数据。然后，这些插件可以执行服务器端操作或将 JSON 响应渲染回客户端以进行进一步操作。
 
-Some examples of possible uses for barcode integration:
+条形码集成的一些可能用途示例：
 
-- Stock lookup by scanning a barcode on a box of items
-- Receiving goods against a PurchaseOrder by scanning a supplier barcode
-- Perform a stock adjustment action (e.g. take 10 parts from stock whenever a barcode is scanned)
+- 通过扫描物品箱上的条形码进行库存查找
+- 通过扫描供应商条形码接收针对采购订单的货物
+- 执行库存调整操作（例如，每当扫描条形码时从库存中取出 10 个零件）
 
-Barcode data are POSTed to the server as follows:
+条形码数据以如下方式 POST 到服务器：
 
 ```
 POST {
-    barcode_data: "[(>someBarcodeDataWhichThePluginKnowsHowToDealWith"
+    barcode_data: "[(>插件知道如何处理的某些条形码数据"
 }
 ```
 
-### Builtin Plugin
+### 内置插件
 
-The InvenTree server includes a builtin barcode plugin which can generate and decode the QR codes. This plugin is enabled by default.
+InvenTree 服务器包含一个内置条形码插件，可以生成和解码 QR 码。默认情况下启用此插件。
 
 ::: plugin.builtin.barcodes.inventree_barcode.InvenTreeInternalBarcodePlugin
     options:
@@ -37,9 +37,9 @@ The InvenTree server includes a builtin barcode plugin which can generate and de
         members: []
 
 
-### Example Plugin
+### 示例插件
 
-Please find below a very simple example that is used to return a part if the barcode starts with `PART-`
+请在下面找到一个非常简单的示例，用于在条形码以 `PART-` 开头时返回一个零件
 
 ```python
 from plugin import InvenTreePlugin
@@ -49,8 +49,8 @@ from part.models import Part
 class InvenTreeBarcodePlugin(BarcodeMixin, InvenTreePlugin):
 
     NAME = "MyBarcode"
-    TITLE = "My Barcodes"
-    DESCRIPTION = "support for barcodes"
+    TITLE = "我的条形码"
+    DESCRIPTION = "支持条形码"
     VERSION = "0.0.1"
     AUTHOR = "Michael"
 
@@ -66,11 +66,11 @@ class InvenTreeBarcodePlugin(BarcodeMixin, InvenTreePlugin):
                 pass
 ```
 
-To try it just copy the file to src/InvenTree/plugins and restart the server. Open the scan barcode window and start to scan codes or type in text manually. Each time the timeout is hit the plugin will execute and printout the result. The timeout can be changed in `Settings->Barcode Support->Barcode Input Delay`.
+要尝试它，只需将文件复制到 src/InvenTree/plugins 并重启服务器。打开扫描条形码窗口并开始扫描代码或手动输入文本。每次达到超时时，插件将执行并打印出结果。超时可以在 `设置->条形码支持->条形码输入延迟` 中更改。
 
-### Custom Internal Format
+### 自定义内部格式
 
-To implement a custom internal barcode format, the `generate(...)` method from the Barcode Mixin needs to be overridden. Then the plugin can be selected at `System Settings > Barcodes > Barcode Generation Plugin`.
+要实现自定义内部条形码格式，需要重写 Barcode Mixin 中的 `generate(...)` 方法。然后可以在 `系统设置 > 条形码 > 条形码生成插件` 中选择插件。
 
 ```python
 from InvenTree.models import InvenTreeBarcodeMixin
@@ -79,8 +79,8 @@ from plugin.mixins import BarcodeMixin
 
 class InvenTreeBarcodePlugin(BarcodeMixin, InvenTreePlugin):
     NAME = "MyInternalBarcode"
-    TITLE = "My Internal Barcodes"
-    DESCRIPTION = "support for custom internal barcodes"
+    TITLE = "我的内部条形码"
+    DESCRIPTION = "支持自定义内部条形码"
     VERSION = "0.0.1"
     AUTHOR = "InvenTree contributors"
 
@@ -88,5 +88,5 @@ class InvenTreeBarcodePlugin(BarcodeMixin, InvenTreePlugin):
         return f'{model_instance.barcode_model_type()}: {model_instance.pk}'
 ```
 
-!!! info "Scanning implementation required"
-    The parsing of the custom format needs to be implemented too, so that the scanning of the generated QR codes resolves to the correct part.
+!!! info "需要扫描实现"
+    还需要实现自定义格式的解析，以便生成的 QR 码的扫描可以解析为正确的零件。
